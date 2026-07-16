@@ -1,0 +1,73 @@
+.hero { 
+    background: linear-gradient(135deg, #eaf2ef, #ffffff); 
+    padding: 100px 0; 
+}
+
+.hero-content { 
+    display: flex; 
+    align-items: center; 
+    gap: 50px; 
+}
+
+.hero-text { flex: 1; }
+.hero-image { flex: 1; }
+
+.badge { 
+    color: var(--primary); 
+    font-weight: 600; 
+    background: #e0eee9; 
+    padding: 5px 15px; 
+    border-radius: 20px; 
+}
+
+.hero h1 { 
+    font-size: 3.5rem; 
+    line-height: 1.1; 
+    margin: 20px 0; 
+}
+
+/* Mengatur kotak Fitur agar menyamping */
+.feature-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; 
+}
+
+.card { 
+    background: var(--white); 
+    padding: 30px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03); 
+    transition: 0.3s; 
+}
+
+.card:hover { transform: translateY(-10px); }
+
+/* Mengatur kotak Artikel agar menyamping */
+.article-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+}
+
+.article-grid article { 
+    background: white; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+}
+
+.article-grid img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.article-grid h3 { padding: 15px 15px 0; }
+
+.article-grid a { 
+    padding: 15px; 
+    display: block; 
+    color: var(--primary); 
+    font-weight: 600; 
+}

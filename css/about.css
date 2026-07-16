@@ -1,0 +1,200 @@
+/* ========================================= */
+/* ABOUT HERO SECTION                        */
+/* ========================================= */
+
+.about-hero {
+    background: linear-gradient(135deg, var(--bg-main), #ffffff);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.about-hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.about-hero-text {
+    flex: 1.2;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.about-hero-text h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.about-hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.about-hero-image {
+    flex: 1;
+    position: relative;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* ========================================= */
+/* OUR STORY SECTION                         */
+/* ========================================= */
+
+.our-story {
+    background-color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.our-story h2 {
+    margin-bottom: 30px;
+}
+
+.story-content {
+    max-width: 800px; /* Membatasi lebar teks agar nyaman dibaca (optimal reading width) */
+    margin: 0 auto;
+    text-align: left; /* Teks paragraf tetap rata kiri agar mudah dibaca */
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.story-content p {
+    margin-bottom: 20px;
+}
+
+.story-content strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* VISION & MISSION SECTION                  */
+/* ========================================= */
+
+.vision-mission {
+    padding: 100px 0;
+    background-color: var(--bg-main);
+}
+
+.vm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+/* Kustomisasi tambahan untuk Card di halaman About */
+.vm-card {
+    border-top: 5px solid var(--primary); /* Aksen garis di atas card */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.vm-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vm-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Kustomisasi List (Bullet Points) pada Misi */
+.vm-card ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.vm-card ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Membuat custom bullet menggunakan pseudo-element */
+.vm-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+/* ========================================= */
+/* CTA SECTION (Khusus About)                */
+/* ========================================= */
+
+.cta {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    padding: 80px 0;
+    text-align: center;
+    color: var(--white);
+}
+
+.cta h2 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.cta p {
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Agar tombol turun ke bawah jika layar HP kecil */
+}
+
+/* Penyesuaian tombol di atas background gelap */
+.cta .btn-secondary {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.cta .btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+.cta .btn-primary {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.cta .btn-primary:hover {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                         */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .about-hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .story-content {
+        text-align: center;
+        padding: 0 15px;
+    }
+}
