@@ -4,9 +4,22 @@
 ========================================== */
 
 /* ==========================================
-   HERO
+   GLOBAL UTILITIES
 ========================================== */
+.badge {
+    display: inline-block;
+    background: #dff2eb;
+    color: #5d9b9b;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: .9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
 
+/* ==========================================
+   HERO SECTION
+========================================== */
 .article-hero {
     background: linear-gradient(135deg, #f7fbf8, #eaf2ef);
     padding: 90px 0;
@@ -22,17 +35,6 @@
 
 .article-hero-text {
     flex: 1;
-}
-
-.article-hero-text .badge {
-    display: inline-block;
-    background: #dff2eb;
-    color: #5d9b9b;
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-size: .9rem;
-    font-weight: 600;
-    margin-bottom: 20px;
 }
 
 .article-hero-text h1 {
@@ -60,18 +62,17 @@
     box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
 
-
 /* ==========================================
-   SEARCH
+   SEARCH SECTION
 ========================================== */
-
 .search-section {
     padding: 80px 0;
     background: #ffffff;
 }
 
-.search-section .container {
+.search-container {
     max-width: 850px;
+    margin: 0 auto;
 }
 
 .search-section h2 {
@@ -103,11 +104,9 @@
     box-shadow: 0 0 0 5px rgba(93,155,155,.15);
 }
 
-
 /* ==========================================
-   CATEGORY
+   CATEGORY SECTION
 ========================================== */
-
 .category {
     background: #ffffff;
     padding-bottom: 80px;
@@ -139,46 +138,26 @@
     transition: .3s;
 }
 
-.category-list button:hover {
+.category-list button:hover,
+.category-list button.active {
     background: #5d9b9b;
     color: #ffffff;
     transform: translateY(-2px);
 }
 
-.category-list button.active {
-    background: #5d9b9b;
-    color: #ffffff;
-}
-
-
-/* ==========================================
-   UTILITIES
-========================================== */
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title h2 {
-    font-size: 2.2rem;
-    color: #1e293b;
-    margin-bottom: 15px;
-}
-
-.section-title p {
-    color: #64748b;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.8;
-}
 /* ==========================================
    FEATURED ARTICLE
 ========================================== */
-
 .featured-article {
     padding: 100px 0;
     background: #f7fbf8;
+}
+
+.featured-article h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #1e293b;
 }
 
 .featured-card {
@@ -189,7 +168,7 @@
     background: #ffffff;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
     transition: .35s ease;
 }
 
@@ -198,70 +177,50 @@
     box-shadow: 0 20px 45px rgba(0,0,0,.12);
 }
 
-.featured-card-image {
+.featured-image {
     flex: 1;
     min-width: 320px;
 }
 
-.featured-card-image img {
+.featured-image img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
 }
 
-.featured-card-content {
+.featured-content {
     flex: 1;
     padding: 45px;
 }
 
-.featured-card-content span {
-    display: inline-block;
-    background: #dff2eb;
-    color: #5d9b9b;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: .85rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.featured-card-content h2 {
+.featured-content h2 {
     font-size: 2rem;
     line-height: 1.4;
     color: #1f2937;
     margin-bottom: 20px;
+    text-align: left;
 }
 
-.featured-card-content p {
+.featured-content p {
     color: #64748b;
     line-height: 1.9;
     margin-bottom: 30px;
 }
 
-.featured-card-content a {
-    display: inline-block;
-    padding: 14px 28px;
-    background: #5d9b9b;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.featured-card-content a:hover {
-    background: #4b8686;
-}
-
-
 /* ==========================================
-   ALL ARTICLES
+   ALL ARTICLES GRID
 ========================================== */
-
 .all-articles {
     padding: 100px 0;
     background: #ffffff;
+}
+
+.all-articles h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #1e293b;
 }
 
 .article-grid {
@@ -269,11 +228,6 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 35px;
 }
-
-
-/* ==========================================
-   ARTICLE CARD
-========================================== */
 
 .article-grid .card {
     background: #ffffff;
@@ -320,20 +274,82 @@
     color: #417474;
 }
 
+/* ==========================================
+   CTA SECTION
+========================================== */
+.cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #5d9b9b, #6eb5a8);
+    color: white;
+}
+
+.cta-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.badge-outline {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.cta p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-btn-light {
+    background: white;
+    color: #5d9b9b;
+}
+
+.cta-btn-light:hover {
+    background: #f1f1f1;
+    color: #4b8686;
+}
+
+.cta-btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-btn-outline:hover {
+    background: white;
+    color: #5d9b9b;
+}
 
 /* ==========================================
-   BUTTON
+   BUTTONS (GLOBAL)
 ========================================== */
-
-.btn-primary {
+.btn-primary, 
+.btn-secondary {
     display: inline-block;
-    background: #5d9b9b;
-    color: #ffffff;
     padding: 14px 28px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     transition: .3s;
+}
+
+.btn-primary {
+    background: #5d9b9b;
+    color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -341,14 +357,8 @@
 }
 
 .btn-secondary {
-    display: inline-block;
     border: 2px solid #5d9b9b;
     color: #5d9b9b;
-    padding: 14px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: .3s;
 }
 
 .btn-secondary:hover {

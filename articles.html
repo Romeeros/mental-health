@@ -1,806 +1,148 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-    <!-- ========================================= -->
-    <!-- Basic Meta -->
-    <!-- ========================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Artikel | MindCare</title>
-
-    <meta name="description"
-        content="Temukan berbagai artikel edukasi mengenai kesehatan mental remaja, mulai dari stres, anxiety, burnout, bullying, hingga tips self-care.">
-
-    <meta name="keywords"
-        content="Artikel Kesehatan Mental, Stress, Anxiety, Burnout, Self Care, Bullying, MindCare">
-
+    <meta name="description" content="Temukan berbagai artikel edukasi mengenai kesehatan mental remaja, mulai dari stres, anxiety, burnout, bullying, hingga tips self-care.">
+    <meta name="keywords" content="Artikel Kesehatan Mental, Stress, Anxiety, Burnout, Self Care, Bullying, MindCare">
     <meta name="author" content="MindCare Team">
 
-    <!-- ========================================= -->
     <!-- CSS -->
-    <!-- ========================================= -->
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/articles.css">
 
-    <!-- ========================================= -->
     <!-- Google Fonts -->
-    <!-- ========================================= -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ========================================= -->
     <!-- HEADER -->
-    <!-- ========================================= -->
-
     <header>
-
         <div class="container">
-
             <div class="logo">
-
                 <a href="index.html">
-
-                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat"
-                        alt="MindCare Logo"
-                        style="border-radius:8px;">
-
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo">
                 </a>
-
             </div>
-
             <nav>
-
                 <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about.html">
-                            Tentang
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="articles.html" class="active">
-                            Artikel
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="selfcare.html">
-                            Self Care
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="faq.html">
-                            FAQ
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contact.html">
-                            Kontak
-                        </a>
-                    </li>
-
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Tentang</a></li>
+                    <li><a href="articles.html" class="active">Artikel</a></li>
+                    <li><a href="selfcare.html">Self Care</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
                 </ul>
-
             </nav>
-
             <div class="telegram-button">
-
-                <a href="https://t.me/NamaBotKamu" target="_blank">
-
-                    Curhat Sekarang
-
-                </a>
-
+                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
             </div>
-
         </div>
-
     </header>
 
-    <!-- ========================================= -->
-    <!-- HERO -->
-    <!-- ========================================= -->
-
-    <section class="article-hero"
-        style="background:linear-gradient(135deg,#f7fbf8,#eaf2ef); padding:80px 0;">
-
-        <div class="container article-hero-content"
-            style="display:flex; align-items:center; gap:50px; flex-wrap:wrap;">
-
-            <div class="article-hero-text" style="flex:1;">
-
-                <span class="badge"
-                    style="background:#e0eee9;
-                           color:var(--primary);
-                           padding:6px 18px;
-                           border-radius:20px;
-                           display:inline-block;
-                           font-weight:600;
-                           margin-bottom:20px;">
-
-                    📚 Artikel Edukasi
-
-                </span>
-
-                <h1 style="font-size:3rem; margin-bottom:20px;">
-
-                    Temukan Informasi yang
-                    Tepat untuk Menjaga
-                    Kesehatan Mentalmu.
-
-                </h1>
-
-                <p style="font-size:1.1rem;
-                          line-height:1.8;
-                          color:var(--text-light);">
-
-                    Jelajahi berbagai artikel yang telah disusun
-                    untuk membantu remaja memahami kesehatan
-                    mental, mengenali berbagai kondisi emosional,
-                    serta menemukan cara sederhana untuk menjaga
-                    kesejahteraan diri.
-
-                </p>
-
-            </div>
-
-            <div class="article-hero-image" style="flex:1;">
-
-                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80"
-                    alt="Artikel Mental Health"
-                    style="width:100%;
-                           border-radius:20px;
-                           box-shadow:0 15px 35px rgba(0,0,0,.08);">
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================================= -->
-    <!-- SEARCH -->
-    <!-- ========================================= -->
-
-    <section class="search-section"
-        style="padding:60px 0;
-               background:white;">
-
-        <div class="container"
-            style="max-width:850px;">
-
-            <h2 style="text-align:center;
-                       margin-bottom:15px;">
-
-                Cari Artikel
-
-            </h2>
-
-            <p style="text-align:center;
-                      color:var(--text-light);
-                      margin-bottom:35px;">
-
-                Temukan artikel yang sesuai dengan
-                kebutuhanmu melalui kolom pencarian.
-
-            </p>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="🔍 Cari artikel..."
-                style="width:100%;
-                       padding:18px 25px;
-                       border-radius:50px;
-                       border:1px solid #ddd;
-                       font-size:16px;
-                       outline:none;">
-
-        </div>
-
-    </section>
-
-    <!-- ========================================= -->
-    <!-- CATEGORY -->
-    <!-- ========================================= -->
-
-    <section class="category"
-        style="padding-bottom:80px;
-               background:white;">
-
-        <div class="container">
-
-            <h2 style="text-align:center;
-                       margin-bottom:35px;">
-
-                Jelajahi Berdasarkan Kategori
-
-            </h2>
-
-            <div class="category-list"
-                style="display:flex;
-                       justify-content:center;
-                       flex-wrap:wrap;
-                       gap:15px;">
-
-                <button class="active">
-                    Semua
-                </button>
-
-                <button>
-                    Stress
-                </button>
-
-                <button>
-                    Anxiety
-                </button>
-
-                <button>
-                    Burnout
-                </button>
-
-                <button>
-                    Overthinking
-                </button>
-
-                <button>
-                    Bullying
-                </button>
-
-                <button>
-                    Self Care
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================================= -->
-    <!-- FEATURED ARTICLE -->
-```
-```html
-    <!-- ========================================= -->
-    <!-- FEATURED ARTICLE -->
-    <!-- ========================================= -->
-
-    <section class="featured-article"
-        style="padding:100px 0; background:#f7fbf8;">
-
-        <div class="container">
-
-            <h2 style="text-align:center; margin-bottom:50px;">
-
-                Artikel Pilihan
-
-            </h2>
-
-            <div class="featured-card"
-                style="display:flex;
-                       gap:50px;
-                       align-items:center;
-                       flex-wrap:wrap;
-                       background:white;
-                       border-radius:25px;
-                       overflow:hidden;
-                       box-shadow:0 10px 30px rgba(0,0,0,.05);">
-
-                <div style="flex:1; min-width:320px;">
-
-                    <img src="assets/images/article/stress.jpg"
-                        alt="Stress"
-                        style="width:100%;
-                               height:100%;
-                               object-fit:cover;">
-
+    <!-- HERO SECTION -->
+    <main>
+        <section class="article-hero">
+            <div class="container article-hero-content">
+                <div class="article-hero-text">
+                    <span class="badge">📚 Artikel Edukasi</span>
+                    <h1>Temukan Informasi yang Tepat untuk Menjaga Kesehatan Mentalmu.</h1>
+                    <p>Jelajahi berbagai artikel yang telah disusun untuk membantu remaja memahami kesehatan mental, mengenali berbagai kondisi emosional, serta menemukan cara sederhana untuk menjaga kesejahteraan diri.</p>
                 </div>
-
-                <div style="flex:1; padding:40px;">
-
-                    <span style="background:#e0eee9;
-                                 color:var(--primary);
-                                 padding:6px 15px;
-                                 border-radius:20px;
-                                 font-size:14px;
-                                 font-weight:600;">
-
-                        Artikel Pilihan
-
-                    </span>
-
-                    <h2 style="margin:20px 0;">
-
-                        Mengenal Stress pada Remaja:
-                        Penyebab, Gejala, dan Cara Mengatasinya
-
-                    </h2>
-
-                    <p style="line-height:1.8;
-                              color:var(--text-light);
-                              margin-bottom:30px;">
-
-                        Stress merupakan respon alami tubuh terhadap tekanan.
-                        Namun apabila tidak dikelola dengan baik,
-                        stress dapat memengaruhi kesehatan fisik,
-                        emosional, dan aktivitas sehari-hari.
-                        Pelajari bagaimana mengenali tanda-tandanya
-                        sejak dini.
-
-                    </p>
-
-                    <a href="article/stress.html"
-                        class="btn-primary">
-
-                        Baca Selengkapnya →
-
-                    </a>
-
+                <div class="article-hero-image">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80" alt="Artikel Mental Health">
                 </div>
-
             </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================================= -->
-    <!-- ALL ARTICLES -->
-    <!-- ========================================= -->
-
-    <section class="all-articles"
-        style="padding:100px 0; background:white;">
-
-        <div class="container">
-
-            <h2 style="text-align:center; margin-bottom:50px;">
-
-                Semua Artikel
-
-            </h2>
-
-            <div class="article-grid"
-                style="display:grid;
-                       grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-                       gap:35px;">
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/stress.jpg"
-                        alt="Stress"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Apa Itu Stress?
-
-                    </h3>
-
-                    <p>
-
-                        Mengenali penyebab,
-                        gejala,
-                        serta cara mengatasi
-                        stress dalam kehidupan sehari-hari.
-
-                    </p>
-
-                    <a href="article/stress.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/anxiety.jpg"
-                        alt="Anxiety"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Mengenal Anxiety
-
-                    </h3>
-
-                    <p>
-
-                        Memahami anxiety,
-                        penyebab,
-                        gejala,
-                        serta kapan harus
-                        mencari bantuan.
-
-                    </p>
-
-                    <a href="article/anxiety.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/burnout.jpg"
-                        alt="Burnout"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Burnout pada Remaja
-
-                    </h3>
-
-                    <p>
-
-                        Kenali tanda burnout
-                        akibat tekanan sekolah,
-                        organisasi,
-                        maupun kehidupan sosial.
-
-                    </p>
-
-                    <a href="article/burnout.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/stress.jpg"
-                        alt="Overthinking"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Overthinking
-
-                    </h3>
-
-                    <p>
-
-                        Mengapa kita sering
-                        memikirkan sesuatu
-                        secara berlebihan
-                        dan bagaimana menguranginya.
-
-                    </p>
-
-                    <a href="article/overthinking.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/anxiety.jpg"
-                        alt="Depression"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Depresi pada Remaja
-
-                    </h3>
-
-                    <p>
-
-                        Memahami perbedaan
-                        antara depresi
-                        dan rasa sedih
-                        yang dialami sehari-hari.
-
-                    </p>
-
-                    <a href="article/depression.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
-                <!-- CARD -->
-
-                <article class="card">
-
-                    <img src="assets/images/article/burnout.jpg"
-                        alt="Bullying"
-                        style="width:100%; border-radius:15px;">
-
-                    <h3 style="margin-top:20px;">
-
-                        Dampak Bullying terhadap
-                        Kesehatan Mental
-
-                    </h3>
-
-                    <p>
-
-                        Bullying dapat meninggalkan
-                        luka emosional yang serius.
-                        Ketahui dampaknya
-                        dan cara menghadapinya.
-
-                    </p>
-
-                    <a href="article/bullying.html">
-
-                        Baca Artikel →
-
-                    </a>
-
-                </article>
-
+        </section>
+
+        <!-- SEARCH SECTION -->
+        <section class="search-section">
+            <div class="container search-container">
+                <h2>Cari Artikel</h2>
+                <p>Temukan artikel yang sesuai dengan kebutuhanmu melalui kolom pencarian.</p>
+                <input type="text" id="searchInput" placeholder="🔍 Cari artikel...">
             </div>
+        </section>
 
-        </div>
-
-    </section>
-
-    <!-- ========================================= -->
-    <!-- CTA -->
-```
-```html
-    <!-- ========================================= -->
-    <!-- CTA -->
-    <!-- ========================================= -->
-
-    <section class="cta"
-        style="padding:100px 0;
-               background:linear-gradient(135deg,#5d9b9b,#6eb5a8);
-               color:white;">
-
-        <div class="container"
-            style="text-align:center;
-                   max-width:800px;">
-
-            <span style="
-                display:inline-block;
-                padding:8px 18px;
-                background:rgba(255,255,255,.15);
-                border-radius:50px;
-                margin-bottom:20px;
-                font-weight:600;">
-
-                💚 Kamu Tidak Sendiri
-
-            </span>
-
-            <h2 style="
-                font-size:2.5rem;
-                margin-bottom:20px;
-                color:white;">
-
-                Masih Ingin Belajar
-                atau Membutuhkan
-                Teman Bercerita?
-
-            </h2>
-
-            <p style="
-                font-size:1.1rem;
-                line-height:1.8;
-                margin-bottom:40px;
-                color:rgba(255,255,255,.9);">
-
-                Terus tingkatkan pemahamanmu mengenai kesehatan
-                mental melalui halaman Self Care, atau apabila
-                kamu sedang membutuhkan ruang untuk bercerita,
-                chatbot Telegram MindCare siap menemanimu.
-
-            </p>
-
-            <div style="
-                display:flex;
-                justify-content:center;
-                gap:20px;
-                flex-wrap:wrap;">
-
-                <a href="selfcare.html"
-                    class="btn-primary"
-                    style="
-                    background:white;
-                    color:#5d9b9b;
-                    text-decoration:none;
-                    padding:15px 35px;
-                    border-radius:50px;
-                    font-weight:600;">
-
-                    🌿 Self Care
-
-                </a>
-
-                <a href="https://t.me/NamaBotKamu"
-                    target="_blank"
-                    class="btn-secondary"
-                    style="
-                    border:2px solid white;
-                    color:white;
-                    text-decoration:none;
-                    padding:15px 35px;
-                    border-radius:50px;
-                    font-weight:600;">
-
-                    🤖 Curhat Sekarang
-
-                </a>
-
+        <!-- CATEGORY SECTION -->
+        <section class="category">
+            <div class="container">
+                <h2>Jelajahi Berdasarkan Kategori</h2>
+                <div class="category-list" id="categoryButtons">
+                    <button class="active">Semua</button>
+                    <button>Stress</button>
+                    <button>Anxiety</button>
+                    <button>Burnout</button>
+                    <button>Overthinking</button>
+                    <button>Bullying</button>
+                    <button>Self Care</button>
+                </div>
             </div>
+        </section>
 
-        </div>
+        <!-- FEATURED ARTICLE -->
+        <section class="featured-article">
+            <div class="container">
+                <h2>Artikel Pilihan</h2>
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="assets/images/article/stress.jpg" alt="Stress">
+                    </div>
+                    <div class="featured-content">
+                        <span class="badge">Artikel Pilihan</span>
+                        <h2>Mengenal Stress pada Remaja: Penyebab, Gejala, dan Cara Mengatasinya</h2>
+                        <p>Stress merupakan respon alami tubuh terhadap tekanan. Namun apabila tidak dikelola dengan baik, stress dapat memengaruhi kesehatan fisik, emosional, dan aktivitas sehari-hari. Pelajari bagaimana mengenali tanda-tandanya sejak dini.</p>
+                        <a href="article/stress.html" class="btn-primary">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    </section>
+        <!-- ALL ARTICLES GRID -->
+        <section class="all-articles">
+            <div class="container">
+                <h2>Semua Artikel</h2>
+                <!-- Berikan ID ini agar js/article.js bisa memuat data dari articles.json ke dalam div ini -->
+                <div class="article-grid" id="articleGrid">
+                    
+                    <!-- Template Card (Biarkan JS yang melooping ini nantinya, atau copy paste jika ingin statis) -->
+                    <article class="card">
+                        <img src="assets/images/article/stress.jpg" alt="Stress">
+                        <h3>Apa Itu Stress?</h3>
+                        <p>Mengenali penyebab, gejala, serta cara mengatasi stress dalam kehidupan sehari-hari.</p>
+                        <a href="article/stress.html">Baca Artikel →</a>
+                    </article>
+                    
+                </div>
+            </div>
+        </section>
 
-    <!-- ========================================= -->
+        <!-- CTA SECTION -->
+        <section class="cta">
+            <div class="container cta-container">
+                <span class="badge badge-outline">💚 Kamu Tidak Sendiri</span>
+                <h2>Masih Ingin Belajar atau Membutuhkan Teman Bercerita?</h2>
+                <p>Terus tingkatkan pemahamanmu mengenai kesehatan mental melalui halaman Self Care, atau apabila kamu sedang membutuhkan ruang untuk bercerita, chatbot Telegram MindCare siap menemanimu.</p>
+                <div class="cta-buttons">
+                    <a href="selfcare.html" class="btn-primary cta-btn-light">🌿 Self Care</a>
+                    <a href="https://t.me/NamaBotKamu" target="_blank" class="btn-secondary cta-btn-outline">🤖 Curhat Sekarang</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+      <!-- ========================================= -->
     <!-- FOOTER -->
     <!-- ========================================= -->
-
     <footer>
-
         <div class="container">
-
-            <div class="footer-content">
-
-                <div class="footer-about">
-
-                    <h3>MindCare</h3>
-
-                    <p>
-
-                        MindCare merupakan website edukasi
-                        kesehatan mental remaja yang bertujuan
-                        memberikan informasi, meningkatkan
-                        kesadaran, serta menyediakan akses
-                        menuju dukungan awal melalui chatbot
-                        Telegram.
-
-                    </p>
-
-                </div>
-
-                <div class="footer-links">
-
-                    <h4>Menu</h4>
-
-                    <ul>
-
-                        <li><a href="index.html">Home</a></li>
-
-                        <li><a href="about.html">Tentang</a></li>
-
-                        <li><a href="articles.html">Artikel</a></li>
-
-                        <li><a href="selfcare.html">Self Care</a></li>
-
-                        <li><a href="faq.html">FAQ</a></li>
-
-                        <li><a href="contact.html">Kontak</a></li>
-
-                    </ul>
-
-                </div>
-
-                <div class="footer-contact">
-
-                    <h4>Hubungi Kami</h4>
-
-                    <p>
-
-                        📧 hello@mindcare.id
-
-                    </p>
-
-                    <p>
-
-                        🤖 Telegram Bot
-
-                    </p>
-
-                    <a href="https://t.me/NamaBotKamu"
-                        target="_blank">
-
-                        @NamaBotKamu
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <hr style="
-                margin:40px 0;
-                border:none;
-                border-top:1px solid rgba(255,255,255,.15);">
-
-            <div class="footer-bottom"
-                style="
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
-                flex-wrap:wrap;
-                gap:15px;">
-
-                <p>
-
-                    © 2026 MindCare.
-                    All Rights Reserved.
-
-                </p>
-
-                <div class="social-media">
-
-                    <a href="#">Instagram</a>
-
-                    <a href="#">TikTok</a>
-
-                    <a href="#">YouTube</a>
-
-                </div>
-
-            </div>
-
+            <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
-
     </footer>
-
-    <!-- ========================================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================================= -->
-
-    <script src="js/main.js"></script>
-
-    <script src="js/navbar.js"></script>
-
-    <script src="js/article.js"></script>
-
-    <script src="js/telegram.js"></script>
-
-</body>
-
-</html>
-```

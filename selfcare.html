@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ========================================= -->
+    <!-- Basic Meta -->
+    <!-- ========================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Self Care | MindCare</title>
+
+    <meta name="description" content="Panduan self-care dan aktivitas harian untuk menjaga kesehatan mentalmu. Mulai dari mindfulness, journaling, hingga relaksasi.">
+    <meta name="keywords" content="Self Care, Kesehatan Mental, Mindfulness, Journaling, MindCare">
+    <meta name="author" content="MindCare Team">
+
+    <!-- ========================================= -->
+    <!-- CSS -->
+    <!-- ========================================= -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/selfcare.css">
+
+    <!-- ========================================= -->
+    <!-- Google Fonts -->
+    <!-- ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo" style="border-radius:8px;">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Tentang</a></li>
+                    <li><a href="articles.html">Artikel</a></li>
+                    <li><a href="selfcare.html" class="active">Self Care</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="telegram-button">
+                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
+    <main>
+        
+        <!-- HERO SECTION -->
+        <section class="selfcare-hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge">🌿 Mulai Merawat Diri</span>
+                    <h1>Waktunya Fokus pada Dirimu Sendiri.</h1>
+                    <p>Self-care bukanlah sebuah keegoisan. Ini adalah langkah penting untuk mengisi ulang energimu, menenangkan pikiran, dan menjaga keseimbangan mental serta fisik di tengah padatnya aktivitas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SELF CARE PILLARS -->
+        <section class="pillars-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Pilar Self-Care</h2>
+                    <p>Temukan aktivitas yang paling cocok untuk kebutuhan mental dan fisikmu hari ini.</p>
+                </div>
+                
+                <div class="pillars-grid">
+                    
+                    <div class="pillar-card">
+                        <div class="icon-wrapper">🧘‍♀️</div>
+                        <h3>Mindfulness & Meditasi</h3>
+                        <p>Latih kesadaran penuh untuk mengurangi stres, mengontrol emosi, dan menghentikan siklus overthinking.</p>
+                        <a href="mindfulness.html" class="link-arrow">Pelajari Caranya &rarr;</a>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="icon-wrapper">✍️</div>
+                        <h3>Journaling</h3>
+                        <p>Tuangkan isi pikiran, rasa syukur, dan perasaanmu ke dalam tulisan agar beban di dada terasa lebih lega.</p>
+                        <a href="#" class="link-arrow">Mulai Menulis &rarr;</a>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="icon-wrapper">🏃‍♂️</div>
+                        <h3>Aktivitas Fisik</h3>
+                        <p>Olahraga ringan seperti jalan santai, peregangan, atau yoga sangat baik untuk memicu hormon kebahagiaan (endorfin).</p>
+                        <a href="#" class="link-arrow">Lihat Tips &rarr;</a>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="icon-wrapper">🛌</div>
+                        <h3>Istirahat Berkualitas</h3>
+                        <p>Memastikan tidur 7-8 jam dan berani berkata "tidak" pada aktivitas yang menguras energi sangat krusial untuk pemulihan otak.</p>
+                        <a href="#" class="link-arrow">Tips Tidur Nyenyak &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- DAILY CHECK-IN -->
+        <section class="checkin-section">
+            <div class="container checkin-container">
+                <div class="checkin-content">
+                    <h2>Bagaimana Perasaanmu Hari Ini?</h2>
+                    <p>Pilih salah satu emoji yang mewakili perasaanmu. Ini adalah langkah pertama untuk mengenali kondisi mentalmu.</p>
+                    
+                    <div class="mood-tracker" id="moodTracker">
+                        <button class="mood-btn" data-mood="sad">😢</button>
+                        <button class="mood-btn" data-mood="anxious">😰</button>
+                        <button class="mood-btn" data-mood="neutral">😐</button>
+                        <button class="mood-btn" data-mood="happy">😊</button>
+                        <button class="mood-btn" data-mood="great">🤩</button>
+                    </div>
+                    
+                    <div id="moodMessage" class="mood-message hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta" style="padding:100px 0; background:linear-gradient(135deg,#5d9b9b,#6eb5a8); color:white;">
+            <div class="container" style="text-align:center; max-width:800px;">
+                <span style="display:inline-block; padding:8px 18px; background:rgba(255,255,255,.15); border-radius:50px; margin-bottom:20px; font-weight:600;">
+                    💚 Kamu Tidak Sendiri
+                </span>
+                <h2 style="font-size:2.5rem; margin-bottom:20px; color:white;">
+                    Butuh Teman Bercerita?
+                </h2>
+                <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px; color:rgba(255,255,255,.9);">
+                    Jika kamu merasa kewalahan dan self-care saja belum cukup, jangan ragu untuk bercerita. MindCare Bot di Telegram siap mendengarkan tanpa menghakimi.
+                </p>
+                <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                    <a href="https://t.me/NamaBotKamu" target="_blank" class="btn-secondary" style="border:2px solid white; color:white; text-decoration:none; padding:15px 35px; border-radius:50px; font-weight:600;">
+                        🤖 Curhat Sekarang
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <!-- ========================================= -->
+    <footer>
+        <div class="container">
+            <p>© 2026 MindCare. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================= -->
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/selfcare.js"></script>
+    <script src="js/telegram.js"></script>
+
+</body>
+</html>

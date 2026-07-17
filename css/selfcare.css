@@ -1,0 +1,222 @@
+/* ==========================================
+   SELFCARE.CSS
+   MindCare
+========================================== */
+
+/* ==========================================
+   GLOBAL UTILITIES (Khusus Self Care)
+========================================== */
+.badge {
+    display: inline-block;
+    background: #dff2eb;
+    color: #5d9b9b;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: .9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+.selfcare-hero {
+    background: linear-gradient(135deg, #f7fbf8, #eaf2ef);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #1e293b;
+    margin-bottom: 25px;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.9;
+}
+
+/* ==========================================
+   PILLARS SECTION (Grid Cards)
+========================================== */
+.pillars-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.pillar-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(93, 155, 155, 0.1);
+    border-color: #dff2eb;
+}
+
+.icon-wrapper {
+    font-size: 3rem;
+    background: #f7fbf8;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+}
+
+.pillar-card h3 {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.pillar-card p {
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    min-height: 80px;
+}
+
+.link-arrow {
+    display: inline-block;
+    color: #5d9b9b;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-arrow:hover {
+    color: #417474;
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   DAILY CHECK-IN (Mood Tracker)
+========================================== */
+.checkin-section {
+    padding: 100px 0;
+    background: #f7fbf8;
+}
+
+.checkin-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: #ffffff;
+    padding: 60px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.checkin-content h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.checkin-content p {
+    color: #64748b;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.mood-tracker {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.mood-btn {
+    font-size: 3.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: grayscale(80%);
+    opacity: 0.7;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.mood-btn:hover {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+    opacity: 1;
+    background: #f1f5f9;
+}
+
+.mood-btn.active {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+    opacity: 1;
+    background: #e0eee9;
+    box-shadow: 0 5px 15px rgba(93, 155, 155, 0.2);
+}
+
+.mood-message {
+    padding: 20px;
+    border-radius: 15px;
+    background: #dff2eb;
+    color: #417474;
+    font-weight: 500;
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
