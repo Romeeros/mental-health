@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ========================================= -->
+    <!-- Basic Meta -->
+    <!-- ========================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mengenal Anxiety | MindCare</title>
+
+    <meta name="description" content="Mengenal apa itu anxiety (kecemasan), gejala, penyebab, dan cara mengatasinya.">
+    <meta name="keywords" content="Anxiety, Kecemasan, Kesehatan Mental, MindCare, Gejala Anxiety">
+    <meta name="author" content="MindCare Team">
+
+    <!-- ========================================= -->
+    <!-- External CSS (Hanya untuk Header & Global) -->
+    <!-- ========================================= -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- ========================================= -->
+    <!-- Google Fonts -->
+    <!-- ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- Internal CSS Khusus Halaman Artikel -->
+    <!-- ========================================= -->
+    <style>
+        /* Mengatur background halaman agar sedikit abu-abu/hijau pucat */
+        body {
+            background-color: #f7fbf8;
+        }
+
+        .article-page {
+            padding: 120px 0 80px; /* Padding atas besar untuk menghindari navbar */
+        }
+
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px 60px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Tombol Kembali */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #5d9b9b;
+            transform: translateX(-5px);
+        }
+
+        /* Header Artikel */
+        .article-header {
+            margin-bottom: 35px;
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #dff2eb;
+            color: #5d9b9b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.8rem;
+            color: #1e293b;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* Gambar Artikel */
+        .article-hero-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Isi Artikel */
+        .article-body {
+            color: #475569;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .article-body p {
+            margin-bottom: 25px;
+        }
+
+        .article-body h2 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-top: 45px;
+            margin-bottom: 20px;
+        }
+
+        .article-body h3 {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .article-body ul {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .article-body li {
+            margin-bottom: 10px;
+        }
+
+        /* Kotak Pesan / Quote */
+        .quote-box {
+            background: #f1f8f6;
+            border-left: 5px solid #5d9b9b;
+            padding: 25px 30px;
+            border-radius: 0 15px 15px 0;
+            margin: 40px 0;
+            font-style: italic;
+            color: #2b4c4c;
+            font-weight: 500;
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 30px 20px;
+                border-radius: 0;
+            }
+            .article-title {
+                font-size: 2rem;
+            }
+            .article-hero-img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">Tentang</a></li>
+                    <li><a href="../articles.html" class="active">Artikel</a></li>
+                    <li><a href="../selfcare.html">Self Care</a></li>
+                    <li><a href="../faq.html">FAQ</a></li>
+                    <li><a href="../contact.html">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="telegram-button">
+                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
+    <main class="article-page">
+        <div class="container">
+            <div class="article-container">
+                
+                <!-- Tombol Kembali -->
+                <a href="../articles.html" class="back-btn">
+                    <span>&larr;</span> Kembali ke Artikel
+                </a>
+
+                <!-- Header Artikel -->
+                <div class="article-header">
+                    <span class="article-badge">Anxiety</span>
+                    <h1 class="article-title">Mengenal Anxiety: Saat Cemas Menjadi Berlebihan</h1>
+                    <div class="article-meta">
+                        <span>Ditulis oleh: <strong>Tim MindCare</strong></span>
+                        <span>•</span>
+                        <span>17 Juli 2026</span>
+                    </div>
+                </div>
+
+                <!-- Gambar Fitur -->
+                <img src="https://images.unsplash.com/photo-1580461081559-994c64188b64?auto=format&fit=crop&w=1200&q=80" alt="Seseorang yang sedang merasa cemas" class="article-hero-img">
+
+                <!-- Isi Artikel -->
+                <div class="article-body">
+                    <p>Hampir semua orang pernah merasa cemas. Cemas saat akan menghadapi ujian, saat harus berbicara di depan kelas, atau saat menunggu hasil wawancara. Perasaan ini adalah respons alami tubuh saat menghadapi situasi yang menegangkan atau dianggap berbahaya.</p>
+
+                    <p>Namun, bagaimana jika rasa cemas itu datang terus-menerus, bahkan tanpa alasan yang jelas, dan mulai mengganggu kehidupan sehari-hari? Kondisi inilah yang dikenal dengan istilah <strong>Anxiety Disorder</strong> atau gangguan kecemasan.</p>
+
+                    <div class="quote-box">
+                        "Cemas adalah hal yang wajar, tetapi kamu tidak harus membiarkannya mengambil alih seluruh hidupmu."
+                    </div>
+
+                    <h2>Perbedaan Cemas Biasa dan Anxiety Disorder</h2>
+                    <p>Sangat penting untuk bisa membedakan antara kecemasan normal dan gangguan kecemasan. Berikut adalah beberapa perbedaan utamanya:</p>
+                    <ul>
+                        <li><strong>Cemas Biasa:</strong> Datang karena ada pemicu yang jelas (misal: besok ada presentasi), dan akan hilang setelah situasi tersebut berlalu.</li>
+                        <li><strong>Anxiety Disorder:</strong> Muncul secara tiba-tiba tanpa alasan logis, berlangsung dalam waktu yang lama, dan intensitasnya sangat berlebihan hingga membuat penderitanya kesulitan beraktivitas.</li>
+                    </ul>
+
+                    <h2>Gejala Anxiety yang Perlu Diperhatikan</h2>
+                    <p>Gejala anxiety tidak hanya berupa perasaan gelisah di pikiran, tetapi juga sering kali muncul dalam bentuk reaksi fisik tubuh. Beberapa gejala yang sering dialami antara lain:</p>
+                    
+                    <h3>Gejala Fisik:</h3>
+                    <ul>
+                        <li>Jantung berdebar lebih cepat dari biasanya (palpitasi).</li>
+                        <li>Napas terasa pendek atau sesak.</li>
+                        <li>Keringat dingin, terutama di telapak tangan.</li>
+                        <li>Otot terasa tegang, sakit kepala, atau pusing.</li>
+                        <li>Gangguan pencernaan atau mual.</li>
+                    </ul>
+
+                    <h3>Gejala Psikologis:</h3>
+                    <ul>
+                        <li>Merasa panik atau terancam secara konstan.</li>
+                        <li>Kesulitan berkonsentrasi karena pikiran dipenuhi skenario terburuk (overthinking).</li>
+                        <li>Gelisah dan sulit tidur (insomnia).</li>
+                    </ul>
+
+                    <h2>Cara Sederhana Mengatasi Serangan Cemas</h2>
+                    <p>Jika kamu merasa sedang diserang oleh rasa cemas yang hebat, ada beberapa teknik pertolongan pertama yang bisa kamu lakukan sendiri:</p>
+                    
+                    <p><strong>1. Teknik Pernapasan (4-7-8)</strong><br>
+                    Tarik napas perlahan melalui hidung selama 4 detik, tahan napas selama 7 detik, lalu hembuskan perlahan melalui mulut selama 8 detik. Ulangi beberapa kali hingga detak jantungmu mulai stabil.</p>
+
+                    <p><strong>2. Grounding Technique (Teknik 5-4-3-2-1)</strong><br>
+                    Untuk mengalihkan pikiran dari kepanikan, sebutkan secara perlahan: 5 benda yang bisa kamu lihat, 4 benda yang bisa kamu sentuh, 3 suara yang bisa kamu dengar, 2 aroma yang bisa kamu cium, dan 1 hal yang bisa kamu kecap (rasakan di mulut).</p>
+
+                    <p><strong>3. Berbicara dengan Seseorang</strong><br>
+                    Memendamnya sendiri seringkali membuat rasa cemas semakin membesar. Bicaralah pada teman, keluarga, atau kamu juga bisa memulainya dengan bercerita melalui <strong>MindCare Bot</strong> di Telegram kami.</p>
+
+                    <hr style="margin: 50px 0; border: none; border-top: 1px solid #e2e8f0;">
+
+                    <p><em>Ingat, jika kecemasanmu sudah sangat mengganggu sekolah, relasi sosial, atau kualitas hidupmu, sangat disarankan untuk mencari bantuan dari psikolog atau profesional kesehatan mental. Kamu pantas untuk merasa tenang.</em></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================= -->
+    <footer style="background: white; padding: 30px 0; border-top: 1px solid #e2e8f0; margin-top: 50px;">
+        <div class="container" style="text-align: center; color: #64748b; font-size: 0.95rem;">
+            <p>© 2026 MindCare. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================= -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navbar.js"></script>
+
+</body>
+</html>
