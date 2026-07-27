@@ -10,29 +10,347 @@
 
     <title>Tentang Kami | MindCare</title>
 
-    <meta name="description"
-        content="Pelajari lebih lanjut tentang MindCare, ruang aman bagi remaja untuk bercerita, mengenali emosi, dan mencari ketenangan.">
-
-    <meta name="keywords"
-        content="Tentang MindCare, Ruang Aman Remaja, Dukungan Mental, Teman Cerita">
-
+    <meta name="description" content="Pelajari lebih lanjut tentang MindCare, ruang aman bagi remaja untuk bercerita, mengenali emosi, dan mencari ketenangan.">
+    <meta name="keywords" content="Tentang MindCare, Ruang Aman Remaja, Dukungan Mental, Teman Cerita">
     <meta name="author" content="MindCare">
-
-    <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/about.css"> 
 
     <!-- ========================================= -->
     <!-- Google Fonts -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Gaya Desain Rapi & Responsif) -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #2c3e50;
+            --text-light: #6c7a89;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-card);
+            /* Memastikan tidak berbaris ke samping */
+            display: block !important; 
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            display: block !important;
+            clear: both;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn-primary, .telegram-button a {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover, .telegram-button a:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, #f7fbf8, #eaf2ef);
+            padding: 80px 0;
+        }
+
+        .about-hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-hero-text { flex: 1; }
+        .about-hero-image { flex: 1; text-align: center; }
+        
+        .about-hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            background: #e0eee9;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .about-hero-text h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1a252f;
+        }
+
+        .about-hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Our Story Section */
+        .our-story {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .our-story h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #1a252f;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        .story-content p { margin-bottom: 20px; }
+
+        /* Core Values & Vision Mission */
+        .core-values {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .vision-mission { padding: 100px 0; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #1a252f;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #1a252f;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Vision Mission Cards (Specific) */
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .vm-card {
+            text-align: left;
+            border-top: 5px solid var(--primary);
+            padding: 40px;
+        }
+
+        .vm-card h3 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vm-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .vm-card ul li .check {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Our Team Section */
+        .our-team {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .team-profile {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            max-width: 320px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .team-profile:hover { transform: translateY(-5px); }
+
+        .team-profile img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid #e0eee9;
+        }
+
+        .team-profile h3 { font-size: 1.4rem; margin-bottom: 5px; color: #1a252f; }
+        .team-profile p { font-size: 0.95rem; color: var(--primary); font-weight: 600; }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), #4a7d7d);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 { color: white; margin-bottom: 20px; font-size: 2.2rem; }
+        .cta p { max-width: 600px; margin: 0 auto 30px; opacity: 0.9; font-size: 1.1rem; }
+        
+        .cta-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .cta .btn-secondary { border-color: white; color: white; }
+        .cta .btn-secondary:hover { background-color: white; color: var(--primary); }
+        .cta .btn-primary { background-color: #1a252f; border-color: #1a252f; color: white; }
+        .cta .btn-primary:hover { background-color: #2c3e50; border-color: #2c3e50; }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #a0aec0;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .about-hero-content { flex-direction: column; text-align: center; }
+            .our-story h2, .section-title { font-size: 2rem; }
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +365,6 @@
                     <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo" style="border-radius: 8px;">
                 </a>
             </div>
-
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -58,9 +375,7 @@
                     <li><a href="contact.html">Kontak</a></li>
                 </ul>
             </nav>
-
             <div class="telegram-button">
-                <!-- Ganti 628XXXXXXXXXX dengan nomor WhatsApp tujuan -->
                 <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
                     Cerita Sekarang
                 </a>
@@ -71,19 +386,17 @@
     <!-- ========================================= -->
     <!-- ABOUT HERO SECTION -->
     <!-- ========================================= -->
-    <section class="about-hero" style="background: linear-gradient(135deg, #f7fbf8, #eaf2ef); padding: 80px 0;">
-        <div class="container about-hero-content" style="display: flex; align-items: center; gap: 50px;">
-            <div class="about-hero-text" style="flex: 1;">
-                <span class="badge" style="color: var(--primary); font-weight: 600; background: #e0eee9; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px;">Tentang MindCare</span>
-                <h1 style="font-size: 3rem; line-height: 1.2; margin-bottom: 20px;">Hadir Untuk Mendengar dan Menemani.</h1>
-                <p style="font-size: 1.1rem; opacity: 0.8; line-height: 1.8;">
+    <section class="about-hero">
+        <div class="container about-hero-content">
+            <div class="about-hero-text">
+                <span class="badge">Tentang MindCare</span>
+                <h1>Hadir Untuk Mendengar dan Menemani.</h1>
+                <p>
                     MindCare bukan sekadar kumpulan artikel. Kami adalah sebuah ruang aman untukmu singgah. Tempat di mana kamu bisa melepas lelah, mengenali emosimu, dan menyadari bahwa meminta waktu untuk didengarkan adalah sebuah keberanian.
                 </p>
             </div>
-            <div class="about-hero-image" style="flex: 1;">
-                <!-- Gambar Suasana Bersahabat -->
-                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                     alt="Teman bercerita" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%;">
+            <div class="about-hero-image">
+                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Teman bercerita">
             </div>
         </div>
     </section>
@@ -91,17 +404,17 @@
     <!-- ========================================= -->
     <!-- OUR STORY SECTION -->
     <!-- ========================================= -->
-    <section class="our-story" style="padding: 100px 0; background: white; text-align: center;">
+    <section class="our-story">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Kisah di Balik MindCare</h2>
-            <div class="story-content" style="max-width: 800px; margin: 0 auto; text-align: left; font-size: 1.1rem; line-height: 1.8; color: var(--text-light);">
-                <p style="margin-bottom: 20px;">
+            <h2>Kisah di Balik MindCare</h2>
+            <div class="story-content">
+                <p>
                     Masa remaja sering kali terasa seperti <i>rollercoaster</i>. Ada tuntutan akademik yang tiada henti, dinamika pertemanan yang menguras energi, hingga ekspektasi sekitar yang kadang membuat napas terasa sesak. Sayangnya, tidak semua orang punya tempat yang aman untuk menceritakan beban itu.
                 </p>
-                <p style="margin-bottom: 20px;">
+                <p>
                     Banyak dari kita yang akhirnya memilih untuk memendam semuanya sendirian karena takut dihakimi atau dianggap berlebihan. Padahal, setiap perasaan yang muncul itu nyata, valid, dan sangat butuh untuk didengarkan.
                 </p>
-                <p style="margin-bottom: 20px;">
+                <p>
                     Berangkat dari keprihatinan itulah <strong>MindCare</strong> diciptakan. Kami ingin menyediakan ruang singgah yang nyaman sebagai langkah pertolongan pertama emosionalmu. Di sini, kamu bisa membaca hal-hal yang menenangkan pikiran, atau langsung terhubung untuk bercerita. Ingat, kami bukan pengganti psikolog atau layanan medis, melainkan teman pertama yang siap mendengarkan ceritamu dengan hangat.
                 </p>
             </div>
@@ -109,31 +422,27 @@
     </section>
 
     <!-- ========================================= -->
-    <!-- CORE VALUES (NEW SECTION) -->
+    <!-- CORE VALUES SECTION -->
     <!-- ========================================= -->
-    <section class="core-values" style="padding: 100px 0; background-color: #f7fbf8;">
+    <section class="core-values">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Nilai yang Kami Jaga</h2>
-            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                
-                <div class="card" style="text-align: center; padding: 40px 30px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🤝</div>
-                    <h3 style="margin-bottom: 15px;">Empati Tanpa Menghakimi</h3>
-                    <p style="font-size: 0.95rem;">Setiap perasaanmu itu valid. Kami merancang ruang ini untuk mendengar dan merangkul, bukan untuk menceramahi, menyalahkan, atau menghakimi kondisimu.</p>
+            <h2 class="section-title">Nilai yang Kami Jaga</h2>
+            <div class="feature-grid">
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Empati Tanpa Menghakimi</h3>
+                    <p>Setiap perasaanmu itu valid. Kami merancang ruang ini untuk mendengar dan merangkul, bukan untuk menceramahi, menyalahkan, atau menghakimi kondisimu.</p>
                 </div>
-
-                <div class="card" style="text-align: center; padding: 40px 30px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🔒</div>
-                    <h3 style="margin-bottom: 15px;">Anonim & Rahasia</h3>
-                    <p style="font-size: 0.95rem;">Bercerita membutuhkan rasa aman. Identitas dan apapun yang kamu bagikan kepada kami akan dijaga kerahasiaannya. Kamu bebas menjadi dirimu sendiri.</p>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Anonim & Rahasia</h3>
+                    <p>Bercerita membutuhkan rasa aman. Identitas dan apapun yang kamu bagikan kepada kami akan dijaga kerahasiaannya. Kamu bebas menjadi dirimu sendiri.</p>
                 </div>
-
-                <div class="card" style="text-align: center; padding: 40px 30px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🌱</div>
-                    <h3 style="margin-bottom: 15px;">Ruang Aman, Bukan Medis</h3>
-                    <p style="font-size: 0.95rem;">Kami hadir sebagai pendengar pertamamu. Namun untuk diagnosis atau penanganan krisis mendalam, kami akan selalu mendukungmu untuk menjangkau tenaga profesional.</p>
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Ruang Aman, Bukan Medis</h3>
+                    <p>Kami hadir sebagai pendengar pertamamu. Namun untuk diagnosis atau penanganan krisis mendalam, kami akan selalu mendukungmu untuk menjangkau tenaga profesional.</p>
                 </div>
-
             </div>
         </div>
     </section>
@@ -141,30 +450,21 @@
     <!-- ========================================= -->
     <!-- VISION & MISSION -->
     <!-- ========================================= -->
-    <section class="vision-mission" style="padding: 100px 0; background: white;">
+    <section class="vision-mission">
         <div class="container">
-            <div class="vm-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
-                <div class="card vm-card" style="border-top: 5px solid var(--primary); padding: 40px;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">👁️ Harapan Kami</h3>
-                    <p style="line-height: 1.8; font-size: 1.05rem;">
+            <div class="vm-grid">
+                <div class="card vm-card">
+                    <h3>👁️ Harapan Kami</h3>
+                    <p style="line-height: 1.8; color: var(--text-light); font-size: 1.05rem;">
                         Menjadi ruang aman yang bersahabat bagi remaja untuk bersandar sejenak, mengenali diri sendiri, dan menemukan kembali ketenangan di tengah riuhnya isi kepala, tanpa merasa sendirian.
                     </p>
                 </div>
-                <div class="card vm-card" style="border-top: 5px solid var(--primary); padding: 40px;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">🚀 Langkah Kami</h3>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 15px; line-height: 1.6;">
-                            <span style="position: absolute; left: 0; top: 0; color: var(--primary); font-weight: bold;">✓</span>
-                            Menyediakan bacaan yang menenangkan dan sangat relevan dengan apa yang sedang dirasakan oleh remaja.
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 15px; line-height: 1.6;">
-                            <span style="position: absolute; left: 0; top: 0; color: var(--primary); font-weight: bold;">✓</span>
-                            Memberikan panduan <em>self-care</em> sederhana yang bisa diterapkan kapan saja pikiran sedang jenuh.
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 15px; line-height: 1.6;">
-                            <span style="position: absolute; left: 0; top: 0; color: var(--primary); font-weight: bold;">✓</span>
-                            Menjadi pendengar yang baik melalui layanan chat, di mana siapa pun bisa bercerita secara anonim.
-                        </li>
+                <div class="card vm-card">
+                    <h3>🚀 Langkah Kami</h3>
+                    <ul>
+                        <li><span class="check">✓</span> Menyediakan bacaan yang menenangkan dan sangat relevan dengan apa yang sedang dirasakan oleh remaja.</li>
+                        <li><span class="check">✓</span> Memberikan panduan <em>self-care</em> sederhana yang bisa diterapkan kapan saja pikiran sedang jenuh.</li>
+                        <li><span class="check">✓</span> Menjadi pendengar yang baik melalui layanan chat, di mana siapa pun bisa bercerita secara anonim.</li>
                     </ul>
                 </div>
             </div>
@@ -172,20 +472,17 @@
     </section>
 
     <!-- ========================================= -->
-    <!-- THE TEAM (MODIFIED FOR SINGLE CREATOR) -->
+    <!-- THE TEAM -->
     <!-- ========================================= -->
-    <section class="our-team" style="padding: 100px 0; background-color: #f7fbf8; text-align: center;">
+    <section class="our-team">
         <div class="container">
-            <h2 style="margin-bottom: 15px;">Siapa di Balik MindCare?</h2>
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px; color: #1a252f;">Siapa di Balik MindCare?</h2>
             <p style="max-width: 600px; margin: 0 auto 50px; color: var(--text-light);">Seseorang yang percaya bahwa setiap cerita berhak untuk didengarkan dengan utuh.</p>
             
-            <div class="feature-grid" style="display: flex; justify-content: center;">
-                <!-- Profil Kreator Tunggal -->
-                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); max-width: 300px; width: 100%;">
-                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Creator" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 5px;">Romi</h3>
-                    <p style="font-size: 0.95rem; color: var(--primary); font-weight: 600;">Kreator & Teman Ceritamu</p>
-                </div>
+            <div class="team-profile">
+                <img src="aset/juneta.png" alt="Creator MindCare">
+                <h3>Juneta</h3>
+                <p>Kreator & Teman Ceritamu</p>
             </div>
         </div>
     </section>
@@ -193,17 +490,16 @@
     <!-- ========================================= -->
     <!-- CALL TO ACTION -->
     <!-- ========================================= -->
-    <section class="cta" style="background: linear-gradient(135deg, var(--primary), #4a7d7d); padding: 80px 0; text-align: center; color: white;">
+    <section class="cta">
         <div class="container">
-            <h2 style="color: white; margin-bottom: 20px;">Mari Mulai Perjalananmu Bersama Kami</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.9; font-size: 1.1rem;">
+            <h2>Mari Mulai Perjalananmu Bersama Kami</h2>
+            <p>
                 Apapun yang sedang kamu rasakan hari ini, ketahuilah bahwa perasaan itu valid. Jangan ragu untuk mencari 
                 tahu lebih banyak melalui artikel kami atau bercerita langsung jika kamu butuh teman.
             </p>
-            <div class="cta-buttons" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <a href="articles.html" class="btn-secondary" style="border-color: white; color: white;">Baca Artikel</a>
-                <!-- Ganti 628XXXXXXXXXX dengan nomor WhatsApp tujuan -->
-                <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-primary" style="background-color: var(--text-dark); color: white;">Cerita Sekarang</a>
+            <div class="cta-buttons">
+                <a href="articles.html" class="btn-secondary">Baca Artikel</a>
+                <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-primary">Cerita Sekarang</a>
             </div>
         </div>
     </section>
@@ -211,7 +507,7 @@
     <!-- ========================================= -->
     <!-- FOOTER -->
     <!-- ========================================= -->
-    <footer style="background-color: var(--text-dark); color: #a0aec0; text-align: center; padding: 40px 0;">
+    <footer>
         <div class="container">
             <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
@@ -225,5 +521,4 @@
     <script src="js/telegram.js"></script>
 
 </body>
-
 </html>

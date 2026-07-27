@@ -9,30 +9,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MindCare | Ruang Aman Kesehatan Mental Remaja</title>
-
-    <meta name="description"
-        content="MindCare merupakan ruang aman bagi remaja untuk memahami kesehatan mental, mencari tips self-care, dan bercerita secara anonim.">
-
-    <meta name="keywords"
-        content="Kesehatan Mental, Mental Health, Remaja, Self Care, Anxiety, Stress, Burnout, Edukasi, Ruang Aman">
-
+    <meta name="description" content="MindCare merupakan ruang aman bagi remaja untuk memahami kesehatan mental, mencari tips self-care, dan bercerita secara anonim.">
+    <meta name="keywords" content="Kesehatan Mental, Mental Health, Remaja, Self Care, Anxiety, Stress, Burnout, Edukasi, Ruang Aman">
     <meta name="author" content="MindCare Team">
-
-    <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/home.css">
 
     <!-- ========================================= -->
     <!-- Google Fonts -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Gaya Tampilan Anti-Berantakan) -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            /* PERBAIKAN UTAMA: Memastikan body block, tidak menyamping */
+            display: block !important; 
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* PERBAIKAN: Memastikan semua section berbaris dari atas ke bawah */
+        section {
+            display: block !important;
+            padding: 80px 0;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Buttons */
+        .telegram-button a, .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-secondary:hover { background-color: var(--primary); color: white; }
+
+        /* Hero Section */
+        .hero { background-color: var(--bg-light); padding: 60px 0; }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.2; margin: 15px 0; color: #1a1a1a; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; }
+        .hero-button { display: flex; gap: 15px; }
+        .badge { background: #e0f2f1; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+        .hero-image { flex: 1; text-align: center; }
+        .hero-image img { max-width: 100%; height: auto; }
+
+        /* Grids (Fitur, Artikel, Mood) */
+        .feature-grid, .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card h3 { margin-bottom: 15px; color: var(--primary); }
+
+        /* Articles */
+        .latest-article article {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .latest-article article img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; background: #eee; }
+        .latest-article article h3 { font-size: 1.1rem; margin: 0 15px 15px; }
+        .latest-article article a { color: var(--primary); font-weight: 600; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-button { justify-content: center; flex-wrap: wrap; }
+            nav ul { display: none; /* Hide nav on mobile for simplicity in this fix */ }
+        }
+    </style>
 </head>
 
 <body>
@@ -58,7 +208,6 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <!-- Ganti 628XXXXXXXXXX dengan nomor WhatsApp tujuan -->
                 <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
                     Cerita Sekarang
                 </a>
@@ -79,13 +228,11 @@
                 </p>
                 <div class="hero-button">
                     <a href="articles.html" class="btn-primary">Baca Artikel Ringan</a>
-                    <!-- Ganti 628XXXXXXXXXX dengan nomor WhatsApp tujuan -->
                     <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-secondary">Cerita Sekarang</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Mental Health Illustration" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <img src="aset/awal.png" alt="Mental Health Illustration" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
@@ -93,30 +240,30 @@
     <!-- ========================================= -->
     <!-- DAILY CHECK-IN (INTERAKTIF) -->
     <!-- ========================================= -->
-    <section class="daily-checkin" style="background-color: #eaf2ef; text-align: center;">
-        <div class="container">
+    <section class="daily-checkin" style="background-color: #eaf2ef;">
+        <div class="container" style="text-align: center;">
             <h2>Bagaimana Perasaanmu Hari Ini?</h2>
             <p>Berhenti sejenak, tarik napas dalam-dalam. Pilih perasaanmu hari ini untuk mendapatkan pesan khusus.</p>
             
-            <div class="mood-cards feature-grid" style="margin-top: 30px;">
+            <div class="mood-cards feature-grid">
                 <!-- Kartu Senang -->
-                <div class="card" onclick="showQuote('happy', this)" style="text-align: center; cursor: pointer; transition: transform 0.3s; user-select: none;">
+                <div class="card" onclick="showQuote('happy', this)" style="cursor: pointer; user-select: none;">
                     <h1 style="font-size: 3rem; margin: 0;">😊</h1>
-                    <h3>Senang</h3>
+                    <h3 style="color: #333; margin-top: 10px;">Senang</h3>
                     <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
                 </div>
                 
                 <!-- Kartu Lelah/Datar -->
-                <div class="card" onclick="showQuote('neutral', this)" style="text-align: center; cursor: pointer; transition: transform 0.3s; user-select: none;">
+                <div class="card" onclick="showQuote('neutral', this)" style="cursor: pointer; user-select: none;">
                     <h1 style="font-size: 3rem; margin: 0;">😐</h1>
-                    <h3>Lelah / Datar</h3>
+                    <h3 style="color: #333; margin-top: 10px;">Lelah / Datar</h3>
                     <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
                 </div>
                 
                 <!-- Kartu Sedih/Cemas -->
-                <div class="card" onclick="showQuote('sad', this)" style="text-align: center; cursor: pointer; transition: transform 0.3s; user-select: none;">
+                <div class="card" onclick="showQuote('sad', this)" style="cursor: pointer; user-select: none;">
                     <h1 style="font-size: 3rem; margin: 0;">😢</h1>
-                    <h3>Sedih / Cemas</h3>
+                    <h3 style="color: #333; margin-top: 10px;">Sedih / Cemas</h3>
                     <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
                 </div>
             </div>
@@ -128,37 +275,35 @@
     <!-- ========================================= -->
     <section class="about-preview">
         <div class="container" style="text-align: center;">
-            <h2>Kenapa MindCare Ada Untukmu?</h2>
-            <p style="max-width: 800px; margin: 0 auto 20px;">
+            <h2 style="margin-bottom: 15px;">Kenapa MindCare Ada Untukmu?</h2>
+            <p style="max-width: 800px; margin: 0 auto 30px;">
                 Kami tahu, menjadi remaja itu tidak selalu mudah. Ada tekanan akademik, ekspektasi, hingga pikiran yang sering membuat lelah. MindCare hadir supaya kamu punya tempat berlabuh yang aman. Di sini, kamu bisa memahami dirimu lebih baik dan mencari ketenangan sejenak.
             </p>
-            <a href="about.html" class="btn-secondary">
-                Kenalan Lebih Jauh Dengan Kami →
-            </a>
+            <a href="about.html" class="btn-secondary">Kenalan Lebih Jauh Dengan Kami &rarr;</a>
         </div>
     </section>
 
     <!-- ========================================= -->
     <!-- FEATURE -->
     <!-- ========================================= -->
-    <section class="features">
+    <section class="features" style="background-color: #f7fbf8;">
         <div class="container">
             <h2 style="text-align: center;">Ruang Nyaman di MindCare</h2>
             <div class="feature-grid">
                 <div class="card">
-                    <h3>📖 Bacaan Santai</h3>
+                    <h3 style="color: var(--primary);">📖 Bacaan Santai</h3>
                     <p>Temukan artikel yang relevan tentang cara menghadapi stres, kecemasan, burnout, hingga overthinking dengan bahasa yang mudah dipahami.</p>
                 </div>
                 <div class="card">
-                    <h3>🌿 Self Care Corner</h3>
+                    <h3 style="color: var(--primary);">🌿 Self Care Corner</h3>
                     <p>Panduan ringan dan langkah-langkah praktis untuk merawat perasaanmu dan menjaga ketenangan di tengah hari yang sibuk.</p>
                 </div>
                 <div class="card">
-                    <h3>❓ Sudut Tanya (FAQ)</h3>
+                    <h3 style="color: var(--primary);">❓ Sudut Tanya (FAQ)</h3>
                     <p>Jawaban atas pertanyaan-pertanyaan yang sering mengganjal di pikiran banyak remaja mengenai kesehatan emosional.</p>
                 </div>
                 <div class="card">
-                    <h3>💬 Teman Bercerita</h3>
+                    <h3 style="color: var(--primary);">💬 Teman Bercerita</h3>
                     <p>Akses langsung untuk membagikan perasaanmu. Kami siap mendengarkan tanpa menghakimi, dengan privasi dan anonimitas yang 100% terjaga.</p>
                 </div>
             </div>
@@ -168,25 +313,25 @@
     <!-- ========================================= -->
     <!-- HOW IT WORKS -->
     <!-- ========================================= -->
-    <section class="how-it-works" style="background-color: #f7fbf8;">
+    <section class="how-it-works">
         <div class="container">
             <h2 style="text-align: center;">Cara Bercerita Bersama Kami</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px;">Hanya butuh tiga langkah sederhana jika kamu butuh seseorang untuk mendengarkan keluh kesahmu hari ini.</p>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--text-light);">Hanya butuh tiga langkah sederhana jika kamu butuh seseorang untuk mendengarkan keluh kesahmu hari ini.</p>
             
             <div class="feature-grid">
                 <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">1</div>
-                    <h3>Klik Tombol Cerita</h3>
-                    <p>Tekan tombol "Cerita Sekarang" yang ada di website ini. Pastikan aplikasi WhatsApp atau Telegram sudah terpasang di perangkatmu.</p>
+                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">1</div>
+                    <h3 style="color: #333;">Klik Tombol Cerita</h3>
+                    <p>Tekan tombol "Cerita Sekarang" yang ada di website ini. Pastikan aplikasi WhatsApp atau Telegram sudah terpasang.</p>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">2</div>
-                    <h3>Kirim Pesan Otomatis</h3>
+                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">2</div>
+                    <h3 style="color: #333;">Kirim Pesan Otomatis</h3>
                     <p>Kamu tidak perlu bingung harus memulai dari mana. Pesan pembuka sudah tersedia secara otomatis, cukup tekan kirim.</p>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">3</div>
-                    <h3>Mulai Berbagi Rasa</h3>
+                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">3</div>
+                    <h3 style="color: #333;">Mulai Berbagi Rasa</h3>
                     <p>Utarakan apa saja yang membuatmu sedih atau lelah. Semuanya rahasia, aman, dan akan kami dengarkan dengan sepenuh hati.</p>
                 </div>
             </div>
@@ -196,24 +341,24 @@
     <!-- ========================================= -->
     <!-- LATEST ARTICLES -->
     <!-- ========================================= -->
-    <section class="latest-article">
+    <section class="latest-article" style="background-color: #f7fbf8;">
         <div class="container">
-            <h2 style="text-align: center;">Bacaan untuk Temanimu Hari Ini</h2>
+            <h2 style="text-align: center; margin-bottom: 10px;">Bacaan untuk Temanimu Hari Ini</h2>
             <div class="article-grid">
                 <article>
-                    <img src="https://images.unsplash.com/photo-1552695568-1c4b79b90c10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stress">
+                    <img src="aset/stress.png" alt="Stress">
                     <h3>Mengenali Tanda Saat Kamu Terlalu Stres</h3>
-                    <a href="article/stress.html">Baca Selengkapnya →</a>
+                    <a href="article/stress.html">Baca Selengkapnya &rarr;</a>
                 </article>
                 <article>
-                    <img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Anxiety">
+                    <img src="aset/Anxiety.png" alt="Anxiety">
                     <h3>Cemas Biasa atau Anxiety? Yuk, Kenali Bedanya</h3>
-                    <a href="article/anxiety.html">Baca Selengkapnya →</a>
+                    <a href="article/anxiety.html">Baca Selengkapnya &rarr;</a>
                 </article>
                 <article>
-                    <img src="https://images.unsplash.com/photo-1498843053639-170ff2122f35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Burnout">
+                    <img src="aset/Burnout.png" alt="Burnout">
                     <h3>Cara Pulih dari Lelah Belajar (Academic Burnout)</h3>
-                    <a href="article/burnout.html">Baca Selengkapnya →</a>
+                    <a href="article/burnout.html">Baca Selengkapnya &rarr;</a>
                 </article>
             </div>
         </div>
@@ -222,12 +367,12 @@
     <!-- ========================================= -->
     <!-- INSPIRATIONAL QUOTE -->
     <!-- ========================================= -->
-    <section class="quote-section" style="background: linear-gradient(135deg, #6a9c89, #4e7a6a); color: white; text-align: center;">
+    <section class="quote-section" style="background: linear-gradient(135deg, #6a9c89, #4e7a6a); color: white; text-align: center; padding: 100px 20px;">
         <div class="container">
-            <h2 style="color: white; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; font-style: italic; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: white; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.4;">
                 "Menyembuhkan diri bukanlah garis lurus. Ada hari-hari baik dan hari-hari buruk. Keduanya adalah bagian dari proses."
             </h2>
-            <p style="margin-top: 20px; font-size: 1.2rem; opacity: 0.9;">- MindCare Team</p>
+            <p style="margin-top: 30px; font-size: 1.2rem; opacity: 0.9; font-weight: 500;">- MindCare Team</p>
         </div>
     </section>
 
@@ -236,39 +381,30 @@
     <!-- ========================================= -->
     <section class="emergency" style="background-color: #fff3f3; border-top: 2px solid #ffcaca;">
         <div class="container" style="text-align: center;">
-            <h2 style="color: #d32f2f;">🚨 Harap Diingat</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px; color: #555;">
+            <h2 style="color: #d32f2f; margin-bottom: 15px;">🚨 Harap Diingat</h2>
+            <p style="max-width: 700px; margin: 0 auto 40px; color: #555;">
                 Website MindCare adalah <b>ruang aman untuk berbagi cerita awal</b>, bukan layanan diagnosis medis maupun pengganti psikolog profesional. Jika kamu merasa berada dalam kondisi krisis yang membahayakan diri sendiri, tolong segera hubungi layanan darurat berikut:
             </p>
             
-            <div class="feature-grid" style="gap: 20px;">
-                <div class="card" style="border-left: 4px solid #d32f2f;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px;">Call Center Halo Kemenkes</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;">1500-567</p>
-                    <p style="font-size: 0.9rem;">Layanan dukungan psikososial resmi dari Kementerian Kesehatan RI.</p>
+            <div class="feature-grid" style="gap: 20px; max-width: 800px; margin: 0 auto;">
+                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left;">
+                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Call Center Halo Kemenkes</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; color: #333;">1500-567</p>
+                    <p style="font-size: 0.9rem; color: #666;">Layanan dukungan psikososial resmi dari Kementerian Kesehatan RI.</p>
                 </div>
-                <div class="card" style="border-left: 4px solid #d32f2f;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px;">Layanan Sejiwa (KSP)</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;">119 ext. 8</p>
-                    <p style="font-size: 0.9rem;">Layanan edukasi dan konseling psikologi darurat.</p>
+                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left;">
+                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Layanan Sejiwa (KSP)</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; color: #333;">119 ext. 8</p>
+                    <p style="font-size: 0.9rem; color: #666;">Layanan edukasi dan konseling psikologi darurat.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========================================= -->
-    <!-- FOOTER -->
-    <!-- ========================================= -->
-<footer>
-        <div class="container">
-            <p>© 2026 MindCare. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <!-- ========================================= -->
     <!-- JAVASCRIPT UNTUK MOOD CARDS -->
     <!-- ========================================= -->
     <script>
-        // Kumpulan Quotes / Pesan Berdasarkan Mood
         const quotes = {
             happy: [
                 "Bagus sekali! Bagikan energi positifmu ke orang sekitarmu hari ini. ✨",
@@ -293,35 +429,22 @@
             ]
         };
 
-        // Fungsi yang dipanggil saat kartu diklik
         function showQuote(mood, element) {
-            // Ambil array pesan sesuai mood
             const moodQuotes = quotes[mood];
-            
-            // Pilih pesan acak dari array tersebut
             const randomIndex = Math.floor(Math.random() * moodQuotes.length);
             const randomQuote = moodQuotes[randomIndex];
-
-            // Cari elemen <p> dengan class 'quote-text' di dalam kartu yang diklik
             const pElement = element.querySelector('.quote-text');
             
-            // Efek transisi halus (hilang sebentar, lalu muncul teks baru)
             pElement.style.opacity = 0;
             
             setTimeout(() => {
                 pElement.innerText = randomQuote;
                 pElement.style.opacity = 1;
-                pElement.style.color = "var(--primary)"; // Mengubah warna teks agar lebih menonjol
+                pElement.style.color = "var(--primary)"; 
                 pElement.style.fontWeight = "600";
-            }, 300); // 300ms sesuai dengan waktu transisi CSS
+            }, 300); 
         }
     </script>
 
-    <!-- Skrip Tambahan -->
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/telegram.js"></script>
-
 </body>
-
 </html>

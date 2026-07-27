@@ -14,79 +14,202 @@
     <meta name="keywords" content="Depresi, Kesedihan, Mental Health, Remaja, Psikolog, Psikiater, Kesehatan Mental">
 
     <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/footer.css">
-
     <!-- Google Fonts -->
+    <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styling khusus untuk halaman bacaan artikel -->
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Desain Keren, Rapi & Responsif) -->
+    <!-- ========================================= -->
     <style>
-        .article-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: 'Poppins', sans-serif;
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --accent-blue: #3498db;
+            --accent-blue-hover: #2980b9;
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        .telegram-button a {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .telegram-button a:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Container Artikel Utama */
+        .article-wrapper {
+            background-color: var(--bg-card);
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+
+        .back-btn {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease, color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-hover);
+            transform: translateX(-5px);
+        }
+
+        .article-header {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
         .article-header h1 {
-            font-size: 2.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            line-height: 1.3;
+            font-size: 2.4rem;
+            color: #1a252f;
+            margin-bottom: 15px;
+            line-height: 1.35;
         }
 
         .article-meta {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+            color: #95a5a6;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .article-hero-img {
+        .article-hero-img, .article-content-img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            object-fit: cover;
         }
+        
+        .article-hero-img { margin-bottom: 40px; }
+        .article-content-img { margin: 30px 0; max-height: 400px; }
 
+        /* Tipografi Konten Artikel */
         .article-content {
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.9;
+            font-size: 1.15rem;
             color: #34495e;
         }
 
         .article-content h2 {
             color: #2c3e50;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .article-content p {
+            margin-top: 50px;
             margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
         }
 
+        .article-content h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .article-content p { margin-bottom: 25px; }
+        
         .article-content ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
+            margin-bottom: 25px;
+            padding-left: 25px;
+            list-style-type: disc;
         }
 
         .article-content li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding-left: 5px;
         }
 
+        .article-content strong { color: var(--primary); }
+
+        /* Custom Box & Chart */
         .chart-container {
             background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
             text-align: center;
-            margin: 30px 0;
+            margin: 40px 0;
             border: 1px solid #e9ecef;
         }
 
@@ -97,34 +220,114 @@
         }
 
         .chart-caption {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #6c757d;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
-        }
-
-        .support-box {
-            background-color: #e8f4fd;
-            border-left: 5px solid #3498db;
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 40px 0;
-        }
-
-        .support-box h3 {
-            color: #2980b9;
-            margin-top: 0;
+            line-height: 1.5;
         }
 
         .highlight-quote {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-style: italic;
-            color: #3498db;
+            color: var(--accent-blue);
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            border-top: 1px solid #e9ecef;
-            border-bottom: 1px solid #e9ecef;
+            margin: 50px 0;
+            padding: 30px 40px;
+            background-color: #f0f8ff;
+            border-radius: 16px;
+            border-left: 6px solid var(--accent-blue);
+            line-height: 1.6;
+        }
+
+        .support-box {
+            background: linear-gradient(135deg, #e8f4fd, #d6eaf8);
+            padding: 40px 30px;
+            border-radius: 16px;
+            margin: 50px 0 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #cce3f6;
+        }
+
+        .support-box h3 {
+            color: var(--accent-blue-hover);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .support-box p { color: #2c3e50; margin-bottom: 25px; }
+
+        .btn-support {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: white !important;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-support:hover {
+            background-color: var(--accent-blue-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Emergency Section */
+        .emergency {
+            background-color: #fff3f3;
+            border-top: 2px solid #ffcaca;
+            padding: 60px 0;
+        }
+
+        .emergency h2 { margin-bottom: 15px; }
+
+        .emergency-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .emergency-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            border-left: 5px solid #d32f2f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 350px;
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .emergency-card:hover { transform: translateY(-5px); }
+        .emergency-card h3 { color: #d32f2f; font-size: 1.15rem; margin-bottom: 10px; }
+        .emergency-card .phone { font-size: 1.8rem; font-weight: 700; color: #333; margin-bottom: 5px; }
+        .emergency-card .desc { font-size: 0.95rem; color: #666; line-height: 1.5; }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .article-wrapper { margin: 20px; padding: 30px 20px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .highlight-quote { padding: 20px; font-size: 1.15rem; }
         }
     </style>
 </head>
@@ -152,9 +355,7 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">
-                    Curhat Sekarang
-                </a>
+                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
             </div>
         </div>
     </header>
@@ -162,90 +363,102 @@
     <!-- ========================================= -->
     <!-- MAIN ARTICLE CONTENT -->
     <!-- ========================================= -->
-    <main class="article-container">
-        <!-- Breadcrumb / Tombol Kembali -->
-        <a href="../articles.html" style="color: #6a9c89; text-decoration: none; font-weight: 500;">&larr; Kembali ke Daftar Artikel</a>
+    <div class="container">
+        <main class="article-wrapper">
+            <!-- Breadcrumb / Tombol Kembali -->
+            <a href="../articles.html" class="back-btn">&larr; Kembali ke Daftar Artikel</a>
 
-        <div class="article-header" style="margin-top: 20px;">
-            <h1>Memahami Depresi: Bukan Sekadar Sedih, dan Kamu Berhak Mendapatkan Bantuan</h1>
-            <div class="article-meta">
-                Ditulis oleh <strong>MindCare Team</strong> | Diperbarui pada 20 Juli 2026 | Waktu baca: 5 Menit
-            </div>
-        </div>
-
-        <!-- Hero Image Artikel -->
-        <!-- Menggunakan gambar yang memberikan kesan harapan atau ketenangan (cahaya matahari/alam), bukan gambar yang menambah keputusasaan -->
-        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-             alt="Ilustrasi seseorang melihat cahaya di pagi hari" 
-             class="article-hero-img">
-
-        <div class="article-content">
-            <p>Sering kali, masyarakat menganggap depresi hanyalah fase "kurang bersyukur" atau "sedih biasa" yang bisa hilang hanya dengan mencoba untuk tersenyum. Stigma inilah yang sering membuat seseorang yang sedang berjuang dengan depresi merasa semakin sendirian dan enggan mencari bantuan.</p>
-
-            <p>Mari kita luruskan satu hal: <strong>Depresi adalah kondisi medis.</strong> Sama seperti asma atau flu, depresi bukanlah sebuah kelemahan karakter, melainkan kondisi kesehatan yang nyata dan dapat diobati.</p>
-
-            <h2>Depresi vs Sedih Biasa</h2>
-            <p>Sedih adalah emosi manusiawi yang normal. Kita merasa sedih saat gagal ujian, putus cinta, atau kehilangan sesuatu yang berharga. Namun, kesedihan ini biasanya memudar seiring waktu dan tidak menghentikan kita untuk menjalani hidup.</p>
-
-            <p>Di sisi lain, depresi seperti awan gelap yang menetap. Kondisi ini mengubah cara pandangmu terhadap diri sendiri, lingkungan, dan masa depan. Beberapa tanda bahwa apa yang kamu alami mungkin adalah depresi, antara lain:</p>
-            <ul>
-                <li><strong>Perasaan kosong yang menetap:</strong> Merasa sedih, putus asa, atau hampa hampir setiap hari, sepanjang hari, selama berminggu-minggu.</li>
-                <li><strong>Kehilangan minat (Anhedonia):</strong> Hal-hal yang dulu sangat kamu nikmati (hobi, mengobrol dengan teman, bermain game) tiba-tiba terasa tidak ada artinya.</li>
-                <li><strong>Perubahan fisik drastis:</strong> Gangguan tidur yang parah (tidak bisa tidur atau tidur terlalu banyak) dan perubahan nafsu makan.</li>
-                <li><strong>Perasaan tidak berharga:</strong> Terus-menerus menyalahkan diri sendiri secara berlebihan atas hal-hal yang bukan sepenuhnya salahmu.</li>
-            </ul>
-
-            <!-- Bagian Grafik Data -->
-            <div class="chart-container">
-                <!-- Data WHO: Diperkirakan 1 dari 7 (sekitar 14%) remaja usia 10-19 tahun mengalami gangguan mental, dan depresi adalah salah satu yang utama. -->
-                <img src="https://quickchart.io/chart?c={type:'doughnut',data:{labels:['Mengalami Gangguan Mental (14%)','Tidak Terdiagnosis (86%)'],datasets:[{data:[14,86],backgroundColor:['#3498db','#e2e8f0']}]}}&w=500&h=300" alt="Grafik Statistik WHO">
-                <div class="chart-caption">
-                    *Berdasarkan data Organisasi Kesehatan Dunia (WHO), sekitar 1 dari 7 (14%) remaja usia 10-19 tahun secara global mengalami masalah kesehatan mental, di mana depresi adalah salah satu penyebab utamanya.
+            <div class="article-header">
+                <h1>Memahami Depresi: Bukan Sekadar Sedih, dan Kamu Berhak Mendapatkan Bantuan</h1>
+                <div class="article-meta">
+                    <span>Oleh <strong>MindCare Team</strong></span> &bull; 
+                    <span>20 Juli 2026</span> &bull; 
+                    <span>⏳ 5 Menit Baca</span>
                 </div>
             </div>
 
-            <div class="highlight-quote">
-                "Meminta bantuan adalah salah satu bentuk keberanian terbesar. Kamu tidak harus bertarung sendirian di dalam kegelapan."
+            <!-- Hero Image Artikel -->
+            <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ilustrasi seseorang melihat cahaya di pagi hari" class="article-hero-img">
+
+            <div class="article-content">
+                <p>Sering kali, masyarakat menganggap depresi hanyalah fase "kurang bersyukur" atau "sedih biasa" yang bisa hilang hanya dengan mencoba untuk tersenyum. Stigma inilah yang sering membuat seseorang yang sedang berjuang dengan depresi merasa semakin sendirian dan enggan mencari bantuan.</p>
+
+                <p>Mari kita luruskan satu hal: <strong>Depresi adalah kondisi medis.</strong> Sama seperti asma atau flu, depresi bukanlah sebuah kelemahan karakter, melainkan kondisi kesehatan yang nyata dan dapat diobati.</p>
+
+                <h2>Depresi vs Sedih Biasa</h2>
+                <p>Sedih adalah emosi manusiawi yang normal. Kita merasa sedih saat gagal ujian, putus cinta, atau kehilangan sesuatu yang berharga. Namun, kesedihan ini biasanya memudar seiring waktu dan tidak menghentikan kita untuk menjalani hidup.</p>
+
+                <p>Di sisi lain, depresi seperti awan gelap yang menetap. Kondisi ini mengubah cara pandangmu terhadap diri sendiri, lingkungan, dan masa depan. Beberapa tanda bahwa apa yang kamu alami mungkin adalah depresi, antara lain:</p>
+                <ul>
+                    <li><strong>Perasaan kosong yang menetap:</strong> Merasa sedih, putus asa, atau hampa hampir setiap hari, sepanjang hari, selama berminggu-minggu.</li>
+                    <li><strong>Kehilangan minat (Anhedonia):</strong> Hal-hal yang dulu sangat kamu nikmati (hobi, mengobrol dengan teman, bermain game) tiba-tiba terasa tidak ada artinya.</li>
+                    <li><strong>Perubahan fisik drastis:</strong> Gangguan tidur yang parah (tidak bisa tidur atau tidur terlalu banyak), rasa lelah yang ekstrem, dan perubahan drastis pada nafsu makan.</li>
+                    <li><strong>Perasaan tidak berharga:</strong> Terus-menerus menyalahkan diri sendiri secara berlebihan atas hal-hal yang bukan sepenuhnya salahmu.</li>
+                </ul>
+
+                <!-- Bagian Grafik Data -->
+                <div class="chart-container">
+                    <img src="https://quickchart.io/chart?c={type:'doughnut',data:{labels:['Mengalami Gangguan Mental (14%)','Tidak Terdiagnosis (86%)'],datasets:[{data:[14,86],backgroundColor:['#3498db','#e2e8f0']}]}}&w=500&h=300" alt="Grafik Statistik WHO">
+                    <div class="chart-caption">
+                        *Berdasarkan data Organisasi Kesehatan Dunia (WHO), sekitar 1 dari 7 (14%) remaja usia 10-19 tahun secara global mengalami masalah kesehatan mental, di mana depresi adalah salah satu penyebab utamanya. Ingat, kamu tidak sendirian.
+                    </div>
+                </div>
+
+                <div class="highlight-quote">
+                    "Meminta bantuan adalah salah satu bentuk keberanian terbesar. Kamu tidak harus bertarung sendirian di dalam kegelapan."
+                </div>
+
+                <h2>Bagaimana Jika Temanmu yang Mengalaminya?</h2>
+                <p>Melihat orang terdekat berjuang melawan depresi bisa terasa membingungkan. Terkadang kita ingin membantu tapi takut salah bicara. Berikut cara tepat untuk mendampingi mereka:</p>
+                
+                <!-- Gambar Tambahan (Teman/Support) -->
+                <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ilustrasi teman memberikan dukungan" class="article-content-img">
+
+                <ul>
+                    <li><strong>Dengarkan Tanpa Menghakimi:</strong> Hindari kalimat <i>toxic positivity</i> seperti "Ah, kamu cuma kurang ibadah" atau "Banyak orang yang lebih susah dari kamu". Cukup dengarkan dan katakan, <em>"Aku di sini untukmu."</em></li>
+                    <li><strong>Tawarkan Bantuan Praktis:</strong> Orang depresi sering kehabisan energi untuk hal dasar. Tanyakan, <em>"Apa ada yang bisa aku bantu hari ini? Mau aku pesankan makanan?"</em></li>
+                    <li><strong>Temani Mencari Bantuan Profesional:</strong> Tawarkan diri untuk menemani mereka mendaftar ke psikolog atau psikiater jika mereka merasa takut atau bingung harus mulai dari mana.</li>
+                </ul>
+
+                <h2>Langkah Pertama Menuju Pemulihan</h2>
+                <p>Jika kamu merasa gejala-gejala depresi menggambarkan kondisimu saat ini, ketahuilah bahwa ini bisa membaik. Langkah pertama adalah yang paling berat, tetapi sangat penting:</p>
+                
+                <ul>
+                    <li><strong>Bicaralah pada Profesional:</strong> Psikolog atau psikiater adalah ahli yang dilatih untuk membantumu. Di Indonesia, kamu bisa mengakses layanan psikolog melalui Puskesmas terdekat dengan biaya yang sangat terjangkau atau bahkan gratis dengan BPJS.</li>
+                    <li><strong>Terima Perasaanmu:</strong> Jangan memaksa dirimu untuk "baik-baik saja". Validasi perasaanmu. Katakan pada dirimu, <em>"Hari ini memang sangat berat, dan tidak apa-apa jika aku hanya punya tenaga untuk bertahan."</em></li>
+                    <li><strong>Ambil Langkah Sangat Kecil:</strong> Saat depresi melanda, mandi atau bangun dari kasur bisa terasa seperti mendaki gunung. Rayakan kemenangan kecilmu. Jika hari ini kamu hanya bisa minum segelas air dan kembali berbaring, itu sudah cukup.</li>
+                </ul>
+
+                <div class="support-box">
+                    <h3>Ruang Aman Untuk Bercerita</h3>
+                    <p>Terkadang, kamu hanya butuh seseorang yang mau mendengarkan tanpa memberikan nasihat yang menggurui. Chatbot Telegram MindCare dirancang untuk menjadi teman pertamamu di saat kamu merasa dunia terlalu sepi.</p>
+                    <a href="https://t.me/NamaBotKamu" target="_blank" class="btn-support">Cerita ke MindCare &rarr;</a>
+                </div>
+
             </div>
-
-            <h2>Langkah Pertama Menuju Pemulihan</h2>
-            <p>Jika kamu merasa gejala-gejala di atas menggambarkan kondisimu saat ini, ketahuilah bahwa ini bisa membaik. Langkah pertama adalah yang paling berat, tetapi sangat penting:</p>
-            
-            <ul>
-                <li><strong>Bicaralah pada Profesional:</strong> Psikolog atau psikiater adalah ahli yang dilatih untuk membantumu mengurai benang kusut di kepalamu. Di Indonesia, kamu bisa mengakses layanan psikolog melalui Puskesmas terdekat dengan biaya yang sangat terjangkau atau bahkan gratis dengan BPJS.</li>
-                <li><strong>Terima Perasaanmu:</strong> Jangan memaksa dirimu untuk "baik-baik saja". Validasi perasaanmu. Katakan pada dirimu, <em>"Hari ini memang sangat berat, dan tidak apa-apa jika aku hanya punya tenaga untuk bertahan."</em></li>
-                <li><strong>Ambil Langkah Sangat Kecil:</strong> Saat depresi melanda, mandi atau bangun dari kasur bisa terasa seperti mendaki gunung. Rayakan kemenangan kecilmu. Jika hari ini kamu hanya bisa minum segelas air dan kembali berbaring, itu sudah cukup.</li>
-            </ul>
-
-            <div class="support-box">
-                <h3>Ruang Aman Untuk Bercerita</h3>
-                <p>Terkadang, kamu hanya butuh seseorang yang mau mendengarkan tanpa memberikan nasihat atau menghakimi. Chatbot Telegram MindCare dirancang untuk menjadi teman pertamamu di saat kamu merasa dunia terlalu sepi.</p>
-                <a href="https://t.me/NamaBotKamu" target="_blank" style="display: inline-block; background-color: #3498db; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 10px;">Cerita ke MindCare &rarr;</a>
-            </div>
-
-        </div>
-    </main>
+        </main>
+    </div>
 
     <!-- ========================================= -->
-    <!-- EMERGENCY CONTACTS (SANGAT PENTING DI HALAMAN INI) -->
+    <!-- EMERGENCY CONTACTS (SANGAT PENTING) -->
     <!-- ========================================= -->
-    <section class="emergency" style="background-color: #fff3f3; border-top: 2px solid #ffcaca; padding: 40px 0;">
+    <section class="emergency">
         <div class="container" style="text-align: center;">
             <h2 style="color: #d32f2f;">🚨 Butuh Bantuan Mendesak?</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px; color: #555; line-height: 1.6;">
-                Depresi terkadang bisa memunculkan pikiran untuk menyakiti diri sendiri atau mengakhiri hidup. <b>Ketahuilah bahwa perasaan itu sementara, sedangkan nyawamu sangat berharga.</b> Chatbot kami bukan pengganti bantuan krisis. Jika kamu berada dalam kondisi darurat, <b>TOLONG</b> segera hubungi profesional atau layanan krisis di bawah ini:
+            <p style="max-width: 800px; margin: 0 auto; color: #555; line-height: 1.6; font-size: 1.05rem;">
+                Depresi terkadang bisa memunculkan pikiran untuk menyakiti diri sendiri atau mengakhiri hidup. <br><b>Ketahuilah bahwa perasaan itu sementara, sedangkan nyawamu sangat berharga.</b><br><br>Chatbot kami bukan pengganti bantuan medis krisis. Jika kamu berada dalam kondisi darurat, <b>TOLONG</b> segera hubungi profesional atau layanan krisis di bawah ini:
             </p>
             
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #d32f2f; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 300px;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Call Center Halo Kemenkes</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333;">1500-567</p>
-                    <p style="font-size: 0.9rem; color: #666;">Layanan dukungan psikososial dari Kementerian Kesehatan RI.</p>
+            <div class="emergency-grid">
+                <div class="emergency-card">
+                    <h3>Call Center Halo Kemenkes</h3>
+                    <p class="phone">1500-567</p>
+                    <p class="desc">Layanan dukungan psikososial dan kegawatdaruratan dari Kementerian Kesehatan RI.</p>
                 </div>
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #d32f2f; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 300px;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Layanan Sejiwa (KSP)</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333;">119 ext. 8</p>
-                    <p style="font-size: 0.9rem; color: #666;">Layanan edukasi dan konseling psikologi.</p>
+                <div class="emergency-card">
+                    <h3>Layanan Sejiwa (KSP)</h3>
+                    <p class="phone">119 ext. 8</p>
+                    <p class="desc">Layanan edukasi, konseling psikologi, dan pendampingan krisis mental.</p>
                 </div>
             </div>
         </div>
@@ -254,9 +467,9 @@
     <!-- ========================================= -->
     <!-- FOOTER -->
     <!-- ========================================= -->
-    <footer style="background-color: #2c3e50; color: white; padding: 20px 0; text-align: center;">
+    <footer>
         <div class="container">
-            <p style="margin: 0;">© 2026 MindCare. All Rights Reserved.</p>
+            <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>
 
