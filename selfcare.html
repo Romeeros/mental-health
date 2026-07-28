@@ -15,19 +15,191 @@
     <meta name="author" content="MindCare Team">
 
     <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/selfcare.css">
-
-    <!-- ========================================= -->
     <!-- Google Fonts -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Disamakan dengan index.html) -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: block !important; 
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Buttons */
+        .telegram-button a, .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
+
+        /* --- STYLING KHUSUS SELF CARE --- */
+        .selfcare-hero {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .selfcare-hero h1 { font-size: 2.5rem; margin: 15px 0; color: #1a1a1a; }
+        .selfcare-hero p { color: var(--text-light); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+        
+        .badge { 
+            background: #e0f2f1; 
+            color: var(--primary); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+        }
+
+        .pillars-section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; margin-bottom: 10px; }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pillar-card:hover { transform: translateY(-5px); }
+        .icon-wrapper { font-size: 3rem; margin-bottom: 15px; }
+        .pillar-card h3 { margin-bottom: 10px; color: var(--text-dark); }
+        .pillar-card p { color: var(--text-light); margin-bottom: 15px; font-size: 0.95rem; }
+        .link-arrow { color: var(--primary); font-weight: 600; }
+
+        .checkin-section {
+            padding: 80px 0;
+            background-color: #eaf2ef;
+            text-align: center;
+        }
+
+        .mood-tracker {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mood-btn {
+            font-size: 3rem;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .mood-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .mood-message {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary);
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .hidden { display: none; }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+        }
+    </style>
 </head>
 
 <body>
@@ -53,7 +225,10 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+                <!-- Teks diperbaiki menjadi "Cerita Sekarang" -->
+                <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
+                    Cerita Sekarang
+                </a>
             </div>
         </div>
     </header>
@@ -101,14 +276,14 @@
                     <div class="pillar-card">
                         <div class="icon-wrapper">🏃‍♂️</div>
                         <h3>Aktivitas Fisik</h3>
-                        <p>Olahraga ringan seperti jalan santai, peregangan, atau yoga sangat baik untuk memicu hormon kebahagiaan (endorfin).</p>
+                        <p>Olahraga ringan seperti jalan santai, peregangan, atau yoga sangat baik untuk memicu hormon kebahagiaan.</p>
                         <a href="#" class="link-arrow">Lihat Tips &rarr;</a>
                     </div>
 
                     <div class="pillar-card">
                         <div class="icon-wrapper">🛌</div>
                         <h3>Istirahat Berkualitas</h3>
-                        <p>Memastikan tidur 7-8 jam dan berani berkata "tidak" pada aktivitas yang menguras energi sangat krusial untuk pemulihan otak.</p>
+                        <p>Memastikan tidur 7-8 jam dan berani berkata "tidak" pada aktivitas yang menguras energi sangat krusial.</p>
                         <a href="#" class="link-arrow">Tips Tidur Nyenyak &rarr;</a>
                     </div>
 
@@ -137,20 +312,21 @@
         </section>
 
         <!-- CTA SECTION -->
-        <section class="cta" style="padding:100px 0; background:linear-gradient(135deg,#5d9b9b,#6eb5a8); color:white;">
+        <section class="cta" style="padding:80px 0; background:linear-gradient(135deg,#5d9b9b,#6eb5a8); color:white;">
             <div class="container" style="text-align:center; max-width:800px;">
                 <span style="display:inline-block; padding:8px 18px; background:rgba(255,255,255,.15); border-radius:50px; margin-bottom:20px; font-weight:600;">
                     💚 Kamu Tidak Sendiri
                 </span>
-                <h2 style="font-size:2.5rem; margin-bottom:20px; color:white;">
+                <h2 style="font-size:2.2rem; margin-bottom:15px; color:white;">
                     Butuh Teman Bercerita?
                 </h2>
-                <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px; color:rgba(255,255,255,.9);">
-                    Jika kamu merasa kewalahan dan self-care saja belum cukup, jangan ragu untuk bercerita. MindCare Bot di Telegram siap mendengarkan tanpa menghakimi.
+                <p style="font-size:1.1rem; line-height:1.6; margin-bottom:30px; color:rgba(255,255,255,.9);">
+                    Jika kamu merasa kewalahan dan self-care saja belum cukup, jangan ragu untuk bercerita. Kami siap mendengarkan tanpa menghakimi.
                 </p>
                 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                    <a href="https://t.me/NamaBotKamu" target="_blank" class="btn-secondary" style="border:2px solid white; color:white; text-decoration:none; padding:15px 35px; border-radius:50px; font-weight:600;">
-                        🤖 Curhat Sekarang
+                    <!-- Link disamakan dengan tombol di header -->
+                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" style="background:white; color:var(--primary); text-decoration:none; padding:12px 30px; border-radius:50px; font-weight:600; display:inline-block; transition: 0.3s;">
+                        Cerita Sekarang
                     </a>
                 </div>
             </div>
@@ -167,12 +343,28 @@
     </footer>
 
     <!-- ========================================= -->
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT UNTUK MOOD TRACKER -->
     <!-- ========================================= -->
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/selfcare.js"></script>
-    <script src="js/telegram.js"></script>
+    <script>
+        const moodMessages = {
+            'sad': 'Terima kasih sudah jujur dengan perasaanmu. Tidak apa-apa merasa sedih. Cobalah menuliskan apa yang mengganggumu (journaling) atau hubungi teman untuk bercerita.',
+            'anxious': 'Tarik napas dalam-dalam. Fokus pada saat ini (mindfulness). Kecemasanmu nyata, tapi kamu lebih kuat dari yang kamu kira. Yuk, lakukan peregangan ringan.',
+            'neutral': 'Hari yang tenang. Ini waktu yang tepat untuk melakukan aktivitas fisik ringan atau sekadar menjaga kualitas tidurmu malam ini.',
+            'happy': 'Senang melihatmu bahagia! Pertahankan energi positif ini dan sebarkan ke orang-orang di sekitarmu.',
+            'great': 'Luar biasa! Jadikan hari ini produktif, namun jangan lupa untuk tetap menyisihkan waktu istirahat (self-care).'
+        };
+
+        const moodBtns = document.querySelectorAll('.mood-btn');
+        const messageBox = document.getElementById('moodMessage');
+
+        moodBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const mood = this.getAttribute('data-mood');
+                messageBox.textContent = moodMessages[mood];
+                messageBox.classList.remove('hidden');
+            });
+        });
+    </script>
 
 </body>
 </html>

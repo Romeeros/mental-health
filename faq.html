@@ -15,19 +15,175 @@
     <meta name="author" content="MindCare Team">
 
     <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/faq.css">
-
-    <!-- ========================================= -->
     <!-- Google Fonts -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Disamakan dengan index.html) -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: block !important; 
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar (SAMA DENGAN INDEX) */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Buttons */
+        .telegram-button a, .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
+
+        /* --- STYLING KHUSUS KONTEN FAQ --- */
+        main { padding: 60px 0; }
+        
+        .faq-hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .badge { 
+            background: #e0f2f1; 
+            color: var(--primary); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+        }
+
+        .faq-hero h1 { margin: 15px 0; font-size: 2.5rem;}
+        .faq-hero p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none; /* Disembunyikan secara default, bisa dimunculkan via JS */
+        }
+
+        .faq-cta {
+            margin-top: 60px;
+            text-align: center;
+            background: #eaf2ef;
+            padding: 50px 20px;
+            border-radius: 15px;
+        }
+
+        .faq-cta h2 { margin-bottom: 15px; }
+        .faq-cta p { margin-bottom: 25px; color: var(--text-light); }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-card);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            color: var(--text-light);
+        }
+        
+        .text-center { text-align: center; }
+    </style>
 </head>
 
 <body>
@@ -39,11 +195,12 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo">
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo" style="border-radius: 8px;">
                 </a>
             </div>
             <nav>
                 <ul>
+                    <!-- CLASS ACTIVE DIPINDAH KE FAQ -->
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">Tentang</a></li>
                     <li><a href="articles.html">Artikel</a></li>
@@ -53,7 +210,9 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+                <a href="https://wa.me/628XXXXXXXXXX?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
+                    Cerita Sekarang
+                </a>
             </div>
         </div>
     </header>
@@ -109,29 +268,29 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Kamu hanya perlu mengklik tombol "Curhat Sekarang" yang ada di website ini. Kamu akan diarahkan ke aplikasi Telegram. Tekan "Start" untuk memulai percakapan dengan bot kami.</p>
+                            <p>Kamu hanya perlu mengklik tombol "Cerita Sekarang" yang ada di website ini. Kamu akan diarahkan ke aplikasi Telegram/WhatsApp. Tekan "Kirim" untuk memulai percakapan dengan kami.</p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 4 -->
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Apakah curhatan saya di bot Telegram aman dan rahasia?</span>
+                            <span>Apakah curhatan saya aman dan rahasia?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Sangat aman. Kami sangat menghargai privasi kamu. Pesan yang kamu kirimkan ke chatbot tidak akan disebarluaskan atau digunakan untuk kepentingan pihak ketiga.</p>
+                            <p>Sangat aman. Kami sangat menghargai privasi kamu. Pesan yang kamu kirimkan tidak akan disebarluaskan atau digunakan untuk kepentingan pihak ketiga.</p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 5 -->
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Apakah MindCare menggantikan bantuan profesional (psikolog/psikiater)?</span>
+                            <span>Apakah MindCare menggantikan bantuan profesional?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Tidak. MindCare adalah platform edukasi dan dukungan awal (first-aid support). Jika kamu merasa memiliki masalah klinis atau membutuhkan diagnosis, kami sangat menyarankan kamu untuk berkonsultasi langsung dengan ahli kesehatan mental profesional.</p>
+                            <p>Tidak. MindCare adalah platform edukasi dan dukungan awal (first-aid support). Jika kamu merasa memiliki masalah klinis atau membutuhkan diagnosis, kami sangat menyarankan kamu untuk berkonsultasi langsung dengan ahli kesehatan mental profesional (Psikolog/Psikiater).</p>
                         </div>
                     </div>
 
@@ -142,7 +301,7 @@
 
         <!-- MORE QUESTIONS CTA -->
         <section class="faq-cta">
-            <div class="container text-center">
+            <div class="container">
                 <h2>Masih Punya Pertanyaan Lain?</h2>
                 <p>Jika pertanyaanmu belum terjawab di sini, jangan ragu untuk menghubungi kami secara langsung.</p>
                 <a href="contact.html" class="btn-primary">Hubungi Kami</a>
@@ -161,12 +320,26 @@
     </footer>
 
     <!-- ========================================= -->
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT UNTUK AKORDION FAQ -->
     <!-- ========================================= -->
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/faq.js"></script>
-    <script src="js/telegram.js"></script>
+    <script>
+        // Sederhana JS untuk membuat Accordion FAQ berfungsi
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                // Toggle display answer
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                    icon.textContent = "+";
+                } else {
+                    answer.style.display = "block";
+                    icon.textContent = "−";
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

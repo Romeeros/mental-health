@@ -2,28 +2,210 @@
 <html lang="id">
 
 <head>
+    <!-- ========================================= -->
+    <!-- Basic Meta -->
+    <!-- ========================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Artikel | MindCare</title>
+    
     <meta name="description" content="Temukan berbagai artikel edukasi mengenai kesehatan mental remaja, mulai dari stres, anxiety, burnout, bullying, hingga tips self-care.">
     <meta name="keywords" content="Artikel Kesehatan Mental, Stress, Anxiety, Burnout, Self Care, Bullying, MindCare">
     <meta name="author" content="MindCare Team">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/articles.css">
-
+    <!-- ========================================= -->
     <!-- Google Fonts -->
+    <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (Disamakan dengan index.html) -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: block !important; 
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Buttons */
+        .telegram-button a, .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
+
+        /* --- STYLING KHUSUS HALAMAN ARTIKEL --- */
+        .article-hero {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .article-hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .article-hero-text { flex: 1; }
+        .article-hero-text h1 { font-size: 2.5rem; margin: 15px 0; color: #1a1a1a; line-height: 1.3; }
+        .article-hero-text p { color: var(--text-light); font-size: 1.1rem; margin-bottom: 20px; }
+        
+        .badge { 
+            background: #e0f2f1; 
+            color: var(--primary); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            display: inline-block;
+        }
+        
+        .article-hero-image { flex: 1; text-align: center; }
+        .article-hero-image img { max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* Grid Artikel */
+        .all-articles {
+            padding: 60px 0;
+        }
+        
+        .all-articles h2 { margin-bottom: 40px; text-align: center; font-size: 2rem;}
+        
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+        }
+        
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .card-content { 
+            padding: 20px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .card-content h3 { margin-top: 0; margin-bottom: 10px; color: var(--text-dark); font-size: 1.2rem; }
+        .card-content p { color: var(--text-light); font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+        .card-content a { color: var(--primary); font-weight: 600; text-decoration: none; }
+
+        /* CTA Section */
+        .cta {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #eaf2ef, #c8e0d5);
+            text-align: center;
+        }
+        
+        .cta-container h2 { margin: 20px 0; color: var(--text-dark); }
+        .cta-container p { max-width: 600px; margin: 0 auto 30px; color: var(--text-light); line-height: 1.6; }
+        
+        .cta-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .cta-btn-light { background: white; color: var(--primary); padding: 12px 25px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .cta-btn-light:hover { background: #f0f0f0; }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-hero-content { flex-direction: column; text-align: center; }
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- ========================================= -->
     <!-- HEADER -->
+    <!-- ========================================= -->
     <header>
         <div class="container">
             <div class="logo">
@@ -42,13 +224,18 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+                <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
+                    Cerita Sekarang
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
     <main>
+        <!-- HERO SECTION -->
         <section class="article-hero">
             <div class="container article-hero-content">
                 <div class="article-hero-text">
@@ -57,75 +244,75 @@
                     <p>Jelajahi berbagai artikel yang telah disusun untuk membantu remaja memahami kesehatan mental, mengenali berbagai kondisi emosional, serta menemukan cara sederhana untuk menjaga kesejahteraan diri.</p>
                 </div>
                 <div class="article-hero-image">
-                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80" alt="Artikel Mental Health" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80" alt="Artikel Mental Health">
                 </div>
             </div>
         </section>
+
         <!-- ALL ARTICLES GRID -->
-        <section class="all-articles" style="margin-top: 50px;">
+        <section class="all-articles">
             <div class="container">
-                <h2 style="margin-bottom: 30px;">Semua Artikel</h2>
+                <h2>Semua Artikel</h2>
                 
-                <!-- Grid Artikel: Pengaturan ini membuat kartu berjejer 3 ke samping di layar lebar -->
-                <div class="article-grid" id="articleGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="article-grid" id="articleGrid">
                     
                     <!-- Kartu 1: Stress -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="aset/stress.png" alt="Stress" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Mengenali Gejala Stres pada Remaja</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Pahami apa itu stres, perbedaannya dengan tekanan biasa, gejala fisik yang muncul, dan cara mengelolanya.</p>
-                            <a href="article/stress.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="aset/stress.png" alt="Stress">
+                        <div class="card-content">
+                            <h3>Mengenali Gejala Stres pada Remaja</h3>
+                            <p>Pahami apa itu stres, perbedaannya dengan tekanan biasa, gejala fisik yang muncul, dan cara mengelolanya.</p>
+                            <a href="article/stress.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
                     <!-- Kartu 2: Overthinking -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="https://images.unsplash.com/photo-1541199249251-f713e6145474?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Overthinking" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Menghentikan Siklus Overthinking</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Kendalikan pikiran yang terus berputar, pahami pemicunya, dan pelajari teknik relaksasi.</p>
-                            <a href="article/overthinking.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1541199249251-f713e6145474?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Overthinking">
+                        <div class="card-content">
+                            <h3>Menghentikan Siklus Overthinking</h3>
+                            <p>Kendalikan pikiran yang terus berputar, pahami pemicunya, dan pelajari teknik relaksasi.</p>
+                            <a href="article/overthinking.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
                     <!-- Kartu 3: Depression -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Depression" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Memahami Depresi: Bukan Sekadar Sedih</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Depresi adalah kondisi medis yang nyata. Kenali perbedaannya dengan rasa sedih biasa.</p>
-                            <a href="article/depression.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Depression">
+                        <div class="card-content">
+                            <h3>Memahami Depresi: Bukan Sekadar Sedih</h3>
+                            <p>Depresi adalah kondisi medis yang nyata. Kenali perbedaannya dengan rasa sedih biasa.</p>
+                            <a href="article/depression.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
                     <!-- Kartu 4: Bullying -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bullying" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Dampak Bullying pada Kesehatan Mental</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Kamu tidak pantas diperlakukan buruk. Hentikan siklusnya dan pahami langkah perlindungan diri.</p>
-                            <a href="article/bullying.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bullying">
+                        <div class="card-content">
+                            <h3>Dampak Bullying pada Kesehatan Mental</h3>
+                            <p>Kamu tidak pantas diperlakukan buruk. Hentikan siklusnya dan pahami langkah perlindungan diri.</p>
+                            <a href="article/bullying.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
                     <!-- Kartu 5: Anxiety -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="aset/Anxiety.png" alt="Anxiety" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Anxiety vs Rasa Gugup Biasa</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Bagaimana membedakan rasa gugup yang wajar dengan gangguan kecemasan yang mengganggu aktivitas.</p>
-                            <a href="article/anxiety.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="aset/Anxiety.png" alt="Anxiety">
+                        <div class="card-content">
+                            <h3>Anxiety vs Rasa Gugup Biasa</h3>
+                            <p>Bagaimana membedakan rasa gugup yang wajar dengan gangguan kecemasan yang mengganggu aktivitas.</p>
+                            <a href="article/anxiety.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
                     <!-- Kartu 6: Burnout -->
-                    <article class="card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column;">
-                        <img src="aset/Burnout.png" alt="Burnout" style="width: 100%; height: 200px; object-fit: cover;">
-                        <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
-                            <h3 style="margin-top: 0; margin-bottom: 10px; color: #2c3e50; font-size: 1.2rem;">Mengatasi Academic Burnout</h3>
-                            <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1;">Kenali tanda-tanda kelelahan akademik parah dan bagaimana cara mengambil jeda dengan bijak.</p>
-                            <a href="article/burnout.html" style="color: #6a9c89; font-weight: 600; text-decoration: none;">Baca Artikel →</a>
+                    <article class="card">
+                        <img src="aset/Burnout.png" alt="Burnout">
+                        <div class="card-content">
+                            <h3>Mengatasi Academic Burnout</h3>
+                            <p>Kenali tanda-tanda kelelahan akademik parah dan bagaimana cara mengambil jeda dengan bijak.</p>
+                            <a href="article/burnout.html">Baca Artikel &rarr;</a>
                         </div>
                     </article>
 
@@ -134,23 +321,29 @@
         </section>
 
         <!-- CTA SECTION -->
-        <section class="cta" style="margin-top: 60px; padding: 60px 0; background: linear-gradient(135deg, #eaf2ef, #c8e0d5); text-align: center;">
+        <section class="cta">
             <div class="container cta-container">
-                <span class="badge badge-outline" style="border: 1px solid #6a9c89; color: #6a9c89; padding: 5px 15px; border-radius: 20px;">💚 Kamu Tidak Sendiri</span>
-                <h2 style="margin: 20px 0; color: #2c3e50;">Masih Ingin Belajar atau Membutuhkan Teman Bercerita?</h2>
-                <p style="max-width: 600px; margin: 0 auto 30px; color: #555; line-height: 1.6;">Terus tingkatkan pemahamanmu mengenai kesehatan mental, atau apabila kamu sedang membutuhkan ruang untuk bercerita, chatbot Telegram MindCare siap menemanimu.</p>
-                <div class="cta-buttons" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <a href="selfcare.html" class="btn-primary cta-btn-light" style="background: white; color: #6a9c89; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid white;">🌿 Self Care</a>
-                    <a href="https://t.me/NamaBotKamu" target="_blank" class="btn-secondary cta-btn-outline" style="background: #6a9c89; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid #6a9c89;">🤖 Curhat Sekarang</a>
+                <span class="badge" style="background: transparent; border: 1px solid var(--primary); margin-bottom: 15px;">💚 Kamu Tidak Sendiri</span>
+                <h2>Masih Ingin Belajar atau Butuh Teman Bercerita?</h2>
+                <p>Terus tingkatkan pemahamanmu mengenai kesehatan mental, atau apabila kamu sedang membutuhkan ruang untuk bercerita, kami siap menemanimu.</p>
+                <div class="cta-buttons">
+                    <a href="selfcare.html" class="cta-btn-light">🌿 Self Care</a>
+                    
+                    <!-- Link dan Teks CTA disamakan dengan header -->
+                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-primary">
+                        🤖 Cerita Sekarang
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- ========================================= -->
     <!-- FOOTER -->
-    <footer style="background-color: #2c3e50; color: white; padding: 20px 0; text-align: center;">
+    <!-- ========================================= -->
+    <footer>
         <div class="container">
-            <p style="margin: 0;">© 2026 MindCare. All Rights Reserved.</p>
+            <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>
 

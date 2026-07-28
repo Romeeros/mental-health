@@ -15,19 +15,265 @@
     <meta name="author" content="MindCare Team">
 
     <!-- ========================================= -->
-    <!-- CSS -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/contact.css">
-
-    <!-- ========================================= -->
-    <!-- Google Fonts -->
+    <!-- Google Fonts & Font Awesome (Untuk Logo) -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- INI YANG MEMBUAT LOGO IG, TIKTOK, YT MUNCUL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS -->
+    <!-- ========================================= -->
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --primary-light: #e6f2f2;
+            --text-dark: #2c3e50;
+            --text-light: #666666;
+            --bg-light: #f7fbf8;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: block !important; 
+            overflow-x: hidden;
+            background-color: #f4f7f6;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Layout (DIKEMBALIKAN KE 1200px AGAR HEADER SAMA DENGAN HALAMAN LAIN) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        /* Buttons (Disamakan kembali dengan halaman lain) */
+        .telegram-button a, .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        
+        .telegram-button a:hover, .btn-primary:hover { 
+            background-color: var(--primary-hover); 
+        }
+
+        /* --- STYLING KHUSUS HALAMAN KONTAK --- */
+        .contact-hero {
+            text-align: center;
+            padding: 80px 0 50px;
+            background: linear-gradient(135deg, #ffffff, #eaf2ef);
+        }
+
+        .contact-hero h1 { font-size: 2.8rem; margin: 15px 0; color: var(--text-dark); font-weight: 700; }
+        .contact-hero p { color: var(--text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+        
+        .badge { 
+            background: var(--primary-light); 
+            color: var(--primary); 
+            padding: 6px 18px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            padding: 30px 0;
+            background-color: #fff5f5;
+            border-top: 1px solid #ffe3e3;
+            border-bottom: 1px solid #ffe3e3;
+            text-align: center;
+        }
+
+        .emergency-box h3 { color: #e53e3e; margin-bottom: 10px; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .emergency-box p { color: #555; max-width: 800px; margin: 0 auto; font-size: 0.95rem; }
+        .emergency-box strong { color: #e53e3e; }
+
+        /* Contact Info Section */
+        .contact-section {
+            padding: 60px 0 100px;
+        }
+
+        .contact-container {
+            max-width: 900px; /* Dibatasi di sini agar konten kontak tetap terpusat dan rapi */
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .contact-container > h2 { margin-bottom: 10px; color: var(--text-dark); font-size: 2rem; }
+        .contact-container > p { color: var(--text-light); margin-bottom: 50px; }
+
+        /* Grid Kartu Kontak */
+        .info-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .info-item {
+            padding: 40px 30px;
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .info-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-light);
+            box-shadow: 0 15px 30px rgba(93, 155, 155, 0.1);
+        }
+
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .info-item:hover .info-icon {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .info-text h4 { margin-bottom: 10px; color: var(--text-dark); font-size: 1.2rem; }
+        .info-text p { color: var(--text-light); line-height: 1.6; font-size: 0.95rem; }
+        .info-text a { color: var(--primary); font-weight: 600; text-decoration: none; transition: 0.2s;}
+        .info-text a:hover { color: var(--primary-hover); }
+
+        /* Social Links */
+        .social-links {
+            padding-top: 40px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .social-links h4 {
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            font-size: 1.3rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background-color: #f1f5f9;
+            color: #64748b;
+            border-radius: 50%;
+            font-size: 1.5rem; /* Ukuran Logo */
+            transition: all 0.3s ease;
+        }
+
+        /* Warna asli saat di-hover */
+        .social-icon.ig:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.3);
+        }
+
+        .social-icon.tt:hover {
+            background-color: #000000;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 0px #ff0050, -2px -2px 0px #00f2fe; /* Efek neon TikTok */
+        }
+
+        .social-icon.yt:hover {
+            background-color: #ff0000;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.02);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,7 +285,7 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo">
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo" style="border-radius: 8px;">
                 </a>
             </div>
             <nav>
@@ -53,7 +299,9 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+                <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
+                    Cerita Sekarang
+                </a>
             </div>
         </div>
     </header>
@@ -65,53 +313,59 @@
         
         <!-- HERO SECTION -->
         <section class="contact-hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="badge">📩 Hubungi Kami</span>
-                    <h1>Kami Di Sini Untuk Mendengarkan.</h1>
-                    <p>Punya pertanyaan, masukan, atau butuh teman bercerita? Jangan ragu untuk menghubungi tim kami melalui formulir atau kontak di bawah ini.</p>
-                </div>
+            <div class="container">
+                <span class="badge"><i class="fa-solid fa-envelope"></i> Hubungi Kami</span>
+                <h1>Kami Di Sini Untuk Mendengarkan.</h1>
+                <p>Punya pertanyaan, masukan, atau butuh teman bercerita? Jangan ragu untuk menghubungi tim kami melalui kontak di bawah ini.</p>
             </div>
         </section>
 
-        <!-- EMERGENCY BANNER (Penting untuk web Mental Health) -->
+        <!-- EMERGENCY BANNER -->
         <section class="emergency-banner">
             <div class="container">
                 <div class="emergency-box">
-                    <h3>🚨 Butuh Bantuan Darurat?</h3>
-                    <p>MindCare bukanlah layanan darurat medis. Jika kamu atau orang terdekatmu berada dalam krisis atau memiliki pemikiran untuk menyakiti diri sendiri, segera hubungi <strong>Layanan Gawat Darurat (119)</strong> atau cari bantuan profesional terdekat.</p>
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Butuh Bantuan Darurat?</h3>
+                    <p>MindCare bukanlah layanan darurat medis. Jika kamu atau orang terdekatmu berada dalam krisis, segera hubungi <strong>Layanan Gawat Darurat (119)</strong> atau cari bantuan profesional terdekat.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT INFO & FORM SECTION -->
+        <!-- CONTACT INFO SECTION -->
         <section class="contact-section">
-            <div class="container contact-container">
-                
-                <!-- Kiri: Informasi Kontak -->
-                <div class="contact-info">
+            <div class="container">
+                <div class="contact-container">
+                    
                     <h2>Informasi Kontak</h2>
                     <p>Pilih metode komunikasi yang paling nyaman untukmu.</p>
                     
                     <div class="info-list">
+                        <!-- Card Lokasi -->
                         <div class="info-item">
-                            <div class="info-icon">📍</div>
+                            <div class="info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
                             <div class="info-text">
                                 <h4>Lokasi Kami</h4>
                                 <p>MindCare HQ<br>SMKN 1 Cimahi<br>Jawa Barat, Indonesia</p>
                             </div>
                         </div>
 
+                        <!-- Card Email -->
                         <div class="info-item">
-                            <div class="info-icon">📧</div>
+                            <div class="info-icon">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
                             <div class="info-text">
                                 <h4>Email</h4>
-                                <p>hello@mindcare.id</p>
+                                <p><a href="mailto:hello@mindcare.id">hello@mindcare.id</a></p>
                             </div>
                         </div>
 
+                        <!-- Card Telegram -->
                         <div class="info-item">
-                            <div class="info-icon">🤖</div>
+                            <div class="info-icon">
+                                <i class="fa-brands fa-telegram"></i>
+                            </div>
                             <div class="info-text">
                                 <h4>Telegram Bot</h4>
                                 <p><a href="https://t.me/NamaBotKamu" target="_blank">@NamaBotKamu</a></p>
@@ -119,14 +373,22 @@
                         </div>
                     </div>
 
+                    <!-- Social Links (Diarahkan ke romeerow) -->
                     <div class="social-links">
-                        <h4>Ikuti Kami</h4>
+                        <h4>Ikuti Kami di Sosial Media</h4>
                         <div class="social-icons">
-                            <a href="#" class="social-icon">IG</a>
-                            <a href="#" class="social-icon">TT</a>
-                            <a href="#" class="social-icon">YT</a>
+                            <a href="https://instagram.com/romeerow" target="_blank" class="social-icon ig" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://tiktok.com/@romeerow" target="_blank" class="social-icon tt" title="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="https://youtube.com/@romeerow" target="_blank" class="social-icon yt" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -137,19 +399,10 @@
     <!-- FOOTER -->
     <!-- ========================================= -->
     <footer>
-        <div class="container text-center">
+        <div class="container">
             <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- ========================================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================================= -->
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/telegram.js"></script>
-    <!-- Tambahkan contact.js jika ingin membuat validasi form dengan JavaScript -->
-    <!-- <script src="js/contact.js"></script> -->
 
 </body>
 </html>
