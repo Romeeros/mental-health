@@ -2,195 +2,211 @@
 <html lang="id">
 
 <head>
-    <!-- ========================================= -->
-    <!-- Basic Meta -->
-    <!-- ========================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FAQ | MindCare</title>
 
-    <meta name="description" content="Pertanyaan yang sering diajukan seputar MindCare, kesehatan mental remaja, dan layanan chatbot Telegram kami.">
-    <meta name="keywords" content="FAQ, Pertanyaan MindCare, Bantuan, Kesehatan Mental">
+    <meta name="description" content="Pertanyaan yang sering diajukan seputar MindCare, kesehatan mental remaja, dan layanan teman cerita anonim kami.">
+    <meta name="keywords" content="FAQ, Pertanyaan MindCare, Bantuan, Kesehatan Mental, Ruang Aman">
     <meta name="author" content="MindCare Team">
 
-    <!-- ========================================= -->
-    <!-- Google Fonts -->
-    <!-- ========================================= -->
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- ========================================= -->
-    <!-- INTERNAL CSS (Disamakan dengan index.html) -->
-    <!-- ========================================= -->
     <style>
-        /* CSS Reset & Variables */
+        /* ========================================= */
+        /* CSS Reset & Variables (Disamakan dengan Kontak) */
+        /* ========================================= */
         :root {
             --primary: #5d9b9b;
             --primary-hover: #4a7c7c;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #f7fbf8;
+            --primary-light: #e6f2f2;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
             --bg-card: #ffffff;
+            --glass-border: rgba(255, 255, 255, 0.5);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            display: block !important; 
+            background-color: var(--bg-body);
             overflow-x: hidden;
-            background-color: #fafafa;
+            /* Latar belakang dinamis halus (Sama dengan Kontak) */
+            background-image: radial-gradient(circle at 15% 50%, rgba(93, 155, 155, 0.08), transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(93, 155, 155, 0.08), transparent 25%);
         }
 
         a { text-decoration: none; }
         ul { list-style: none; }
 
-        /* Container Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        /* Container Standard */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header & Navbar (SAMA DENGAN INDEX) */
+        /* ========================================= */
+        /* HEADER (Sama Persis dengan Kontak)        */
+        /* ========================================= */
         header {
-            background-color: var(--bg-card);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            position: sticky; top: 0; z-index: 1000;
         }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
+        header .container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
-        /* Buttons */
-        .telegram-button a, .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-block;
+        .telegram-button a {
+            background-color: var(--primary); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block;
         }
+        .telegram-button a:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(93, 155, 155, 0.4); }
 
-        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
-
-        /* --- STYLING KHUSUS KONTEN FAQ --- */
-        main { padding: 60px 0; }
-        
-        .faq-hero {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+        /* ========================================= */
+        /* HERO SECTION                              */
+        /* ========================================= */
+        main { padding: 60px 0 100px; }
+        .faq-hero { text-align: center; margin-bottom: 60px; }
         
         .badge { 
-            background: #e0f2f1; 
-            color: var(--primary); 
-            padding: 5px 15px; 
-            border-radius: 20px; 
-            font-size: 0.9rem; 
-            font-weight: 500; 
+            background: var(--primary-light); color: var(--primary); padding: 8px 20px; 
+            border-radius: 50px; font-size: 0.95rem; font-weight: 600; display: inline-block;
+            margin-bottom: 20px; animation: pulseBadge 2s infinite;
         }
+        @keyframes pulseBadge {
+            0% { box-shadow: 0 0 0 0 rgba(93, 155, 155, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(93, 155, 155, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(93, 155, 155, 0); }
+        }
+        
+        .faq-hero h1 { font-size: 3rem; font-weight: 800; color: var(--text-dark); margin-bottom: 15px;}
+        .faq-hero p { color: var(--text-light); max-width: 650px; margin: 0 auto; font-size: 1.15rem; }
 
-        .faq-hero h1 { margin: 15px 0; font-size: 2.5rem;}
-        .faq-hero p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
-
-        .faq-list {
-            max-width: 800px;
+        /* ========================================= */
+        /* FAQ GRID CARDS (KLIK UNTUK POP-UP)        */
+        /* ========================================= */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .faq-item {
-            background: var(--bg-card);
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 20px;
-            font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--text-dark);
+        .faq-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 35px 30px;
+            border-radius: 24px;
+            text-align: center;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
         }
 
-        .faq-answer {
-            padding: 0 20px 20px;
-            color: var(--text-light);
-            display: none; /* Disembunyikan secara default, bisa dimunculkan via JS */
+        .faq-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
         }
 
-        .faq-cta {
-            margin-top: 60px;
-            text-align: center;
-            background: #eaf2ef;
-            padding: 50px 20px;
-            border-radius: 15px;
+        .faq-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(93, 155, 155, 0.15);
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.9);
         }
+        .faq-card:hover::before { opacity: 1; }
 
-        .faq-cta h2 { margin-bottom: 15px; }
-        .faq-cta p { margin-bottom: 25px; color: var(--text-light); }
+        .faq-card-icon {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+        .faq-card:hover .faq-card-icon { transform: scale(1.1) rotate(5deg); }
+
+        .faq-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; position: relative; z-index: 2;}
         
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            background-color: var(--bg-card);
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            margin-top: 40px;
-            color: var(--text-light);
+        .faq-card .click-hint {
+            display: inline-block; font-size: 0.9rem; font-weight: 600; color: var(--primary);
+            background: var(--primary-light); padding: 5px 15px; border-radius: 50px;
+            transition: 0.3s; position: relative; z-index: 2;
         }
-        
-        .text-center { text-align: center; }
+        .faq-card:hover .click-hint { background: var(--primary); color: white; }
+
+        /* Animasi Masuk */
+        .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+        .d-1 { transition-delay: 0.1s; } .d-2 { transition-delay: 0.2s; } .d-3 { transition-delay: 0.3s; }
+
+        /* ========================================= */
+        /* MODAL POP-UP JAWABAN FAQ (SUPER KEREN!)   */
+        /* ========================================= */
+        .faq-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .faq-modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .faq-modal-content {
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,245,245,0.95));
+            width: 90%; max-width: 550px;
+            padding: 50px 40px; border-radius: 35px; text-align: center; position: relative;
+            /* Efek Animasi Bouncy dari bawah */
+            transform: scale(0.7) translateY(100px); opacity: 0;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.6) inset, 0 10px 40px rgba(93, 155, 155, 0.3);
+        }
+        .faq-modal-overlay.active .faq-modal-content { transform: scale(1) translateY(0); opacity: 1; }
+
+        .faq-modal-close {
+            position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.05); 
+            width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: none; font-size: 1.3rem; color: var(--text-light); cursor: pointer; transition: 0.3s;
+        }
+        .faq-modal-close:hover { background: #ef4444; color: white; transform: rotate(90deg) scale(1.1); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);}
+
+        .faq-modal-icon-top {
+            font-size: 3.5rem; color: var(--primary); margin-bottom: 20px;
+            animation: bounceFloat 3s infinite; display: inline-block;
+        }
+        @keyframes bounceFloat { 
+            0%, 100% { transform: translateY(0); filter: drop-shadow(0 5px 5px rgba(93, 155, 155, 0.2));} 
+            50% { transform: translateY(-10px); filter: drop-shadow(0 15px 15px rgba(93, 155, 155, 0.4));} 
+        }
+
+        #dynamicFaqTitle { font-size: 1.6rem; color: var(--text-dark); font-weight: 800; margin-bottom: 15px; line-height: 1.3;}
+        #dynamicFaqAnswer { font-size: 1.1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 0;}
+
+        /* FOOTER */
+        footer { text-align: center; padding: 30px 0; background-color: var(--bg-card); color: var(--text-light); font-size: 0.95rem; }
+
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .faq-modal-content { padding: 40px 25px; }
+            #dynamicFaqTitle { font-size: 1.4rem; }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- ========================================= -->
-    <!-- HEADER -->
-    <!-- ========================================= -->
+    <!-- HEADER (Sudah sama persis dengan Kontak) -->
     <header>
         <div class="container">
             <div class="logo">
@@ -200,7 +216,6 @@
             </div>
             <nav>
                 <ul>
-                    <!-- CLASS ACTIVE DIPINDAH KE FAQ -->
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">Tentang</a></li>
                     <li><a href="articles.html">Artikel</a></li>
@@ -217,128 +232,138 @@
         </div>
     </header>
 
-    <!-- ========================================= -->
-    <!-- MAIN CONTENT -->
-    <!-- ========================================= -->
     <main>
-        
         <!-- HERO SECTION -->
-        <section class="faq-hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="badge">🤔 Bantuan & Informasi</span>
-                    <h1>Pertanyaan yang Sering Diajukan</h1>
-                    <p>Temukan jawaban untuk pertanyaan umum seputar website MindCare, fitur chatbot Telegram, dan privasi datamu.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ ACCORDION SECTION -->
-        <section class="faq-section">
-            <div class="container faq-container">
-                
-                <div class="faq-list">
-                    
-                    <!-- FAQ Item 1 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Apa itu MindCare?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>MindCare adalah platform edukasi yang didedikasikan untuk meningkatkan kesadaran akan pentingnya kesehatan mental di kalangan remaja. Kami menyediakan artikel, tips self-care, serta bot Telegram untuk menemani kamu bercerita.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 2 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Apakah layanan MindCare gratis?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Ya, seluruh layanan di website MindCare, termasuk artikel edukasi dan penggunaan chatbot Telegram kami, sepenuhnya gratis dan dapat diakses oleh siapa saja.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 3 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Bagaimana cara menggunakan MindCare Bot di Telegram?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Kamu hanya perlu mengklik tombol "Cerita Sekarang" yang ada di website ini. Kamu akan diarahkan ke aplikasi Telegram/WhatsApp. Tekan "Kirim" untuk memulai percakapan dengan kami.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 4 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Apakah curhatan saya aman dan rahasia?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sangat aman. Kami sangat menghargai privasi kamu. Pesan yang kamu kirimkan tidak akan disebarluaskan atau digunakan untuk kepentingan pihak ketiga.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 5 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Apakah MindCare menggantikan bantuan profesional?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Tidak. MindCare adalah platform edukasi dan dukungan awal (first-aid support). Jika kamu merasa memiliki masalah klinis atau membutuhkan diagnosis, kami sangat menyarankan kamu untuk berkonsultasi langsung dengan ahli kesehatan mental profesional (Psikolog/Psikiater).</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- MORE QUESTIONS CTA -->
-        <section class="faq-cta">
+        <section class="faq-hero reveal">
             <div class="container">
-                <h2>Masih Punya Pertanyaan Lain?</h2>
-                <p>Jika pertanyaanmu belum terjawab di sini, jangan ragu untuk menghubungi kami secara langsung.</p>
-                <a href="contact.html" class="btn-primary">Hubungi Kami</a>
+                <span class="badge"><i class="fa-solid fa-sparkles" style="margin-right: 5px;"></i> Pusat Bantuan MindCare</span>
+                <h1>Ada yang Bisa Kami Bantu?</h1>
+                <p>Klik salah satu kartu di bawah ini untuk melihat jawaban dari pertanyaan yang paling sering diajukan kepada kami.</p>
             </div>
         </section>
 
+        <!-- FAQ GRID CARDS SECTION -->
+        <section class="faq-cards-section">
+            <div class="container">
+                <div class="faq-grid">
+                    
+                    <!-- Kartu FAQ 1 -->
+                    <!-- Data atribut dikirim via fungsi JS -->
+                    <div class="faq-card reveal d-1" onclick="openFaqModal('Apa tujuan utama MindCare dibuat?', 'MindCare dirancang secara khusus untuk menjadi ruang aman pertama bagi remaja. Kami hadir sebagai pendengar yang tidak akan menghakimi (judgement-free), memberikan wawasan edukatif, dan menemani kamu di saat-saat pikiran sedang jenuh.')">
+                        <div class="faq-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h3>Apa tujuan utama MindCare dibuat?</h3>
+                        <span class="click-hint">Lihat Jawaban &rarr;</span>
+                    </div>
+
+                    <!-- Kartu FAQ 2 -->
+                    <div class="faq-card reveal d-2" onclick="openFaqModal('Apakah layanan ini benar-benar gratis?', 'Tentu saja. Kami percaya bahwa setiap remaja berhak mendapatkan akses untuk didengarkan. Seluruh fasilitas di MindCare, mulai dari membaca artikel hingga layanan chat, dapat kamu nikmati secara gratis 100% tanpa biaya tersembunyi.')">
+                        <div class="faq-card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <h3>Apakah layanan ini benar-benar gratis?</h3>
+                        <span class="click-hint">Lihat Jawaban &rarr;</span>
+                    </div>
+
+                    <!-- Kartu FAQ 3 -->
+                    <div class="faq-card reveal d-3" onclick="openFaqModal('Bagaimana langkah untuk mulai bercerita?', 'Cukup klik tombol <strong>Cerita Sekarang</strong> di pojok kanan atas layar kamu. Sistem akan mengarahkanmu ke ruang obrolan WhatsApp kami dengan membawa template sapaan awal. Tinggal tekan kirim!')">
+                        <div class="faq-card-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3>Bagaimana langkah untuk mulai bercerita?</h3>
+                        <span class="click-hint">Lihat Jawaban &rarr;</span>
+                    </div>
+
+                    <!-- Kartu FAQ 4 -->
+                    <div class="faq-card reveal d-1" onclick="openFaqModal('Apakah privasi saya akan terjamin aman?', 'Keamanan dan kenyamananmu adalah prioritas mutlak kami. Setiap kata yang kamu bagikan murni digunakan sebagai bentuk pelepasan emosi. Kami tidak akan pernah menyimpan, mempublikasikan, apalagi membagikan riwayat obrolanmu kepada siapapun.')">
+                        <div class="faq-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Apakah privasi saya akan terjamin aman?</h3>
+                        <span class="click-hint">Lihat Jawaban &rarr;</span>
+                    </div>
+
+                    <!-- Kartu FAQ 5 -->
+                    <div class="faq-card reveal d-2" onclick="openFaqModal('Apakah ini sama dengan konsultasi Psikolog?', '<strong>Tidak.</strong> Kami beroperasi sebagai layanan <i>Psychological First Aid</i> (pertolongan pertama psikologis) oleh teman sebaya. Kami hadir untuk mendengarkan. Jika kondisimu membutuhkan penanganan medis atau diagnosis, kami akan membantumu mencari tenaga profesional (Psikolog/Psikiater).')">
+                        <div class="faq-card-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                        <h3>Apakah ini sama dengan konsultasi Psikolog?</h3>
+                        <span class="click-hint">Lihat Jawaban &rarr;</span>
+                    </div>
+
+                    <!-- Kartu CTA (Bantuan Langsung) -->
+                    <div class="faq-card reveal d-3" style="background: linear-gradient(135deg, var(--primary), var(--primary-hover)); border: none;" onclick="window.location.href='contact.html'">
+                        <div class="faq-card-icon" style="color: white;"><i class="fa-solid fa-paper-plane"></i></div>
+                        <h3 style="color: white;">Belum menemukan jawaban?</h3>
+                        <span class="click-hint" style="background: white; color: var(--primary);">Hubungi Kami Langsung</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- ========================================= -->
     <!-- FOOTER -->
-    <!-- ========================================= -->
     <footer>
-        <div class="container text-center">
+        <div class="container">
             <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- ========================================= -->
-    <!-- JAVASCRIPT UNTUK AKORDION FAQ -->
+    <!-- MASTER MODAL POP-UP UNTUK JAWABAN FAQ   -->
+    <!-- ========================================= -->
+    <div class="faq-modal-overlay" id="answerModal">
+        <div class="faq-modal-content">
+            <button class="faq-modal-close" onclick="closeFaqModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="faq-modal-icon-top"><i class="fa-regular fa-lightbulb"></i></div>
+            
+            <!-- Tempat Judul dan Jawaban disisipkan via JavaScript -->
+            <h3 id="dynamicFaqTitle">Judul Pertanyaan</h3>
+            <p id="dynamicFaqAnswer">Isi jawaban akan muncul di sini secara dinamis.</p>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
     <!-- ========================================= -->
     <script>
-        // Sederhana JS untuk membuat Accordion FAQ berfungsi
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const icon = button.querySelector('.faq-icon');
-                
-                // Toggle display answer
-                if (answer.style.display === "block") {
-                    answer.style.display = "none";
-                    icon.textContent = "+";
-                } else {
-                    answer.style.display = "block";
-                    icon.textContent = "−";
+        // --- 1. Logika Pop-Up (Modal) Dinamis FAQ ---
+        const modalOverlay = document.getElementById('answerModal');
+        const modalTitle = document.getElementById('dynamicFaqTitle');
+        const modalAnswer = document.getElementById('dynamicFaqAnswer');
+
+        // Fungsi dipanggil ketika kartu FAQ diklik
+        function openFaqModal(question, answer) {
+            // Ubah teks di dalam modal sesuai data dari kartu yang diklik
+            modalTitle.innerHTML = question;
+            modalAnswer.innerHTML = answer;
+            
+            // Tampilkan modal
+            modalOverlay.classList.add('active');
+        }
+
+        // Fungsi untuk menutup modal
+        function closeFaqModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        // Tutup modal jika user mengklik area gelap di luar modal
+        modalOverlay.addEventListener('click', function(e) {
+            if(e.target === modalOverlay) {
+                closeFaqModal();
+            }
+        });
+
+        // --- 2. Animasi Scroll (Reveal on Scroll & Load) ---
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function revealElements() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            reveals.forEach(reveal => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
                 }
             });
-        });
+        }
+
+        window.addEventListener('scroll', revealElements);
+        setTimeout(revealElements, 100);
     </script>
 
 </body>
