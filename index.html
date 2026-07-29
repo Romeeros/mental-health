@@ -14,37 +14,39 @@
     <meta name="author" content="MindCare Team">
 
     <!-- ========================================= -->
-    <!-- Google Fonts -->
+    <!-- Favicon (Logo di Tab Browser) -->
+    <!-- ========================================= -->
+    <link rel="icon" type="image/png" href="mindcare.png">
+
+    <!-- ========================================= -->
+    <!-- Google Fonts & FontAwesome -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- ========================================= -->
-    <!-- INTERNAL CSS (Gaya Tampilan Anti-Berantakan) -->
+    <!-- INTERNAL CSS -->
     <!-- ========================================= -->
     <style>
         /* CSS Reset & Variables */
         :root {
             --primary: #5d9b9b;
             --primary-hover: #4a7c7c;
+            --primary-light: #e6f2f2;
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #f7fbf8;
             --bg-card: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            /* PERBAIKAN UTAMA: Memastikan body block, tidak menyamping */
             display: block !important; 
             overflow-x: hidden;
             background-color: #fafafa;
@@ -54,13 +56,8 @@
         ul { list-style: none; }
 
         /* Container Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* PERBAIKAN: Memastikan semua section berbaris dari atas ke bawah */
         section {
             display: block !important;
             padding: 80px 0;
@@ -72,115 +69,188 @@
         header {
             background-color: var(--bg-card);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
         }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
+        header .container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
         /* Buttons */
         .telegram-button a, .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-block;
+            background-color: var(--primary); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block;
         }
-        
         .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-block;
+            background-color: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block;
         }
-
-        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
-        .btn-secondary:hover { background-color: var(--primary); color: white; }
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(93, 155, 155, 0.3); }
+        .btn-secondary:hover { background-color: var(--primary); color: white; transform: translateY(-2px); }
 
         /* Hero Section */
         .hero { background-color: var(--bg-light); padding: 60px 0; }
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-        
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: 3rem; line-height: 1.2; margin: 15px 0; color: #1a1a1a; }
         .hero-text p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; }
         .hero-button { display: flex; gap: 15px; }
-        .badge { background: #e0f2f1; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+        .badge { background: #e0f2f1; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; display: inline-block; margin-bottom: 10px;}
         .hero-image { flex: 1; text-align: center; }
-        .hero-image img { max-width: 100%; height: auto; }
+        .hero-image img { max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); animation: floatImg 4s ease-in-out infinite; }
+
+        @keyframes floatImg {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
 
         /* Grids (Fitur, Artikel, Mood) */
         .feature-grid, .article-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;
         }
 
-        /* Cards */
+        /* Cards (General) */
         .card {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-card); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative; overflow: hidden; cursor: pointer;
         }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(93, 155, 155, 0.15); }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        /* Mood Cards Khusus */
+        .mood-card { text-align: center; border: 2px solid transparent; }
+        .mood-card:hover { border-color: var(--primary-light); }
+        .mood-card h1 { font-size: 4rem; margin: 0; transition: transform 0.3s; }
+        .mood-card:hover h1 { transform: scale(1.15); }
+
+        /* Feature Cards Khusus */
+        .feature-card h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.3rem;}
+        .feature-card .click-hint { font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: 15px; display: inline-block; opacity: 0; transform: translateX(-10px); transition: 0.3s;}
+        .feature-card:hover .click-hint { opacity: 1; transform: translateX(0); }
+
+        /* ========================================= */
+        /* CARA BERCERITA (KECE BADAI) */
+        /* ========================================= */
+        .how-it-works { background: #1e293b; color: white; padding: 100px 0; overflow: hidden; position: relative;}
+        .how-it-works h2 { color: white; text-align: center; font-size: 2.2rem; margin-bottom: 15px;}
+        .how-it-works p { color: #94a3b8; text-align: center; max-width: 600px; margin: 0 auto 60px; font-size: 1.1rem;}
+        
+        .step-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
         }
 
-        .card h3 { margin-bottom: 15px; color: var(--primary); }
+        /* Garis penghubung antar step (Desktop) */
+        @media (min-width: 769px) {
+            .step-container::before {
+                content: '';
+                position: absolute;
+                top: 40px;
+                left: 15%;
+                right: 15%;
+                height: 3px;
+                background: linear-gradient(90deg, rgba(93,155,155,0) 0%, rgba(93,155,155,1) 50%, rgba(93,155,155,0) 100%);
+                z-index: -1;
+                opacity: 0.5;
+            }
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(93, 155, 155, 0.2);
+        }
+
+        .step-number {
+            width: 80px; height: 80px;
+            background: var(--bg-card);
+            color: var(--primary);
+            font-size: 2rem; font-weight: 700;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: -80px auto 20px; /* Overlap ke atas */
+            box-shadow: 0 0 25px rgba(93, 155, 155, 0.5);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .step-card:hover .step-number {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 40px var(--primary);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .step-card h3 { font-size: 1.4rem; color: #f8fafc; margin-bottom: 15px; }
+        .step-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.7;}
 
         /* Articles */
-        .latest-article article {
-            background: white;
-            border-radius: 15px;
+        .latest-article article { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding-bottom: 25px; text-align: center; transition: 0.3s; }
+        .latest-article article:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .latest-article article img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 20px; background: #eee; }
+        .latest-article article h3 { font-size: 1.2rem; margin: 0 20px 15px; color: var(--text-dark);}
+        .latest-article article a { color: var(--primary); font-weight: 600; background: var(--primary-light); padding: 8px 20px; border-radius: 50px; display: inline-block; transition: 0.3s;}
+        .latest-article article a:hover { background: var(--primary); color: white;}
+
+        /* ========================================= */
+        /* MODAL POP-UP (GLASSMORPHISM & BOUNCY)     */
+        /* ========================================= */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px); /* Keren Badai Glassmorphism */
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%; max-width: 550px;
+            border-radius: 24px;
+            position: relative;
+            transform: scale(0.6) translateY(100px); /* Start animasi dari bawah */
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi Bouncy */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding-bottom: 20px;
             text-align: center;
         }
-        .latest-article article img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; background: #eee; }
-        .latest-article article h3 { font-size: 1.1rem; margin: 0 15px 15px; }
-        .latest-article article a { color: var(--primary); font-weight: 600; }
+
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+
+        .modal-header { padding: 40px 30px 20px; background: linear-gradient(135deg, var(--primary-light), #fff); position: relative;}
+        .modal-icon { font-size: 4.5rem; display: inline-block; margin-bottom: 15px; animation: floatImg 3s infinite ease-in-out;}
+        .modal-title { font-size: 1.6rem; color: var(--text-dark); margin: 0; font-weight: 700; }
+        .modal-body { padding: 10px 30px 40px; color: var(--text-light); font-size: 1.05rem; line-height: 1.8; }
+        
+        .btn-close {
+            position: absolute; top: 15px; right: 20px; background: rgba(0,0,0,0.05); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center;
+        }
+        .btn-close:hover { background: #ef4444; color: white; transform: rotate(90deg); }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-content { flex-direction: column; text-align: center; }
             .hero-button { justify-content: center; flex-wrap: wrap; }
-            nav ul { display: none; /* Hide nav on mobile for simplicity in this fix */ }
+            nav ul { display: none; }
+            .step-container { grid-template-columns: 1fr; gap: 60px; margin-top: 50px;}
         }
     </style>
 </head>
@@ -232,13 +302,13 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="aset/awal.png" alt="Mental Health Illustration" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <img src="aset/awal.png" alt="Mental Health Illustration">
             </div>
         </div>
     </section>
 
     <!-- ========================================= -->
-    <!-- DAILY CHECK-IN (INTERAKTIF) -->
+    <!-- DAILY CHECK-IN (INTERAKTIF POP-UP) -->
     <!-- ========================================= -->
     <section class="daily-checkin" style="background-color: #eaf2ef;">
         <div class="container" style="text-align: center;">
@@ -247,24 +317,24 @@
             
             <div class="mood-cards feature-grid">
                 <!-- Kartu Senang -->
-                <div class="card" onclick="showQuote('happy', this)" style="cursor: pointer; user-select: none;">
-                    <h1 style="font-size: 3rem; margin: 0;">😊</h1>
-                    <h3 style="color: #333; margin-top: 10px;">Senang</h3>
-                    <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
+                <div class="card mood-card" onclick="openMoodModal('happy')">
+                    <h1>😊</h1>
+                    <h3>Senang</h3>
+                    <p style="font-size: 0.95rem; color: var(--primary); font-weight: 500;">Klik untuk pesanmu!</p>
                 </div>
                 
                 <!-- Kartu Lelah/Datar -->
-                <div class="card" onclick="showQuote('neutral', this)" style="cursor: pointer; user-select: none;">
-                    <h1 style="font-size: 3rem; margin: 0;">😐</h1>
-                    <h3 style="color: #333; margin-top: 10px;">Lelah / Datar</h3>
-                    <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
+                <div class="card mood-card" onclick="openMoodModal('neutral')">
+                    <h1>😐</h1>
+                    <h3>Lelah / Datar</h3>
+                    <p style="font-size: 0.95rem; color: var(--primary); font-weight: 500;">Klik untuk pesanmu!</p>
                 </div>
                 
                 <!-- Kartu Sedih/Cemas -->
-                <div class="card" onclick="showQuote('sad', this)" style="cursor: pointer; user-select: none;">
-                    <h1 style="font-size: 3rem; margin: 0;">😢</h1>
-                    <h3 style="color: #333; margin-top: 10px;">Sedih / Cemas</h3>
-                    <p class="quote-text" style="font-size: 0.9rem; transition: opacity 0.3s ease; min-height: 60px;">Klik untuk melihat pesanmu hari ini!</p>
+                <div class="card mood-card" onclick="openMoodModal('sad')">
+                    <h1>😢</h1>
+                    <h3>Sedih / Cemas</h3>
+                    <p style="font-size: 0.95rem; color: var(--primary); font-weight: 500;">Klik untuk pesanmu!</p>
                 </div>
             </div>
         </div>
@@ -284,55 +354,64 @@
     </section>
 
     <!-- ========================================= -->
-    <!-- FEATURE -->
+    <!-- FEATURE (INTERAKTIF POP-UP) -->
     <!-- ========================================= -->
     <section class="features" style="background-color: #f7fbf8;">
         <div class="container">
             <h2 style="text-align: center;">Ruang Nyaman di MindCare</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">Pilih fitur di bawah ini untuk melihat detailnya.</p>
+            
             <div class="feature-grid">
-                <div class="card">
-                    <h3 style="color: var(--primary);">📖 Bacaan Santai</h3>
-                    <p>Temukan artikel yang relevan tentang cara menghadapi stres, kecemasan, burnout, hingga overthinking dengan bahasa yang mudah dipahami.</p>
+                <div class="card feature-card" onclick="openFeatureModal('bacaan')">
+                    <h3><i class="fa-solid fa-book-open"></i> Bacaan Santai</h3>
+                    <p>Temukan artikel yang relevan tentang cara menghadapi stres, kecemasan, hingga overthinking.</p>
+                    <span class="click-hint">Lihat Detail &rarr;</span>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--primary);">🌿 Self Care Corner</h3>
-                    <p>Panduan ringan dan langkah-langkah praktis untuk merawat perasaanmu dan menjaga ketenangan di tengah hari yang sibuk.</p>
+                <div class="card feature-card" onclick="openFeatureModal('selfcare')">
+                    <h3><i class="fa-solid fa-leaf"></i> Self Care Corner</h3>
+                    <p>Panduan ringan dan langkah praktis untuk merawat perasaanmu di tengah hari yang sibuk.</p>
+                    <span class="click-hint">Lihat Detail &rarr;</span>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--primary);">❓ Sudut Tanya (FAQ)</h3>
-                    <p>Jawaban atas pertanyaan-pertanyaan yang sering mengganjal di pikiran banyak remaja mengenai kesehatan emosional.</p>
+                <div class="card feature-card" onclick="openFeatureModal('faq')">
+                    <h3><i class="fa-solid fa-circle-question"></i> Sudut Tanya</h3>
+                    <p>Jawaban atas pertanyaan-pertanyaan yang sering mengganjal di pikiran banyak remaja.</p>
+                    <span class="click-hint">Lihat Detail &rarr;</span>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--primary);">💬 Teman Bercerita</h3>
-                    <p>Akses langsung untuk membagikan perasaanmu. Kami siap mendengarkan tanpa menghakimi, dengan privasi dan anonimitas yang 100% terjaga.</p>
+                <div class="card feature-card" onclick="openFeatureModal('cerita')">
+                    <h3><i class="fa-solid fa-comments"></i> Teman Bercerita</h3>
+                    <p>Akses langsung untuk membagikan perasaanmu. Kami siap mendengarkan tanpa menghakimi.</p>
+                    <span class="click-hint">Lihat Detail &rarr;</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========================================= -->
-    <!-- HOW IT WORKS -->
+    <!-- HOW IT WORKS (DESAIN BARU KECE BADAI) -->
     <!-- ========================================= -->
     <section class="how-it-works">
         <div class="container">
-            <h2 style="text-align: center;">Cara Bercerita Bersama Kami</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--text-light);">Hanya butuh tiga langkah sederhana jika kamu butuh seseorang untuk mendengarkan keluh kesahmu hari ini.</p>
+            <h2>Cara Bercerita Bersama Kami</h2>
+            <p>Hanya butuh tiga langkah sederhana jika kamu butuh seseorang untuk mendengarkan keluh kesahmu hari ini. Privasimu 100% terjaga.</p>
             
-            <div class="feature-grid">
-                <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">1</div>
-                    <h3 style="color: #333;">Klik Tombol Cerita</h3>
-                    <p>Tekan tombol "Cerita Sekarang" yang ada di website ini. Pastikan aplikasi WhatsApp atau Telegram sudah terpasang.</p>
+            <div class="step-container">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-number"><i class="fa-solid fa-hand-pointer"></i></div>
+                    <h3>1. Klik Tombol Cerita</h3>
+                    <p>Tekan tombol "Cerita Sekarang" yang tersebar di website ini. Kamu akan langsung diarahkan ke ruang obrolan aman via WhatsApp kami.</p>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">2</div>
-                    <h3 style="color: #333;">Kirim Pesan Otomatis</h3>
-                    <p>Kamu tidak perlu bingung harus memulai dari mana. Pesan pembuka sudah tersedia secara otomatis, cukup tekan kirim.</p>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-number"><i class="fa-regular fa-paper-plane"></i></div>
+                    <h3>2. Kirim Pesan Sapaan</h3>
+                    <p>Tidak perlu bingung merangkai kata pertama. Kami sudah menyiapkan pesan pembuka otomatis, kamu hanya tinggal menekan tombol kirim.</p>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;">3</div>
-                    <h3 style="color: #333;">Mulai Berbagi Rasa</h3>
-                    <p>Utarakan apa saja yang membuatmu sedih atau lelah. Semuanya rahasia, aman, dan akan kami dengarkan dengan sepenuh hati.</p>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-number"><i class="fa-solid fa-heart-circle-check"></i></div>
+                    <h3>3. Mulai Berbagi Rasa</h3>
+                    <p>Tumpahkan semua yang mengganjal di hatimu. Tim kami siap menjadi pendengar setia tanpa memberikan penilaian atau penghakiman.</p>
                 </div>
             </div>
         </div>
@@ -383,16 +462,16 @@
         <div class="container" style="text-align: center;">
             <h2 style="color: #d32f2f; margin-bottom: 15px;">🚨 Harap Diingat</h2>
             <p style="max-width: 700px; margin: 0 auto 40px; color: #555;">
-                Website MindCare adalah <b>ruang aman untuk berbagi cerita awal</b>, bukan layanan diagnosis medis maupun pengganti psikolog profesional. Jika kamu merasa berada dalam kondisi krisis yang membahayakan diri sendiri, tolong segera hubungi layanan darurat berikut:
+                Website MindCare adalah <b>ruang aman untuk berbagi cerita awal</b>, bukan layanan diagnosis medis maupun pengganti psikolog profesional. Jika kamu merasa berada dalam kondisi krisis, segera hubungi layanan darurat berikut:
             </p>
             
             <div class="feature-grid" style="gap: 20px; max-width: 800px; margin: 0 auto;">
-                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left;">
+                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left; background: white;">
                     <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Call Center Halo Kemenkes</h3>
                     <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; color: #333;">1500-567</p>
                     <p style="font-size: 0.9rem; color: #666;">Layanan dukungan psikososial resmi dari Kementerian Kesehatan RI.</p>
                 </div>
-                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left;">
+                <div class="card" style="border-left: 5px solid #d32f2f; text-align: left; background: white;">
                     <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Layanan Sejiwa (KSP)</h3>
                     <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; color: #333;">119 ext. 8</p>
                     <p style="font-size: 0.9rem; color: #666;">Layanan edukasi dan konseling psikologi darurat.</p>
@@ -401,49 +480,129 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer style="background: white; text-align: center; padding: 30px 0; border-top: 1px solid #eee;">
+        <div class="container">
+            <p style="color: var(--text-light);">© 2026 MindCare. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     <!-- ========================================= -->
-    <!-- JAVASCRIPT UNTUK MOOD CARDS -->
+    <!-- STRUKTUR MODAL (POP-UP KECE BADAI)        -->
+    <!-- ========================================= -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="modal-content">
+            <button class="btn-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <span id="modalIcon" class="modal-icon">🌟</span>
+                <h3 id="modalTitle" class="modal-title">Judul</h3>
+            </div>
+            <div id="modalBody" class="modal-body">
+                Isi pesan atau deskripsi di sini.
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT: LOGIKA MODAL POP-UP           -->
     <!-- ========================================= -->
     <script>
-        const quotes = {
-            happy: [
-                "Bagus sekali! Bagikan energi positifmu ke orang sekitarmu hari ini. ✨",
-                "Yay! Jangan lupa bersyukur untuk hal-hal kecil hari ini. 🌟",
-                "Senang mendengarnya! Teruslah bersinar! ☀️",
-                "Pertahankan senyummu, dunia butuh energi positifmu hari ini! 🌻",
-                "Hari yang indah! Jadikan momen ini sebagai penyemangatmu ke depan. 🚀"
-            ],
-            neutral: [
-                "Tidak apa-apa merasa biasa saja. Berikan dirimu waktu untuk istirahat. 🍃",
-                "Ambil napas dalam-dalam. Kamu sudah melakukan yang terbaik sejauh ini. ☁️",
-                "Hari yang tenang adalah berkah. Nikmati jeda sejenak. ☕",
-                "Jangan paksakan dirimu. Tidak apa-apa untuk sekadar mengalir hari ini. 🌊",
-                "Fokus pada masa sekarang. Sesekali hidup tanpa ekspektasi tinggi itu menenangkan. 🌱"
-            ],
-            sad: [
-                "Perasaanmu valid. Menangislah jika itu membuatmu lebih lega. 🫂",
-                "Kamu tidak sendirian. Badai pasti berlalu, pelan-pelan saja. 🌧️",
-                "Terima kasih sudah bertahan sejauh ini. Kamu jauh lebih kuat dari yang kamu kira. ❤️",
-                "Hari yang berat bukan berarti kehidupan yang buruk. Peluk hangat untukmu. 🩹",
-                "Jangan terlalu keras pada dirimu sendiri. Istirahatlah, besok kita coba lagi ya. 🌙"
-            ]
+        // Data Pesan Mood (Berubah-ubah layaknya AI)
+        const moodData = {
+            'happy': {
+                icon: '😊',
+                title: 'Energi yang Luar Biasa!',
+                quotes: [
+                    "Bagus sekali! Bagikan energi positifmu ke orang sekitarmu hari ini. Keberadaanmu membawa cahaya bagi orang lain. ✨",
+                    "Yay! Jangan lupa bersyukur untuk hal-hal kecil hari ini. Kebahagiaan kecil ini sangat pantas kamu rayakan. 🌟",
+                    "Pertahankan senyummu, dunia butuh energi positifmu hari ini! Jadikan momen bahagia ini sebagai baterai semangatmu. 🌻"
+                ]
+            },
+            'neutral': {
+                icon: '😐',
+                title: 'Hari yang Damai',
+                quotes: [
+                    "Tidak apa-apa merasa biasa saja. Berikan dirimu waktu untuk istirahat, kamu tidak harus selalu produktif setiap detik. 🍃",
+                    "Hari yang tenang adalah berkah. Nikmati jeda sejenak dengan secangkir minuman hangat kesukaanmu. ☕",
+                    "Fokus pada masa sekarang. Sesekali hidup mengalir tanpa ekspektasi tinggi itu sangat menenangkan. 🌱"
+                ]
+            },
+            'sad': {
+                icon: '😢',
+                title: 'Kami Mengerti Perasaanmu...',
+                quotes: [
+                    "Perasaanmu valid. Menangislah jika itu membuatmu lebih lega. Mengeluarkan air mata bukanlah tanda kelemahan. 🫂",
+                    "Terima kasih sudah bertahan sejauh ini. Hari ini mungkin berat, tapi kamu jauh lebih kuat dari yang kamu kira. ❤️",
+                    "Jangan terlalu keras pada dirimu sendiri. Istirahatlah, besok matahari akan terbit lagi dan kita coba lagi perlahan ya. 🌙"
+                ]
+            }
         };
 
-        function showQuote(mood, element) {
-            const moodQuotes = quotes[mood];
-            const randomIndex = Math.floor(Math.random() * moodQuotes.length);
-            const randomQuote = moodQuotes[randomIndex];
-            const pElement = element.querySelector('.quote-text');
+        // Data Penjelasan Fitur MindCare
+        const featureData = {
+            'bacaan': {
+                icon: '📖',
+                title: 'Bacaan Santai & Edukatif',
+                desc: 'Kami menyediakan berbagai artikel yang ditulis dengan bahasa yang ramah remaja. Di sini kamu bisa belajar cara membedakan stres biasa dengan *burnout*, memahami apa itu *anxiety*, dan bagaimana cara sehat menghadapi overthinking di malam hari. Pengetahuan adalah langkah awal untuk menyembuhkan diri!'
+            },
+            'selfcare': {
+                icon: '🌿',
+                title: 'Self Care Corner',
+                desc: 'Area khusus di mana kamu bisa menemukan panduan praktis untuk merawat diri (Self-Care). Mulai dari latihan pernapasan (*mindfulness*), cara memulai *journaling* untuk melepaskan emosi, hingga rutinitas kecil yang ampuh memperbaiki *mood* harianmu.'
+            },
+            'faq': {
+                icon: '❓',
+                title: 'Sudut Tanya (FAQ)',
+                desc: 'Punya pertanyaan seputar kesehatan mental tapi malu bertanya? Kami merangkum pertanyaan-pertanyaan yang paling sering ditanyakan oleh remaja dan menjawabnya dengan jelas. Mulai dari "Apakah normal merasa sedih tanpa alasan?" hingga "Kapan saya harus ke psikolog?".'
+            },
+            'cerita': {
+                icon: '💬',
+                title: 'Teman Bercerita',
+                desc: 'Fitur utama MindCare! Terkadang, obat terbaik adalah dengan didengarkan. Melalui tombol ini, kamu akan terhubung dengan tim kami via WhatsApp. Ceritakan apa saja yang membebanimu. Kami jamin 100% obrolan ini aman, anonim, dan bebas dari penghakiman (judgement-free zone).'
+            }
+        };
+
+        // Elemen Modal
+        const modal = document.getElementById('globalModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        // Fungsi Buka Modal untuk Mood
+        function openMoodModal(mood) {
+            const data = moodData[mood];
+            const randomQuote = data.quotes[Math.floor(Math.random() * data.quotes.length)];
             
-            pElement.style.opacity = 0;
+            modalIcon.textContent = data.icon;
+            modalTitle.textContent = data.title;
+            // Gunakan inline styling agar quote terlihat menonjol
+            modalBody.innerHTML = `<p style="font-size: 1.15rem; color: var(--primary); font-weight: 500;">"${randomQuote}"</p>`;
             
-            setTimeout(() => {
-                pElement.innerText = randomQuote;
-                pElement.style.opacity = 1;
-                pElement.style.color = "var(--primary)"; 
-                pElement.style.fontWeight = "600";
-            }, 300); 
+            modal.classList.add('active');
         }
+
+        // Fungsi Buka Modal untuk Fitur
+        function openFeatureModal(feature) {
+            const data = featureData[feature];
+            
+            modalIcon.textContent = data.icon;
+            modalTitle.textContent = data.title;
+            modalBody.innerHTML = `<p>${data.desc}</p>`;
+            
+            modal.classList.add('active');
+        }
+
+        // Fungsi Tutup Modal
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Tutup modal jika user mengklik area gelap di luar modal
+        modal.addEventListener('click', function(e) {
+            if(e.target === modal) {
+                closeModal();
+            }
+        });
     </script>
 
 </body>

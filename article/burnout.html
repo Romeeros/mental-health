@@ -14,117 +14,396 @@
     <meta name="keywords" content="Burnout, Lelah Mental, Sekolah, Remaja, Kesehatan Mental, Produktivitas, Stres">
 
     <!-- ========================================= -->
-    <!-- CSS -->
+    <!-- Google Fonts & FontAwesome -->
     <!-- ========================================= -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/footer.css">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Styling khusus untuk halaman bacaan artikel -->
+    <!-- ========================================= -->
+    <!-- INTERNAL CSS (ROMBAK TOTAL) -->
+    <!-- ========================================= -->
     <style>
-        .article-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --primary-light: #e6f2f2;
+            --text-dark: #1e293b;
+            --text-body: #334155;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --danger: #ef4444;
+            --danger-light: #fef2f2;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
             font-family: 'Poppins', sans-serif;
+            color: var(--text-body);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Standard */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Container Khusus Membaca (Lebih Sempit agar nyaman di mata) */
+        .reading-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER (Tetap sama agar seragam dengan halaman lain) */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        .telegram-button a {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .telegram-button a:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+
+        /* ========================================= */
+        /* STICKY BACK NAVIGATION */
+        /* ========================================= */
+        .sticky-back-nav {
+            position: sticky;
+            top: 80px; /* Sesuaikan dengan tinggi header */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
         }
         
-        .article-header h1 {
-            font-size: 2.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .back-link:hover { color: var(--primary-hover); transform: translateX(-5px); }
+
+        /* ========================================= */
+        /* ARTICLE STYLING */
+        /* ========================================= */
+        .article-wrapper {
+            background: var(--bg-card);
+            padding: 50px 0 80px;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            margin-bottom: 40px;
+        }
+
+        .article-header { text-align: center; margin-bottom: 40px; }
+        
+        .article-category {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
             line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .article-meta {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
         }
+
+        .article-meta span { display: flex; align-items: center; gap: 6px; }
 
         .article-hero-img {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 400px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
+        /* Typography Konten Artikel */
         .article-content {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #34495e;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #334155;
+        }
+        
+        /* Menggunakan font Lora (Serif) untuk isi artikel agar lebih enak dibaca seperti koran/blog medium */
+        .article-content p, .article-content ul, .article-content ol {
+            font-family: 'Lora', serif;
+            margin-bottom: 25px;
         }
 
         .article-content h2 {
-            color: #2c3e50;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin: 50px 0 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .article-content p {
-            margin-bottom: 20px;
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
         .article-content ul {
-            margin-bottom: 20px;
             padding-left: 20px;
+            list-style-type: none;
         }
 
-        .article-content li {
-            margin-bottom: 10px;
+        .article-content ul li {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        .article-content ul li::before {
+            content: '\f058'; /* Icon Check Circle Solid */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .article-content strong {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Komponen Tambahan Artikel */
+        .highlight-quote {
+            position: relative;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--primary-hover);
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f7fbf8, #eaf2ef);
+            border-radius: 20px;
+            border-left: 6px solid var(--primary);
+            font-family: 'Lora', serif;
+        }
+
+        .highlight-quote::before {
+            content: '\f10d'; /* Quote icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            color: var(--primary);
+            opacity: 0.2;
         }
 
         .chart-container {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            margin: 30px 0;
-            border: 1px solid #e9ecef;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
         }
 
         .chart-container img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .chart-caption {
-            font-size: 0.85rem;
-            color: #6c757d;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 15px;
             font-style: italic;
         }
 
         .support-box {
-            background-color: #fdf5e6;
-            border-left: 5px solid #f39c12;
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 40px 0;
-        }
-
-        .support-box h3 {
-            color: #d35400;
-            margin-top: 0;
-        }
-
-        .highlight-quote {
-            font-size: 1.25rem;
-            font-style: italic;
-            color: #6a9c89;
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            padding: 40px;
+            border-radius: 24px;
+            margin: 60px 0 20px;
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            border-top: 1px solid #e9ecef;
-            border-bottom: 1px solid #e9ecef;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-box::before {
+            content: '\f4b6'; /* Hand holding heart icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 10rem;
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            color: #f59e0b;
+            opacity: 0.05;
+        }
+
+        .support-box h3 { color: #b45309; margin-bottom: 15px; font-size: 1.5rem; font-family: 'Poppins', sans-serif;}
+        .support-box p { color: #78350f; font-size: 1.05rem; margin-bottom: 25px; position: relative; z-index: 1;}
+        
+        .support-btn {
+            display: inline-block;
+            background-color: #d97706;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+        
+        .support-btn:hover { background-color: #b45309; transform: translateY(-3px); color: white;}
+
+        /* ========================================= */
+        /* EMERGENCY SECTION (ROMBAK MODERN) */
+        /* ========================================= */
+        .emergency-section {
+            padding: 60px 0;
+            background-color: transparent;
+        }
+
+        .emergency-header { text-align: center; margin-bottom: 40px; }
+        .emergency-header h2 { color: var(--danger); font-size: 2rem; margin-bottom: 10px;}
+        .emergency-header p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .emergency-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--danger-light);
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--danger);
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1);
+            border-color: #fca5a5;
+        }
+
+        .e-icon {
+            font-size: 2.5rem;
+            color: var(--danger);
+            margin-bottom: 15px;
+        }
+
+        .e-title { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 5px; font-weight: 600;}
+        .e-number { font-size: 1.8rem; font-weight: 700; color: var(--danger); margin-bottom: 10px; letter-spacing: 1px;}
+        .e-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* FOOTER */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .sticky-back-nav { top: 120px; } /* Adjusting sticky top for expanded mobile header */
+            .article-title { font-size: 1.8rem; }
+            .article-hero-img { height: 250px; }
+            .highlight-quote { padding: 30px 20px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -152,96 +431,114 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">
-                    Curhat Sekarang
-                </a>
+                <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-secondary">Cerita Sekarang</a>"
             </div>
         </div>
     </header>
 
     <!-- ========================================= -->
+    <!-- STICKY BACK NAVIGATION (Baru!) -->
+    <!-- ========================================= -->
+    <div class="sticky-back-nav">
+        <div class="reading-container">
+            <a href="../articles.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Kembali ke Daftar Artikel
+            </a>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
     <!-- MAIN ARTICLE CONTENT -->
     <!-- ========================================= -->
-    <main class="article-container">
-        <!-- Breadcrumb / Tombol Kembali -->
-        <a href="../articles.html" style="color: #6a9c89; text-decoration: none; font-weight: 500;">&larr; Kembali ke Daftar Artikel</a>
-
-        <div class="article-header" style="margin-top: 20px;">
-            <h1>Mengatasi Academic Burnout: Ketika Lelah Fisik dan Mental Menjadi Satu</h1>
-            <div class="article-meta">
-                Ditulis oleh <strong>MindCare Team</strong> | Diperbarui pada 20 Juli 2026 | Waktu baca: 5 Menit
-            </div>
-        </div>
-
-       <img src="../aset/Burnout.png" class="article-hero-img">
-
-        <div class="article-content">
-            <p>Pernahkah kamu terbangun di pagi hari dan merasa benar-benar kehabisan energi, padahal semalam kamu sudah tidur cukup? Kamu menatap layar laptop atau buku pelajaran, namun tidak ada satu pun materi yang bisa masuk ke kepalamu. Jika ya, kamu mungkin sedang mengalami <em>Academic Burnout</em>.</p>
-
-            <p><em>Burnout</em> bukanlah sekadar rasa malas biasa. Ini adalah kondisi kelelahan emosional, fisik, dan mental yang parah akibat stres yang berkepanjangan dan berulang.</p>
-
-            <h2>Apa Pemicunya?</h2>
-            <p>Sebagai pelajar, terutama di masa-masa padat seperti kelas 12, tuntutan akademik bisa terasa sangat menekan. Tumpukan tugas sekolah, tenggat waktu proyek praktik kejuruan yang tiada henti, ujian yang bertubi-tubi, hingga memikirkan persiapan magang atau Praktik Kerja Lapangan (PKL) bisa sangat menguras cadangan energimu. Ketika tubuh dan pikiran dipaksa bekerja tanpa jeda yang layak, sistem internalmu akhirnya "mogok".</p>
-
-            <!-- Bagian Grafik Data -->
-            <div class="chart-container">
-                <!-- Grafik batang persentase pelajar yang mengalami burnout (Data ilustratif berbasis survei umum kesehatan mental pelajar) -->
-                <img src="https://quickchart.io/chart?c={type:'bar',data:{labels:['Kelelahan Fisik','Penurunan Motivasi','Kesulitan Fokus','Sikap Sinis/Apatis'],datasets:[{label:'Persentase Gejala yang Paling Sering Dialami Pelajar',data:[85,78,70,55],backgroundColor:'#f39c12'}]},options:{scales:{yAxes:[{ticks:{min:0,max:100}}]}}}&w=600&h=300" alt="Grafik Gejala Burnout">
-                <div class="chart-caption">
-                    *Survei kesehatan mental menunjukkan tingginya persentase pelajar yang melaporkan gejala utama kelelahan akademik.
-                </div>
-            </div>
-
-            <h2>Kenali Tanda-tandanya</h2>
-            <p>Sering kali kita menyepelekan <em>burnout</em> dan menganggap diri kita hanya "kurang berusaha". Penting untuk mengenali tanda-tandanya agar kamu bisa segera mengambil jeda:</p>
-            <ul>
-                <li><strong>Kelelahan Ekstrem:</strong> Merasa lelah sepanjang waktu, baik secara fisik maupun emosional.</li>
-                <li><strong>Kehilangan Motivasi:</strong> Tugas atau pelajaran yang dulu kamu sukai kini terasa seperti beban yang sangat berat.</li>
-                <li><strong>Sinis dan Apatis:</strong> Mulai merasa tidak peduli dengan nilai, tenggat waktu, atau bahkan masa depan. "Untuk apa aku melakukan semua ini?"</li>
-                <li><strong>Penurunan Performa:</strong> Meskipun kamu menghabiskan waktu berjam-jam untuk belajar atau coding, tidak ada hasil yang memuaskan yang bisa kamu selesaikan.</li>
-            </ul>
-
-            <div class="highlight-quote">
-                "Beristirahat bukanlah tanda kelemahan. Mesin yang paling canggih pun akan rusak jika dipaksa menyala tanpa henti. Kamu adalah manusia, bukan mesin."
-            </div>
-
-            <h2>Langkah Kecil untuk Kembali Pulih</h2>
-            <p>Memulihkan diri dari <em>burnout</em> butuh waktu. Kamu tidak bisa memaksakan diri untuk "langsung sembuh". Cobalah beberapa langkah ini:</p>
-            <ul>
-                <li><strong>Beri Batasan (Boundaries):</strong> Tentukan jam berapa kamu harus berhenti memegang buku atau laptop. Setelah jam tersebut, lakukan hal lain yang tidak berhubungan dengan akademik.</li>
-                <li><strong>Lakukan "Micro-Breaks":</strong> Gunakan teknik Pomodoro. Belajar selama 25 menit, lalu istirahat 5 menit. Jangan gunakan waktu istirahat ini untuk <em>scrolling</em> media sosial, cobalah meregangkan badan atau minum air putih.</li>
-                <li><strong>Turunkan Ekspektasi:</strong> Terimalah kenyataan bahwa kamu tidak harus selalu sempurna di setiap tugas atau proyek. Selesai (done) jauh lebih baik daripada sempurna namun mengorbankan kewarasanmu.</li>
-            </ul>
-
-            <div class="support-box">
-                <h3>Merasa Kewalahan? Mari Tarik Napas Sejenak</h3>
-                <p>Jika beban akademik atau proyek kelompokmu terasa sangat berat hingga membuatmu ingin menangis atau menyerah, jangan memendamnya sendiri. Chatbot Telegram kami selalu aktif 24/7 untuk mendengarkan keluh kesahmu tanpa menghakimi nilaimu.</p>
-                <a href="https://t.me/NamaBotKamu" target="_blank" style="display: inline-block; background-color: #d35400; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 10px;">Ceritakan Lelahmu di Sini &rarr;</a>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- ========================================= -->
-    <!-- EMERGENCY CONTACTS -->
-    <!-- ========================================= -->
-    <section class="emergency" style="background-color: #fff3f3; border-top: 2px solid #ffcaca; padding: 40px 0;">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: #d32f2f;">🚨 Butuh Bantuan Mendesak?</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px; color: #555;">
-                Chatbot kami <b>bukan</b> pengganti profesional. Jika rasa stresmu sudah mengganggu fungsi harian secara drastis atau memunculkan pikiran yang membahayakan diri sendiri, tolong hubungi:
-            </p>
+    <div class="article-wrapper">
+        <main class="reading-container">
             
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #d32f2f; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 300px;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Call Center Halo Kemenkes</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333;">1500-567</p>
-                    <p style="font-size: 0.9rem; color: #666;">Layanan dukungan psikososial.</p>
+            <div class="article-header">
+                <span class="article-category">Kesehatan Mental & Belajar</span>
+                <h1 class="article-title">Mengatasi Academic Burnout: Ketika Lelah Fisik dan Mental Menjadi Satu</h1>
+                
+                <div class="article-meta">
+                    <span><i class="fa-regular fa-user"></i> MindCare Team</span>
+                    <span><i class="fa-regular fa-calendar"></i> 20 Juli 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> Waktu baca: 5 Menit</span>
                 </div>
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #d32f2f; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 300px;">
-                    <h3 style="color: #d32f2f; margin-bottom: 5px; font-size: 1.1rem;">Layanan Sejiwa (KSP)</h3>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333;">119 ext. 8</p>
-                    <p style="font-size: 0.9rem; color: #666;">Layanan edukasi dan konseling.</p>
+            </div>
+
+            <!-- Gambar dengan object-fit cover agar lebih proporsional -->
+            <img src="../aset/Burnout.png" onerror="this.src='https://images.unsplash.com/photo-1555529771-835f59fc5efe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'" class="article-hero-img" alt="Ilustrasi Burnout">
+
+            <div class="article-content">
+                <p>Pernahkah kamu terbangun di pagi hari dan merasa benar-benar kehabisan energi, padahal semalam kamu sudah tidur cukup? Kamu menatap layar laptop atau buku pelajaran, namun tidak ada satu pun materi yang bisa masuk ke kepalamu. Jika ya, kamu mungkin sedang mengalami <strong>Academic Burnout</strong>.</p>
+
+                <p><em>Burnout</em> bukanlah sekadar rasa malas biasa. Ini adalah kondisi kelelahan emosional, fisik, dan mental yang parah akibat stres yang berkepanjangan dan berulang tanpa adanya penyelesaian.</p>
+
+                <h2>Apa Pemicunya?</h2>
+                <p>Sebagai pelajar, tuntutan akademik sering kali terasa sangat menekan. Tumpukan tugas sekolah, tenggat waktu proyek yang tiada henti, ujian yang bertubi-tubi, hingga ekspektasi lingkungan bisa sangat menguras cadangan energimu. Ketika tubuh dan pikiran dipaksa bekerja terus-menerus tanpa jeda yang layak, sistem internalmu akhirnya "mogok".</p>
+
+                <!-- Bagian Grafik Data Modern -->
+                <div class="chart-container">
+                    <img src="https://quickchart.io/chart?c={type:'bar',data:{labels:['Kelelahan Fisik','Penurunan Motivasi','Kesulitan Fokus','Sikap Sinis/Apatis'],datasets:[{label:'Persentase Gejala',data:[85,78,70,55],backgroundColor:'#5d9b9b',borderRadius:5}]},options:{plugins:{legend:{display:false}},scales:{yAxes:[{ticks:{min:0,max:100}}]}}}&w=700&h=350" alt="Grafik Gejala Burnout">
+                    <div class="chart-caption">
+                        *Survei kesehatan mental menunjukkan tingginya persentase pelajar yang melaporkan gejala utama kelelahan akademik.
+                    </div>
+                </div>
+
+                <h2>Kenali Tanda-tandanya</h2>
+                <p>Sering kali kita menyepelekan rasa lelah ini dan menganggap diri kita hanya "kurang berusaha". Sangat penting untuk mengenali tanda-tanda <em>burnout</em> agar kamu bisa segera mengambil langkah penyelamatan:</p>
+                <ul>
+                    <li><strong>Kelelahan Ekstrem:</strong> Merasa lelah sepanjang waktu, baik secara fisik (pegal, pusing) maupun emosional (mudah marah/menangis).</li>
+                    <li><strong>Kehilangan Motivasi:</strong> Tugas, ekstrakurikuler, atau pelajaran yang dulu kamu sukai kini terasa seperti beban yang sangat berat.</li>
+                    <li><strong>Sinis dan Apatis:</strong> Mulai merasa tidak peduli dengan nilai, tenggat waktu, atau bahkan masa depan. Sering muncul pikiran "Untuk apa aku melakukan semua ini?"</li>
+                    <li><strong>Penurunan Performa:</strong> Meskipun kamu menghabiskan waktu berjam-jam di depan meja belajar, tidak ada tugas yang benar-benar bisa kamu selesaikan dengan baik.</li>
+                </ul>
+
+                <div class="highlight-quote">
+                    "Beristirahat bukanlah tanda kelemahan. Mesin yang paling canggih pun akan rusak jika dipaksa menyala tanpa henti. Kamu adalah manusia, bukan mesin."
+                </div>
+
+                <h2>Langkah Kecil untuk Kembali Pulih</h2>
+                <p>Memulihkan diri dari <em>burnout</em> butuh waktu. Kamu tidak bisa memaksakan diri untuk "langsung sembuh" dalam semalam. Cobalah beberapa langkah nyata ini:</p>
+                <ul>
+                    <li><strong>Beri Batasan Waktu (Boundaries):</strong> Tentukan jam berapa kamu harus berhenti memegang buku atau laptop. Setelah jam tersebut, lakukan hal lain yang murni untuk kesenanganmu.</li>
+                    <li><strong>Lakukan "Micro-Breaks":</strong> Gunakan teknik Pomodoro. Belajar selama 25 menit, lalu istirahat 5 menit. Jangan gunakan waktu istirahat ini untuk <em>scrolling</em> media sosial—pejamkan mata, peregangan, atau minum air putih.</li>
+                    <li><strong>Turunkan Ekspektasi Perfeksionis:</strong> Terimalah kenyataan bahwa kamu tidak harus selalu sempurna di setiap tugas. Selesai (done) jauh lebih baik daripada sempurna namun mengorbankan kewarasanmu.</li>
+                </ul>
+
+                <div class="support-box">
+                    <h3>Merasa Kewalahan? Mari Tarik Napas Sejenak</h3>
+                    <p>Jika beban sekolah atau proyekmu terasa sangat berat hingga membuatmu ingin menyerah, jangan memendamnya sendiri. Kami di MindCare selalu siap mendengarkan keluh kesahmu tanpa menghakimi nilaimu.</p>
+                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" class="btn-secondary">Cerita Sekarang</a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- EMERGENCY CONTACTS (MODERN GRID) -->
+    <!-- ========================================= -->
+    <section class="emergency-section">
+        <div class="reading-container">
+            <div class="emergency-header">
+                <h2><i class="fa-solid fa-circle-exclamation"></i> Butuh Bantuan Mendesak?</h2>
+                <p>Jika rasa stresmu memunculkan pikiran yang membahayakan diri sendiri, tolong segera hubungi tenaga profesional medis terdekat.</p>
+            </div>
+            
+            <div class="emergency-grid">
+                <!-- Card 1 -->
+                <div class="emergency-card">
+                    <div class="e-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="e-title">Halo Kemenkes</div>
+                    <div class="e-number">1500-567</div>
+                    <div class="e-desc">Layanan dukungan psikososial resmi dari Kementerian Kesehatan RI.</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="emergency-card">
+                    <div class="e-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="e-title">Layanan Sejiwa</div>
+                    <div class="e-number">119 ext. 8</div>
+                    <div class="e-desc">Layanan edukasi dan konseling psikologi darurat (KSP).</div>
                 </div>
             </div>
         </div>
@@ -250,9 +547,9 @@
     <!-- ========================================= -->
     <!-- FOOTER -->
     <!-- ========================================= -->
-    <footer style="background-color: #2c3e50; color: white; padding: 20px 0; text-align: center;">
+    <footer>
         <div class="container">
-            <p style="margin: 0;">© 2026 MindCare. All Rights Reserved.</p>
+            <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>
 

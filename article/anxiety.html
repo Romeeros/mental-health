@@ -15,157 +15,406 @@
     <meta name="author" content="MindCare Team">
 
     <!-- ========================================= -->
-    <!-- External CSS (Hanya untuk Header & Global) -->
-    <!-- ========================================= -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-
-    <!-- ========================================= -->
-    <!-- Google Fonts -->
+    <!-- Google Fonts & FontAwesome -->
     <!-- ========================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- ========================================= -->
-    <!-- Internal CSS Khusus Halaman Artikel -->
+    <!-- INTERNAL CSS (ROMBAK TOTAL & KONSISTEN) -->
     <!-- ========================================= -->
     <style>
-        /* Mengatur background halaman agar sedikit abu-abu/hijau pucat */
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #5d9b9b;
+            --primary-hover: #4a7c7c;
+            --primary-light: #e6f2f2;
+            
+            /* Warna Aksen Khusus Halaman Anxiety (Emerald Green - Menenangkan) */
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
+            --accent-green-light: #d1fae5;
+
+            --text-dark: #1e293b;
+            --text-body: #334155;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --danger: #ef4444;
+            --danger-light: #fef2f2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: #f7fbf8;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-body);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .article-page {
-            padding: 120px 0 80px; /* Padding atas besar untuk menghindari navbar */
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Container Standard */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .article-container {
+        /* Container Khusus Membaca */
+        .reading-container {
             max-width: 800px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 50px 60px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+            padding: 0 20px;
         }
 
-        /* Tombol Kembali */
-        .back-btn {
+        /* HEADER */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--primary); }
+
+        .telegram-button a {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .telegram-button a:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+
+        /* ========================================= */
+        /* STICKY BACK NAVIGATION */
+        /* ========================================= */
+        .sticky-back-nav {
+            position: sticky;
+            top: 80px; 
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            color: #64748b;
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 30px;
-            transition: color 0.3s ease, transform 0.3s ease;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        
+        .back-link:hover { color: var(--primary-hover); transform: translateX(-5px); }
+
+        /* ========================================= */
+        /* ARTICLE STYLING */
+        /* ========================================= */
+        .article-wrapper {
+            background: var(--bg-card);
+            padding: 50px 0 80px;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            margin-bottom: 40px;
         }
 
-        .back-btn:hover {
-            color: #5d9b9b;
-            transform: translateX(-5px);
-        }
-
-        /* Header Artikel */
-        .article-header {
-            margin-bottom: 35px;
-        }
-
-        .article-badge {
-            display: inline-block;
-            background: #dff2eb;
-            color: #5d9b9b;
+        .article-header { text-align: center; margin-bottom: 40px; }
+        
+        .article-category {
+            background: var(--accent-green-light);
+            color: var(--accent-green-hover);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .article-title {
-            font-size: 2.8rem;
-            color: #1e293b;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
             line-height: 1.3;
+            font-weight: 700;
             margin-bottom: 20px;
         }
 
         .article-meta {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 20px;
-            color: #94a3b8;
+            color: var(--text-light);
             font-size: 0.95rem;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #f1f5f9;
+            flex-wrap: wrap;
         }
 
-        /* Gambar Artikel */
+        .article-meta span { display: flex; align-items: center; gap: 6px; }
+
         .article-hero-img {
             width: 100%;
             height: 400px;
             object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 40px;
+            border-radius: 24px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        /* Isi Artikel */
-        .article-body {
-            color: #475569;
-            line-height: 2;
+        /* Typography Konten Artikel */
+        .article-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #334155;
+        }
+        
+        .article-content p, .article-content ul, .article-content ol {
+            font-family: 'Lora', serif;
+            margin-bottom: 25px;
+        }
+
+        .article-content h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin: 50px 0 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .article-content h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin: 40px 0 15px;
+        }
+
+        /* Aksen Hijau pada Garis Bawah Judul */
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-green); 
+            border-radius: 2px;
+        }
+
+        .article-content ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .article-content ul li {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        /* Ikon List Warna Hijau */
+        .article-content ul li::before {
+            content: '\f058'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-green);
             font-size: 1.1rem;
         }
 
-        .article-body p {
-            margin-bottom: 25px;
+        .article-content strong {
+            color: var(--accent-green-hover);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .article-body h2 {
-            font-size: 1.8rem;
-            color: #1e293b;
-            margin-top: 45px;
-            margin-bottom: 20px;
-        }
-
-        .article-body h3 {
+        /* Komponen Tambahan Artikel */
+        .highlight-quote {
+            position: relative;
             font-size: 1.4rem;
-            color: #1e293b;
-            margin-top: 35px;
-            margin-bottom: 15px;
-        }
-
-        .article-body ul {
-            margin-bottom: 25px;
-            padding-left: 20px;
-        }
-
-        .article-body li {
-            margin-bottom: 10px;
-        }
-
-        /* Kotak Pesan / Quote */
-        .quote-box {
-            background: #f1f8f6;
-            border-left: 5px solid #5d9b9b;
-            padding: 25px 30px;
-            border-radius: 0 15px 15px 0;
-            margin: 40px 0;
             font-style: italic;
-            color: #2b4c4c;
-            font-weight: 500;
+            color: var(--accent-green-hover);
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-radius: 20px;
+            border-left: 6px solid var(--accent-green);
+            font-family: 'Lora', serif;
         }
 
-        /* Responsif untuk HP */
+        .highlight-quote::before {
+            content: '\f10d'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            color: var(--accent-green);
+            opacity: 0.15;
+        }
+
+        .chart-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .chart-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .chart-caption {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Support Box Tema Hijau */
+        .support-box {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 40px;
+            border-radius: 24px;
+            margin: 60px 0 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #a7f3d0;
+        }
+
+        .support-box::before {
+            content: '\f4b6'; /* Hand holding heart */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 10rem;
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            color: var(--accent-green);
+            opacity: 0.05;
+        }
+
+        .support-box h3 { color: var(--accent-green-hover); margin-bottom: 15px; font-size: 1.5rem; font-family: 'Poppins', sans-serif;}
+        .support-box p { color: #064e3b; font-size: 1.05rem; margin-bottom: 25px; position: relative; z-index: 1;}
+        
+        .support-btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .support-btn:hover { background-color: var(--accent-green-hover); transform: translateY(-3px); color: white;}
+
+        /* ========================================= */
+        /* EMERGENCY SECTION */
+        /* ========================================= */
+        .emergency-section {
+            padding: 60px 0;
+            background-color: transparent;
+        }
+
+        .emergency-header { text-align: center; margin-bottom: 40px; }
+        .emergency-header h2 { color: var(--danger); font-size: 2rem; margin-bottom: 10px;}
+        .emergency-header p { color: var(--text-light); max-width: 700px; margin: 0 auto; }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .emergency-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--danger-light);
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--danger);
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1);
+            border-color: #fca5a5;
+        }
+
+        .e-icon { font-size: 2.5rem; color: var(--danger); margin-bottom: 15px; }
+        .e-title { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 5px; font-weight: 600;}
+        .e-number { font-size: 1.8rem; font-weight: 700; color: var(--danger); margin-bottom: 10px; letter-spacing: 1px;}
+        .e-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* FOOTER */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .article-container {
-                padding: 30px 20px;
-                border-radius: 0;
-            }
-            .article-title {
-                font-size: 2rem;
-            }
-            .article-hero-img {
-                height: 250px;
-            }
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .sticky-back-nav { top: 120px; } 
+            .article-title { font-size: 1.8rem; }
+            .article-hero-img { height: 250px; }
+            .highlight-quote { padding: 30px 20px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -179,7 +428,7 @@
         <div class="container">
             <div class="logo">
                 <a href="../index.html">
-                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo">
+                    <img src="https://placehold.co/200x50/5d9b9b/white?text=MindCare&font=Montserrat" alt="MindCare Logo" style="border-radius: 8px;">
                 </a>
             </div>
             <nav>
@@ -193,99 +442,149 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <a href="https://t.me/NamaBotKamu" target="_blank">Curhat Sekarang</a>
+                <a href=https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan. target="_blank" class="btn-secondary">Cerita Sekarang</a>
             </div>
         </div>
     </header>
 
     <!-- ========================================= -->
-    <!-- MAIN CONTENT -->
+    <!-- STICKY BACK NAVIGATION -->
     <!-- ========================================= -->
-    <main class="article-page">
-        <div class="container">
-            <div class="article-container">
+    <div class="sticky-back-nav">
+        <div class="reading-container">
+            <a href="../articles.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Kembali ke Daftar Artikel
+            </a>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- MAIN ARTICLE CONTENT -->
+    <!-- ========================================= -->
+    <div class="article-wrapper">
+        <main class="reading-container">
+            
+            <div class="article-header">
+                <span class="article-category">Psikologi & Emosi</span>
+                <h1 class="article-title">Mengenal Anxiety: Saat Cemas Menjadi Berlebihan</h1>
                 
-                <!-- Tombol Kembali -->
-                <a href="../articles.html" class="back-btn">
-                    <span>&larr;</span> Kembali ke Artikel
-                </a>
+                <div class="article-meta">
+                    <span><i class="fa-regular fa-user"></i> Tim MindCare</span>
+                    <span><i class="fa-regular fa-calendar"></i> 17 Juli 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> Waktu baca: 4 Menit</span>
+                </div>
+            </div>
 
-                <!-- Header Artikel -->
-                <div class="article-header">
-                    <span class="article-badge">Anxiety</span>
-                    <h1 class="article-title">Mengenal Anxiety: Saat Cemas Menjadi Berlebihan</h1>
-                    <div class="article-meta">
-                        <span>Ditulis oleh: <strong>Tim MindCare</strong></span>
-                        <span>•</span>
-                        <span>17 Juli 2026</span>
+            <!-- Gambar Hero (Bisa pakai dari lokal atau fallback Unsplash) -->
+            <img src="../aset/Anxiety.png" onerror="this.src='https://images.unsplash.com/photo-1592947945242-69312b91d2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'" alt="Seseorang yang sedang merasa cemas" class="article-hero-img">
+
+            <div class="article-content">
+                <p>Hampir semua orang pernah merasa cemas. Cemas saat akan menghadapi ujian, saat harus berbicara di depan kelas, atau saat menunggu hasil wawancara. Perasaan ini adalah respons alami tubuh saat menghadapi situasi yang menegangkan atau dianggap berbahaya.</p>
+
+                <p>Namun, bagaimana jika rasa cemas itu datang terus-menerus, bahkan tanpa alasan yang jelas, dan mulai mengganggu kehidupan sehari-hari? Kondisi inilah yang dikenal dengan istilah <strong>Anxiety Disorder</strong> atau gangguan kecemasan.</p>
+
+                <div class="highlight-quote">
+                    "Cemas adalah hal yang wajar terjadi pada siapa saja, tetapi kamu tidak harus membiarkannya mengambil alih seluruh hidupmu."
+                </div>
+
+                <h2>Perbedaan Cemas Biasa dan Anxiety Disorder</h2>
+                <p>Sangat penting untuk bisa membedakan antara kecemasan normal dan gangguan kecemasan. Berikut adalah beberapa perbedaan utamanya:</p>
+                <ul>
+                    <li><strong>Cemas Biasa:</strong> Datang karena ada pemicu yang jelas (misalnya: besok ada presentasi penting), dan akan hilang dengan sendirinya setelah situasi tersebut berlalu.</li>
+                    <li><strong>Anxiety Disorder:</strong> Muncul secara tiba-tiba tanpa alasan yang logis, berlangsung dalam waktu yang lama, dan intensitasnya sangat berlebihan hingga membuat penderitanya kesulitan untuk beraktivitas secara normal.</li>
+                </ul>
+
+                <!-- Grafik Data Gejala Anxiety -->
+                <div class="chart-container">
+                    <img src="https://quickchart.io/chart?c={type:'bar',data:{labels:['Overthinking','Jantung Berdebar','Sulit Tidur','Otot Tegang','Sesak Napas'],datasets:[{label:'Persentase Kemunculan Gejala',data:[90,85,78,65,60],backgroundColor:'#10b981',borderRadius:5}]},options:{plugins:{legend:{display:false}},scales:{yAxes:[{ticks:{min:0,max:100}}]}}}&w=700&h=350" alt="Grafik Gejala Anxiety">
+                    <div class="chart-caption">
+                        *Ilustrasi gejala fisik dan psikologis yang paling sering menyertai serangan kecemasan (Anxiety Attack).
                     </div>
                 </div>
 
-                <!-- Gambar Fitur -->
-                <img src="../aset/Anxiety.png" alt="Seseorang yang sedang merasa cemas" class="article-hero-img">
+                <h2>Gejala Anxiety yang Perlu Diperhatikan</h2>
+                <p>Gejala anxiety tidak hanya berupa perasaan gelisah di dalam pikiran, tetapi juga sering kali muncul dalam bentuk reaksi fisik pada tubuh. Beberapa gejala yang sering dialami antara lain:</p>
+                
+                <h3>Gejala Fisik:</h3>
+                <ul>
+                    <li>Jantung berdebar lebih cepat dan lebih keras dari biasanya (palpitasi).</li>
+                    <li>Napas terasa pendek, memburu, atau merasa sesak.</li>
+                    <li>Keringat dingin, terutama di area telapak tangan dan dahi.</li>
+                    <li>Otot terasa tegang, sakit kepala, atau pusing.</li>
+                    <li>Gangguan pencernaan, sakit perut, atau mual.</li>
+                </ul>
 
-                <!-- Isi Artikel -->
-                <div class="article-body">
-                    <p>Hampir semua orang pernah merasa cemas. Cemas saat akan menghadapi ujian, saat harus berbicara di depan kelas, atau saat menunggu hasil wawancara. Perasaan ini adalah respons alami tubuh saat menghadapi situasi yang menegangkan atau dianggap berbahaya.</p>
+                <h3>Gejala Psikologis:</h3>
+                <ul>
+                    <li>Merasa panik, terancam, atau waspada secara konstan tanpa sebab.</li>
+                    <li>Kesulitan berkonsentrasi karena pikiran dipenuhi oleh skenario terburuk (overthinking).</li>
+                    <li>Gelisah, tidak bisa diam, dan kesulitan untuk tidur nyenyak di malam hari (insomnia).</li>
+                </ul>
 
-                    <p>Namun, bagaimana jika rasa cemas itu datang terus-menerus, bahkan tanpa alasan yang jelas, dan mulai mengganggu kehidupan sehari-hari? Kondisi inilah yang dikenal dengan istilah <strong>Anxiety Disorder</strong> atau gangguan kecemasan.</p>
+                <h2>Cara Sederhana Mengatasi Serangan Cemas</h2>
+                <p>Jika kamu merasa sedang diserang oleh rasa cemas yang hebat, ada beberapa teknik pertolongan pertama yang bisa kamu lakukan sendiri untuk menenangkan sistem sarafmu:</p>
+                
+                <p><strong>1. Teknik Pernapasan (4-7-8)</strong><br>
+                Tarik napas perlahan melalui hidung selama 4 detik, tahan napasmu selama 7 detik, lalu hembuskan perlahan melalui mulut selama 8 detik. Ulangi siklus ini beberapa kali hingga detak jantungmu mulai terasa stabil.</p>
 
-                    <div class="quote-box">
-                        "Cemas adalah hal yang wajar, tetapi kamu tidak harus membiarkannya mengambil alih seluruh hidupmu."
-                    </div>
+                <p><strong>2. Grounding Technique (Teknik 5-4-3-2-1)</strong><br>
+                Untuk mengalihkan pikiran dari kepanikan di kepalamu, sebutkan secara perlahan: 5 benda yang bisa kamu lihat, 4 benda yang bisa kamu sentuh, 3 suara yang bisa kamu dengar, 2 aroma yang bisa kamu cium, dan 1 hal yang bisa kamu kecap (rasakan di mulut).</p>
 
-                    <h2>Perbedaan Cemas Biasa dan Anxiety Disorder</h2>
-                    <p>Sangat penting untuk bisa membedakan antara kecemasan normal dan gangguan kecemasan. Berikut adalah beberapa perbedaan utamanya:</p>
-                    <ul>
-                        <li><strong>Cemas Biasa:</strong> Datang karena ada pemicu yang jelas (misal: besok ada presentasi), dan akan hilang setelah situasi tersebut berlalu.</li>
-                        <li><strong>Anxiety Disorder:</strong> Muncul secara tiba-tiba tanpa alasan logis, berlangsung dalam waktu yang lama, dan intensitasnya sangat berlebihan hingga membuat penderitanya kesulitan beraktivitas.</li>
-                    </ul>
+                <p><strong>3. Berbicara dengan Seseorang</strong><br>
+                Memendamnya sendiri seringkali membuat rasa cemas menjadi semakin membesar. Bicaralah pada teman, keluarga, atau kamu juga bisa memulainya dengan hal kecil seperti bercerita melalui bot Telegram kami.</p>
 
-                    <h2>Gejala Anxiety yang Perlu Diperhatikan</h2>
-                    <p>Gejala anxiety tidak hanya berupa perasaan gelisah di pikiran, tetapi juga sering kali muncul dalam bentuk reaksi fisik tubuh. Beberapa gejala yang sering dialami antara lain:</p>
-                    
-                    <h3>Gejala Fisik:</h3>
-                    <ul>
-                        <li>Jantung berdebar lebih cepat dari biasanya (palpitasi).</li>
-                        <li>Napas terasa pendek atau sesak.</li>
-                        <li>Keringat dingin, terutama di telapak tangan.</li>
-                        <li>Otot terasa tegang, sakit kepala, atau pusing.</li>
-                        <li>Gangguan pencernaan atau mual.</li>
-                    </ul>
-
-                    <h3>Gejala Psikologis:</h3>
-                    <ul>
-                        <li>Merasa panik atau terancam secara konstan.</li>
-                        <li>Kesulitan berkonsentrasi karena pikiran dipenuhi skenario terburuk (overthinking).</li>
-                        <li>Gelisah dan sulit tidur (insomnia).</li>
-                    </ul>
-
-                    <h2>Cara Sederhana Mengatasi Serangan Cemas</h2>
-                    <p>Jika kamu merasa sedang diserang oleh rasa cemas yang hebat, ada beberapa teknik pertolongan pertama yang bisa kamu lakukan sendiri:</p>
-                    
-                    <p><strong>1. Teknik Pernapasan (4-7-8)</strong><br>
-                    Tarik napas perlahan melalui hidung selama 4 detik, tahan napas selama 7 detik, lalu hembuskan perlahan melalui mulut selama 8 detik. Ulangi beberapa kali hingga detak jantungmu mulai stabil.</p>
-
-                    <p><strong>2. Grounding Technique (Teknik 5-4-3-2-1)</strong><br>
-                    Untuk mengalihkan pikiran dari kepanikan, sebutkan secara perlahan: 5 benda yang bisa kamu lihat, 4 benda yang bisa kamu sentuh, 3 suara yang bisa kamu dengar, 2 aroma yang bisa kamu cium, dan 1 hal yang bisa kamu kecap (rasakan di mulut).</p>
-
-                    <p><strong>3. Berbicara dengan Seseorang</strong><br>
-                    Memendamnya sendiri seringkali membuat rasa cemas semakin membesar. Bicaralah pada teman, keluarga, atau kamu juga bisa memulainya dengan bercerita melalui <strong>MindCare Bot</strong> di Telegram kami.</p>
-
-                    <hr style="margin: 50px 0; border: none; border-top: 1px solid #e2e8f0;">
-
-                    <p><em>Ingat, jika kecemasanmu sudah sangat mengganggu sekolah, relasi sosial, atau kualitas hidupmu, sangat disarankan untuk mencari bantuan dari psikolog atau profesional kesehatan mental. Kamu pantas untuk merasa tenang.</em></p>
+                <div class="support-box">
+                    <h3>Dada Terasa Sesak Karena Cemas?</h3>
+                    <p>Jangan biarkan rasa cemas itu menumpuk sendirian di kepalamu. Cobalah untuk menuliskannya dan mengeluarkannya. MindCare siap menjadi pendengar setiamu kapan pun kamu membutuhkannya.</p>
+                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan. target="_blank class="btn-secondary">Cerita Sekarang</a>
+                    </a>
                 </div>
+
+                <hr style="margin: 50px 0; border: none; border-top: 1px solid #e2e8f0;">
+
+                <p style="text-align: center; color: #64748b; font-style: italic;">
+                    Ingat, jika kecemasanmu sudah sangat mengganggu sekolah, relasi sosial, atau kualitas hidupmu secara keseluruhan, sangat disarankan untuk mencari bantuan dari psikolog atau profesional kesehatan mental. Kamu pantas untuk merasa tenang.
+                </p>
 
             </div>
+        </main>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- EMERGENCY CONTACTS (SANGAT PENTING - MODERN GRID) -->
+    <!-- ========================================= -->
+    <section class="emergency-section">
+        <div class="reading-container">
+            <div class="emergency-header">
+                <h2><i class="fa-solid fa-circle-exclamation"></i> Butuh Bantuan Mendesak?</h2>
+                <p>Jika serangan panik (Panic Attack) yang kamu alami terasa sangat parah, tidak terkendali, atau disertai rasa sakit fisik yang hebat, jangan ragu untuk segera mencari bantuan profesional terdekat.</p>
+            </div>
+            
+            <div class="emergency-grid">
+                <!-- Card 1 -->
+                <div class="emergency-card">
+                    <div class="e-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="e-title">Halo Kemenkes</div>
+                    <div class="e-number">1500-567</div>
+                    <div class="e-desc">Layanan dukungan psikososial dan kegawatdaruratan resmi dari Kementerian Kesehatan RI.</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="emergency-card">
+                    <div class="e-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="e-title">Layanan Sejiwa</div>
+                    <div class="e-number">119 ext. 8</div>
+                    <div class="e-desc">Layanan edukasi, konseling psikologi, dan pendampingan krisis mental.</div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
     <!-- ========================================= -->
     <!-- FOOTER -->
     <!-- ========================================= -->
-    <footer style="background: white; padding: 30px 0; border-top: 1px solid #e2e8f0; margin-top: 50px;">
-        <div class="container" style="text-align: center; color: #64748b; font-size: 0.95rem;">
+    <footer>
+        <div class="container">
             <p>© 2026 MindCare. All Rights Reserved.</p>
         </div>
     </footer>

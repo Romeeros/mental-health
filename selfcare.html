@@ -22,13 +22,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- ========================================= -->
-    <!-- INTERNAL CSS (Disamakan dengan index.html) -->
+    <!-- INTERNAL CSS -->
     <!-- ========================================= -->
     <style>
         /* CSS Reset & Variables */
         :root {
             --primary: #5d9b9b;
             --primary-hover: #4a7c7c;
+            --primary-light: #e6f2f2;
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #f7fbf8;
@@ -76,17 +77,8 @@
             height: 80px;
         }
 
-        nav ul {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
         nav a:hover, nav a.active { color: var(--primary); }
 
         /* Buttons */
@@ -100,7 +92,7 @@
             display: inline-block;
         }
         
-        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); }
+        .telegram-button a:hover, .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px);}
 
         /* --- STYLING KHUSUS SELF CARE --- */
         .selfcare-hero {
@@ -121,6 +113,7 @@
             font-weight: 500; 
         }
 
+        /* PILLARS SECTION */
         .pillars-section { padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { font-size: 2rem; margin-bottom: 10px; }
@@ -144,8 +137,10 @@
         .icon-wrapper { font-size: 3rem; margin-bottom: 15px; }
         .pillar-card h3 { margin-bottom: 10px; color: var(--text-dark); }
         .pillar-card p { color: var(--text-light); margin-bottom: 15px; font-size: 0.95rem; }
-        .link-arrow { color: var(--primary); font-weight: 600; }
+        .link-arrow { color: var(--primary); font-weight: 600; cursor: pointer; transition: 0.3s;}
+        .link-arrow:hover { color: var(--primary-hover); }
 
+        /* DAILY CHECK-IN SECTION */
         .checkin-section {
             padding: 80px 0;
             background-color: #eaf2ef;
@@ -161,37 +156,190 @@
         }
 
         .mood-btn {
-            font-size: 3rem;
+            font-size: 3.5rem;
             background: white;
-            border: none;
+            border: 4px solid transparent; 
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .mood-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 15px 25px rgba(93, 155, 155, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .mood-btn:active { transform: scale(0.95); }
+
+        /* ANIMASI POPUP PESAN (MOOD) */
+        @keyframes popUp {
+            0% { opacity: 0; transform: scale(0.8) translateY(30px); }
+            60% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .mood-message {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary);
-            padding: 15px;
+            color: var(--text-dark);
+            padding: 25px 30px;
             background: white;
-            border-radius: 10px;
-            max-width: 500px;
+            border-radius: 15px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary);
+            position: relative;
+            display: none; 
         }
 
-        .hidden { display: none; }
+        .mood-message::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 10px 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent var(--primary) transparent;
+        }
+
+        .mood-message.show-animate {
+            display: block;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .mood-highlight {
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* ========================================= */
+        /* STYLING MODAL POP-UP KECE BADAI (PILAR)   */
+        /* ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px); /* Efek blur/glassmorphism */
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 24px;
+            position: relative;
+            transform: scale(0.7) translateY(50px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi memantul (bouncy) */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-light), #ffffff);
+            padding: 40px 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 20px 30px 40px;
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            text-align: left;
+            margin-top: 15px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .modal-body ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body ul li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1rem;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .btn-close:hover {
+            color: var(--danger, #ef4444);
+            transform: rotate(90deg);
+        }
 
         footer {
             text-align: center;
@@ -199,14 +347,18 @@
             background-color: var(--bg-card);
             color: var(--text-light);
         }
+
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .mood-btn { width: 70px; height: 70px; font-size: 2.5rem; }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- ========================================= -->
     <!-- HEADER -->
-    <!-- ========================================= -->
     <header>
         <div class="container">
             <div class="logo">
@@ -225,7 +377,6 @@
                 </ul>
             </nav>
             <div class="telegram-button">
-                <!-- Teks diperbaiki menjadi "Cerita Sekarang" -->
                 <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank">
                     Cerita Sekarang
                 </a>
@@ -233,11 +384,7 @@
         </div>
     </header>
 
-    <!-- ========================================= -->
-    <!-- MAIN CONTENT -->
-    <!-- ========================================= -->
     <main>
-        
         <!-- HERO SECTION -->
         <section class="selfcare-hero">
             <div class="container hero-content">
@@ -258,35 +405,34 @@
                 </div>
                 
                 <div class="pillars-grid">
-                    
+                    <!-- Ditambahkan class "open-modal" dan attribute "data-pillar" -->
                     <div class="pillar-card">
                         <div class="icon-wrapper">🧘‍♀️</div>
                         <h3>Mindfulness & Meditasi</h3>
                         <p>Latih kesadaran penuh untuk mengurangi stres, mengontrol emosi, dan menghentikan siklus overthinking.</p>
-                        <a href="mindfulness.html" class="link-arrow">Pelajari Caranya &rarr;</a>
+                        <a href="#" class="link-arrow open-modal" data-pillar="mindfulness">Pelajari Caranya &rarr;</a>
                     </div>
 
                     <div class="pillar-card">
                         <div class="icon-wrapper">✍️</div>
                         <h3>Journaling</h3>
                         <p>Tuangkan isi pikiran, rasa syukur, dan perasaanmu ke dalam tulisan agar beban di dada terasa lebih lega.</p>
-                        <a href="#" class="link-arrow">Mulai Menulis &rarr;</a>
+                        <a href="#" class="link-arrow open-modal" data-pillar="journaling">Mulai Menulis &rarr;</a>
                     </div>
 
                     <div class="pillar-card">
                         <div class="icon-wrapper">🏃‍♂️</div>
                         <h3>Aktivitas Fisik</h3>
                         <p>Olahraga ringan seperti jalan santai, peregangan, atau yoga sangat baik untuk memicu hormon kebahagiaan.</p>
-                        <a href="#" class="link-arrow">Lihat Tips &rarr;</a>
+                        <a href="#" class="link-arrow open-modal" data-pillar="fisik">Lihat Tips &rarr;</a>
                     </div>
 
                     <div class="pillar-card">
                         <div class="icon-wrapper">🛌</div>
                         <h3>Istirahat Berkualitas</h3>
                         <p>Memastikan tidur 7-8 jam dan berani berkata "tidak" pada aktivitas yang menguras energi sangat krusial.</p>
-                        <a href="#" class="link-arrow">Tips Tidur Nyenyak &rarr;</a>
+                        <a href="#" class="link-arrow open-modal" data-pillar="istirahat">Tips Tidur Nyenyak &rarr;</a>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -296,7 +442,7 @@
             <div class="container checkin-container">
                 <div class="checkin-content">
                     <h2>Bagaimana Perasaanmu Hari Ini?</h2>
-                    <p>Pilih salah satu emoji yang mewakili perasaanmu. Ini adalah langkah pertama untuk mengenali kondisi mentalmu.</p>
+                    <p>Pilih salah satu emoji yang mewakili perasaanmu. Sistem AI kami akan memberikan respon khusus untukmu.</p>
                     
                     <div class="mood-tracker" id="moodTracker">
                         <button class="mood-btn" data-mood="sad">😢</button>
@@ -306,7 +452,10 @@
                         <button class="mood-btn" data-mood="great">🤩</button>
                     </div>
                     
-                    <div id="moodMessage" class="mood-message hidden"></div>
+                    <div id="moodMessage" class="mood-message">
+                        <span id="messageTitle" class="mood-highlight"></span>
+                        <span id="messageText"></span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -324,8 +473,7 @@
                     Jika kamu merasa kewalahan dan self-care saja belum cukup, jangan ragu untuk bercerita. Kami siap mendengarkan tanpa menghakimi.
                 </p>
                 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                    <!-- Link disamakan dengan tombol di header -->
-                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" style="background:white; color:var(--primary); text-decoration:none; padding:12px 30px; border-radius:50px; font-weight:600; display:inline-block; transition: 0.3s;">
+                    <a href="https://wa.me/6289509163818?text=Halo,%20saya%20ingin%20bercerita%20mengenai%20apa%20yang%20sedang%20saya%20rasakan." target="_blank" style="background:white; color:var(--primary); text-decoration:none; padding:12px 30px; border-radius:50px; font-weight:600; display:inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                         Cerita Sekarang
                     </a>
                 </div>
@@ -335,7 +483,6 @@
     </main>
 
     <!-- FOOTER -->
-    <!-- ========================================= -->
     <footer>
         <div class="container">
             <p>© 2026 MindCare. All Rights Reserved.</p>
@@ -343,26 +490,143 @@
     </footer>
 
     <!-- ========================================= -->
-    <!-- JAVASCRIPT UNTUK MOOD TRACKER -->
+    <!-- MODAL POPUP HTML (Disembunyikan)          -->
+    <!-- ========================================= -->
+    <div class="modal-overlay" id="pillarModal">
+        <div class="modal-content">
+            <button class="btn-close" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <span id="modalIcon" class="modal-icon">🧘‍♀️</span>
+                <h3 id="modalTitle" class="modal-title">Judul</h3>
+            </div>
+            <div id="modalBody" class="modal-body">
+                Deskripsi
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT: MOOD TRACKER & MODAL POPUP    -->
     <!-- ========================================= -->
     <script>
-        const moodMessages = {
-            'sad': 'Terima kasih sudah jujur dengan perasaanmu. Tidak apa-apa merasa sedih. Cobalah menuliskan apa yang mengganggumu (journaling) atau hubungi teman untuk bercerita.',
-            'anxious': 'Tarik napas dalam-dalam. Fokus pada saat ini (mindfulness). Kecemasanmu nyata, tapi kamu lebih kuat dari yang kamu kira. Yuk, lakukan peregangan ringan.',
-            'neutral': 'Hari yang tenang. Ini waktu yang tepat untuk melakukan aktivitas fisik ringan atau sekadar menjaga kualitas tidurmu malam ini.',
-            'happy': 'Senang melihatmu bahagia! Pertahankan energi positif ini dan sebarkan ke orang-orang di sekitarmu.',
-            'great': 'Luar biasa! Jadikan hari ini produktif, namun jangan lupa untuk tetap menyisihkan waktu istirahat (self-care).'
+        /* --- LOGIKA MOOD TRACKER (Tetap Sama) --- */
+        const dynamicMessages = {
+            'sad': [
+                "Tidak apa-apa merasa sedih. Biarkan perasaan itu mengalir. Kamu sudah bertahan sejauh ini, dan itu luar biasa. 💙",
+                "Hari ini mungkin terasa berat, tapi ingatlah bahwa awan mendung pasti akan berlalu. Peluk jauh untukmu!",
+                "Menangislah jika itu membuatmu lega. Air mata adalah cara tubuh menyembuhkan diri. Cobalah menuliskan apa yang mengganggumu."
+            ],
+            'anxious': [
+                "Tarik napas dalam-dalam... Tahan... Hembuskan perlahan... Kamu aman di sini. Semuanya akan baik-baik saja. 🌱",
+                "Kecemasanmu hanya sementara. Cobalah sebutkan 3 hal yang bisa kamu lihat di sekitarmu sekarang untuk kembali fokus.",
+                "Pikiranmu sedang berlari kencang. Yuk, istirahat sejenak. Kamu jauh lebih kuat dari ketakutanmu."
+            ],
+            'neutral': [
+                "Hari yang tenang adalah anugerah. Nikmati momen ini dengan secangkir teh atau mendengarkan lagu favoritmu. ☕",
+                "Tidak ada salahnya merasa biasa saja. Ini waktu yang tepat untuk sekadar bernapas dan mengumpulkan energi.",
+                "Keseimbangan yang bagus! Jaga ritme ini santai saja, tidak perlu terburu-buru melakukan apa pun hari ini."
+            ],
+            'happy': [
+                "Wah, energi positifmu menular! Senang banget melihatmu bahagia hari ini. Pertahankan senyum manismu ya! ✨",
+                "Hari yang cerah untuk jiwa yang bersinar! Bagikan kebahagiaanmu dengan orang-orang terdekatmu hari ini.",
+                "Luar biasa! Momen bahagia ini patut dirayakan. Jangan lupa bersyukur atas hal kecil yang membuatmu tersenyum hari ini."
+            ],
+            'great': [
+                "Keren banget! Kamu sedang berada di puncak performa. Jadikan hari ini super produktif! 🚀",
+                "On fire! 🔥 Semangatmu luar biasa hari ini. Dunia adalah milikmu, terbanglah tinggi!",
+                "Perfect day! Jangan lupa untuk tetap menyisihkan waktu istirahat (self-care) di sela-sela kesibukan hebatmu hari ini."
+            ]
+        };
+
+        const titles = {
+            'sad': "Kami mengerti perasaanmu...",
+            'anxious': "Tenang sejenak...",
+            'neutral': "Hari yang damai...",
+            'happy': "Tetap Tersenyum!",
+            'great': "Luar Biasa!"
         };
 
         const moodBtns = document.querySelectorAll('.mood-btn');
         const messageBox = document.getElementById('moodMessage');
+        const messageTitle = document.getElementById('messageTitle');
+        const messageText = document.getElementById('messageText');
 
         moodBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const mood = this.getAttribute('data-mood');
-                messageBox.textContent = moodMessages[mood];
-                messageBox.classList.remove('hidden');
+                const messagesArray = dynamicMessages[mood];
+                const randomMsg = messagesArray[Math.floor(Math.random() * messagesArray.length)];
+                
+                messageBox.classList.remove('show-animate');
+                void messageBox.offsetWidth; // Reflow reset animasi
+                
+                messageTitle.textContent = titles[mood];
+                messageText.textContent = randomMsg;
+                messageBox.classList.add('show-animate');
             });
+        });
+
+        /* --- LOGIKA MODAL POP-UP KECE BADAI --- */
+        // Data konten untuk setiap pilar
+        const pillarData = {
+            'mindfulness': {
+                icon: '🧘‍♀️',
+                title: 'Mindfulness & Meditasi',
+                body: '<p>Mindfulness membantu menyadari pikiran tanpa menghakiminya. Praktikkan hal ini 5-10 menit hari ini:</p><ul><li>Cari tempat duduk yang tenang dan nyaman.</li><li>Fokuskan perhatian hanya pada keluar masuknya napasmu.</li><li>Jika pikiranmu melayang, sadari itu, lalu tarik napas dan kembalikan fokus perlahan.</li></ul><p>Semakin sering dilatih, semakin mudah menghentikan laju pikiran (overthinking).</p>'
+            },
+            'journaling': {
+                icon: '✍️',
+                title: 'Terapi Journaling',
+                body: '<p>Menulis adalah cara terbaik untuk memindahkan beban dari kepala ke atas kertas. Cobalah metode ini:</p><ul><li><strong>Brain Dumping:</strong> Tulis apa saja yang ada di otakmu tanpa peduli tata bahasa. Tumpahkan semuanya.</li><li><strong>Gratitude Journal:</strong> Tulis 3 hal kecil yang kamu syukuri hari ini (misal: cuaca cerah, kopi enak).</li><li><strong>Prompt:</strong> "Apa yang paling membuatku cemas hari ini, dan apakah itu bisa aku kendalikan?"</li></ul>'
+            },
+            'fisik': {
+                icon: '🏃‍♂️',
+                title: 'Gerakkan Tubuhmu',
+                body: '<p>Kesehatan mental sangat terhubung dengan tubuh fisikmu. Kamu tidak harus nge-gym, cukup lakukan aktivitas ringan:</p><ul><li>Jalan kaki santai 15 menit sambil mendengarkan alam atau podcast.</li><li>Lakukan peregangan leher dan bahu, apalagi jika kamu sering duduk di depan laptop.</li><li>Menari dengan bebas mengikuti lagu favoritmu selama 5 menit. Hormon endorfin akan otomatis naik!</li></ul>'
+            },
+            'istirahat': {
+                icon: '🛌',
+                title: 'Seni Beristirahat',
+                body: '<p>Istirahat sejati bukan sekadar rebahan sambil main HP. Tubuh dan otakmu butuh "dimatikan" sementara:</p><ul><li><strong>Digital Detox:</strong> Matikan semua layar 1 jam sebelum tidur. Baca buku atau dengarkan musik pelan.</li><li><strong>Tidur Cukup:</strong> Usahakan tidur 7-8 jam agar otak bisa memperbaiki jaringan dan memori.</li><li><strong>Berani Bilang "Tidak":</strong> Salah satu bentuk istirahat adalah tidak mengiyakan ajakan atau tugas yang melebih kapasitas energi mentalmu hari ini.</li></ul>'
+            }
+        };
+
+        const modalOverlay = document.getElementById('pillarModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeModalBtn = document.getElementById('closeModal');
+        const openModalBtns = document.querySelectorAll('.open-modal');
+
+        // Fungsi buka modal
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Mencegah pindah ke link #
+                const pillarKey = this.getAttribute('data-pillar');
+                const data = pillarData[pillarKey];
+
+                // Isi modal dengan data yang sesuai
+                if(data) {
+                    modalIcon.textContent = data.icon;
+                    modalTitle.textContent = data.title;
+                    modalBody.innerHTML = data.body;
+                }
+
+                // Tampilkan modal dengan animasi
+                modalOverlay.classList.add('active');
+            });
+        });
+
+        // Fungsi tutup modal (Tombol X)
+        closeModalBtn.addEventListener('click', function() {
+            modalOverlay.classList.remove('active');
+        });
+
+        // Fungsi tutup modal (Klik area luar modal / background gelap)
+        modalOverlay.addEventListener('click', function(e) {
+            if(e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
         });
     </script>
 
